@@ -1,3 +1,8 @@
+/**{*/
+/*    font-family: "Karla", sans-serif; ;*/
+/*    font-optical-sizing: auto; ;*/
+/*}*/
+
 .preview-subject{
     color: white !important;
 }
@@ -17,14 +22,14 @@
 
 .table thead th, .jsgrid .jsgrid-table thead th {
     color: white !important;
-    font-weight: bolder;
+    font-weight: 900;
 }
 .table td, .jsgrid .jsgrid-table td {
    color: white;
 }
 
 .form-control{
-    background-color: transparent;
+    /*background-color: transparent;*/
 }
 
 .form-control:focus{
@@ -45,7 +50,6 @@ color: white;
 
 select.form-control:focus{
     color: white !important;
-
 }
 
 .btn{
@@ -60,6 +64,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .form-check .form-check-label input {
    opacity: unset;
 }
+
+
+
+
 
 /*end here*/
 
@@ -80,6 +88,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .accordion-button:focus {
     outline: none;
     box-shadow: none;
+}
+
+hr:not([size]) {
+     height: 0;
 }
 
 
