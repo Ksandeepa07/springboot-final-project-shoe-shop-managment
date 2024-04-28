@@ -8,7 +8,7 @@ import java.util.List;
 public interface EmployeeService {
 
     EmployeeDTO saveEmployee(EmployeeDTO employeeDTO);
-    CustomerDTO updateEmployee(EmployeeDTO employeeDTO);
+    EmployeeDTO updateEmployee(EmployeeDTO employeeDTO);
     boolean deleteEmployee(String id);
     List<EmployeeDTO> getAllEmployees();
     EmployeeDTO searchEmployee(String id);

@@ -154,7 +154,7 @@ function updateCustomer() {
 
     $.ajax({
         url: 'http://localhost:8080/api/v1/customer/update',
-        method:"Post",
+        method:"Patch",
         dataType:"json",
         contentType:"application/json",
         data:JSON.stringify({

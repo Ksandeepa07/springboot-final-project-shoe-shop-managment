@@ -435,14 +435,14 @@
                     <form class="forms-sample">
 
                       <div class="form-group row">
-                        <label for="eId" class="col-sm-3 col-form-label">Employee Id :</label>
+                        <label for="eId" class="col-sm-3 col-form-label">code :</label>
                         <div class="col-sm-9">
                           <input type="text" class="form-control" id="eId" placeholder="">
                         </div>
                       </div>
 
                       <div class="form-group row">
-                        <label for="eName" class="col-sm-3 col-form-label">Employee Name :</label>
+                        <label for="eName" class="col-sm-3 col-form-label">Name :</label>
                         <div class="col-sm-9">
                           <input type="text" class="form-control" id="eName" placeholder="">
                         </div>
@@ -594,7 +594,7 @@
 
                       <div class="mt-4">
                         <button id="eSaveBtn" type="button" class="btn btn-primary mr-2 " style="background-color: #00d25b">Submit</button>
-                        <button type="submit" class="btn btn-primary mr-2" style="background-color: #fc424a">Update</button>
+                        <button id="eUpdateBtn" type="button" class="btn btn-primary mr-2" style="background-color: #fc424a">Update</button>
                         <button type="submit" class="btn btn-primary mr-2" style="background-color: #ffab00">Delete</button>
                         <button class="btn btn-dark" style="background-color: #8f5fe8">Clear</button>
                       </div>
@@ -1121,14 +1121,27 @@
             <div class="row ">
               <div class="col-12 grid-margin">
                 <div class="card">
+                  <div class="card-header text-right" >
+
+                    <div class="row">
+                      <div class="col"></div>
+                      <div class="col"></div>
+                      <div class="col">
+                        <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex  search">
+                          <input id="eSearch" style="border-radius: 20px;background: transparent" type="text" class="form-control w-100" placeholder="Search Employees">
+                        </form>
+                      </div>
+                    </div>
+
+                  </div>
+
                   <div class="card-body">
-                    <h4 class="card-title">Order Status</h4>
+<!--                    <h4 class="card-title">Order Status</h4>-->
                     <div class="table-responsive">
                       <table class="table">
                         <thead>
                         <tr>
-                          <th>#</th>
-                          <th style="display:none">code</th>
+                          <th>code</th>
                           <th>picture</th>
                           <th>Name</th>
                           <th>Email</th>

@@ -32,7 +32,7 @@ public class CustomerController {
         return customerService.saveCustomer(customerDTO);
     }
 
-    @PostMapping("/update")
+    @PatchMapping ("/update")
     public CustomerDTO update(@RequestBody CustomerDTO customerDTO){
         System.out.println(customerDTO);
         return customerService.updateCustomer(customerDTO);
