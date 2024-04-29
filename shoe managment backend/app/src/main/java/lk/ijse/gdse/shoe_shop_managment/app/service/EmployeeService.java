@@ -1,6 +1,5 @@
 package lk.ijse.gdse.shoe_shop_managment.app.service;
 
-import lk.ijse.gdse.shoe_shop_managment.app.dto.CustomerDTO;
 import lk.ijse.gdse.shoe_shop_managment.app.dto.EmployeeDTO;
 
 import java.util.List;
@@ -11,6 +10,6 @@ public interface EmployeeService {
     EmployeeDTO updateEmployee(EmployeeDTO employeeDTO);
     boolean deleteEmployee(String id);
     List<EmployeeDTO> getAllEmployees();
-    EmployeeDTO searchEmployee(String id);
+    List<EmployeeDTO> searchEmployee(String name);
     String generateNextId();
 }

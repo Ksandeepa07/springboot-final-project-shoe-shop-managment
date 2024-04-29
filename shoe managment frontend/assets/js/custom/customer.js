@@ -112,11 +112,16 @@ function saveCustomer(){
                 "addressLine2":addressLine2,
                 "loyaltyDate":loyaltyDate,
                 "loyaltyLevel":"NEW",
-                "loyaltyPoints":0
+                "loyaltyPoints":8
             }),
 
             success:function (response) {
                 console.log(response)
+                getAllCustomers();
+                clearCustomerInputFields();
+                $("#cSaveBtn").prop("disabled", true);
+                $("#cUpdateBtn").prop("disabled", true);
+                $("#cDeleteBtn").prop("disabled", true);
             },
             error:function (xhr,status,err) {
                 console.log(err)
@@ -167,13 +172,18 @@ function updateCustomer() {
             "addressLine1":addressLine1,
             "addressLine2":addressLine2,
             "loyaltyDate":loyaltyDate,
-            "loyaltyLevel":loyaltyLevel.toUpperCase(),
-            "loyaltyPoints":loyaltyPoints,
-            "recentPurchaseDate":recentDate
+            // "loyaltyLevel":loyaltyLevel.toUpperCase(),
+            // "loyaltyPoints":loyaltyPoints,
+            // "recentPurchaseDate":recentDate
         }),
 
         success:function (response){
             console.log(response)
+            getAllCustomers();
+            clearCustomerInputFields();
+            $("#cSaveBtn").prop("disabled", true);
+            $("#cUpdateBtn").prop("disabled", true);
+            $("#cDeleteBtn").prop("disabled", true);
         },
         error:function (xhr,status,err,response) {
             console.log(err)
@@ -201,6 +211,10 @@ $('#cTable').on('click', 'tr', function (){
     var loyaltyLevel = $(this).find('td:eq(10)').text();
     var loyaltyPoints = $(this).find('td:eq(11)').text();
     var recentDate = $(this).find('td:eq(12)').text();
+
+    $("#cSaveBtn").prop("disabled", false);
+    $("#cUpdateBtn").prop("disabled", false);
+    $("#cDeleteBtn").prop("disabled", false);
 
     $("#cId").val(id);
     $("#cName").val(name);
@@ -269,16 +283,9 @@ $("#cSearch").on("input", function () {
 
 
 /*clear function*/
-
 $("#cClearBtn").click(function (){
     clearCustomerInputFields();
 })
-
-
-
-
-
-
 
 function customerCapitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();

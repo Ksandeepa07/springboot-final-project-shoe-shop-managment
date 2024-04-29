@@ -6,6 +6,7 @@ import lk.ijse.gdse.shoe_shop_managment.app.util.CustomerLoyaltyLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -28,8 +29,12 @@ public class Customer {
     private String addressLine1;
     private String addressLine2;
     private Date loyaltyDate;
+
     @Enumerated(EnumType.STRING)
     private CustomerLoyaltyLevel loyaltyLevel;
+
     private Integer loyaltyPoints;
     private Timestamp recentPurchaseDate;
+
+
 }

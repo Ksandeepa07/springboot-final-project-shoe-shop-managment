@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -23,6 +24,7 @@ public class GlobalExceptionHandler {
         else if (exp instanceof NotFoundException){
              commonErrorAttribute = getCommonErrorAttribute(HttpStatus.NOT_FOUND);
         }
+        
         else {
            commonErrorAttribute=getCommonErrorAttribute(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -30,6 +32,19 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(commonErrorAttribute,HttpStatus.valueOf((Integer) commonErrorAttribute.get("code")));
     }
+
+//    @ExceptionHandler(Exception.class)
+//    public ResponseEntity<Map<String,Object>> handleMainException(Exception exp){
+//        Map<String, Object> commonErrorAttribute = null;
+//        if (exp instanceof MaxUploadSizeExceededException){
+//            commonErrorAttribute = getCommonErrorAttribute(HttpStatus.NOT_ACCEPTABLE);
+//
+//        }
+//
+////        commonErrorAttribute.put("message",exp.getMessage());
+//
+//        return new ResponseEntity<>(commonErrorAttribute,HttpStatus.valueOf((Integer) commonErrorAttribute.get("code")));
+//    }
 
     public Map<String,Object> getCommonErrorAttribute(HttpStatus status){
         LinkedHashMap<String, Object> errAttribute = new LinkedHashMap<>();

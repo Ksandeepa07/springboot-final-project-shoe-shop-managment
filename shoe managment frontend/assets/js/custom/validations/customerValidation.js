@@ -29,16 +29,15 @@ function clearCustomerInputFields() {
     $("#cContact").val("")
     $("#cContact").css({"border": "none "});
 
-    $("#cGender").val($("#cGender option:first").val());
-    $("#cLoyaltyDate").val("")
-    $("#cGender").val("")
+    $('#cGender').prop('selectedIndex', 0);
 
+    $("#cLoyaltyDate").val("")
+    $("#cDob").val("")
 
     setBtn();
 }
 
 setBtn();
-
 
 $("#cName,#cAddressLine,#cStateCity,#cEmail,#cContact").on("keyup",function(e){
 

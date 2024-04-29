@@ -1,15 +1,14 @@
 package lk.ijse.gdse.shoe_shop_managment.app.service;
 
-import lk.ijse.gdse.shoe_shop_managment.app.dto.CustomerDTO;
 import lk.ijse.gdse.shoe_shop_managment.app.dto.EmployeeDTO;
-import lk.ijse.gdse.shoe_shop_managment.app.entity.Customer;
 import lk.ijse.gdse.shoe_shop_managment.app.entity.Employee;
 import lk.ijse.gdse.shoe_shop_managment.app.repository.EmployeeRepo;
+import lk.ijse.gdse.shoe_shop_managment.app.service.exception.DuplicateRecordException;
+import lk.ijse.gdse.shoe_shop_managment.app.service.exception.NotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.awt.event.MouseAdapter;
 import java.util.List;
 
 @Service
@@ -22,11 +21,18 @@ public class EmployeeServiceImpl implements EmployeeService{
     private ModelMapper mapper;
     @Override
     public EmployeeDTO saveEmployee(EmployeeDTO employeeDTO) {
+        if (employeeRepo.existsById(employeeDTO.getCode())){
+            throw new DuplicateRecordException("Customer Id is already exists !!");
+        }
         return mapper.map(employeeRepo.save(mapper.map(employeeDTO, Employee.class)),EmployeeDTO.class);
     }
 
     @Override
     public EmployeeDTO updateEmployee(EmployeeDTO employeeDTO) {
+        if (!employeeRepo.existsById(employeeDTO.getCode())){
+            throw new NotFoundException("Can't find employee id !!");
+        }
+
         return mapper.map(employeeRepo.save(mapper.map(employeeDTO, Employee.class)),EmployeeDTO.class);
     }
 
@@ -41,8 +47,8 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public EmployeeDTO searchEmployee(String id) {
-        return null;
+    public List<EmployeeDTO> searchEmployee(String name) {
+       return employeeRepo.findByNameStartingWith(name).stream().map(employee -> mapper.map(employee, EmployeeDTO.class)).toList();
     }
 
     @Override

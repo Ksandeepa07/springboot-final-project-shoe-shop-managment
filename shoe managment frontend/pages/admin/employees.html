@@ -437,7 +437,7 @@
                       <div class="form-group row">
                         <label for="eId" class="col-sm-3 col-form-label">code :</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" id="eId" placeholder="">
+                          <input  style="background: transparent" type="text" class="form-control" id="eId" placeholder="">
                         </div>
                       </div>
 
@@ -452,6 +452,7 @@
                         <label for="eGender" class="col-sm-3 col-form-label">Gender :</label>
                         <div class="col-sm-9">
                           <select class="form-control" id="eGender">
+                            <option selected>Choose...</option>
                             <option>Male</option>
                             <option>Female</option>
                           </select>
@@ -470,6 +471,7 @@
                         <label for="eStatus" class="col-sm-3 col-form-label">Civil Status :</label>
                         <div class="col-sm-9">
                           <select class="form-control" id="eStatus">
+                            <option selected>Choose...</option>
                             <option>Single</option>
                             <option>Married</option>
                             <option>Divorced</option>
@@ -484,6 +486,7 @@
                         <label for="eDesignation" class="col-sm-3 col-form-label">Designation :</label>
                         <div class="col-sm-9">
                           <select class="form-control" id="eDesignation">
+                            <option selected>Choose...</option>
                             <option>Manager</option>
                             <option>Supervisor</option>
                             <option>Cashier</option>
@@ -503,6 +506,7 @@
                         <label for="eROle" class="col-sm-3 col-form-label">Access Role :</label>
                         <div class="col-sm-9">
                           <select class="form-control" id="eROle">
+                            <option selected>Choose...</option>
                             <option>Admin</option>
                             <option>User</option>
                           </select>
@@ -538,6 +542,7 @@
                         <label for="eBranch" class="col-sm-3 col-form-label">Branch :</label>
                         <div class="col-sm-9">
                           <select class="form-control" id="eBranch">
+                            <option selected>Choose...</option>
                             <option>Galle</option>
                             <option>Colombo</option>
                             <option>Matara</option>
@@ -595,8 +600,8 @@
                       <div class="mt-4">
                         <button id="eSaveBtn" type="button" class="btn btn-primary mr-2 " style="background-color: #00d25b">Submit</button>
                         <button id="eUpdateBtn" type="button" class="btn btn-primary mr-2" style="background-color: #fc424a">Update</button>
-                        <button type="submit" class="btn btn-primary mr-2" style="background-color: #ffab00">Delete</button>
-                        <button class="btn btn-dark" style="background-color: #8f5fe8">Clear</button>
+                        <button id="eDeleteBtn" type="button" class="btn btn-primary mr-2" style="background-color: #ffab00">Delete</button>
+                        <button id="eCLearBtn" type="button" class="btn btn-dark" style="background-color: #8f5fe8">Clear</button>
                       </div>
 
                     </form>
@@ -1121,6 +1126,7 @@
             <div class="row ">
               <div class="col-12 grid-margin">
                 <div class="card">
+
                   <div class="card-header text-right" >
 
                     <div class="row">
@@ -1238,7 +1244,9 @@
 
     <!-- Custom js for this page -->
     <script src="../../assets/js/custom/main.js"></script>
+    <script src="../../assets/js/custom/main.js"></script>
     <script src="../../assets/js/custom/employee.js"></script>
+    <script src="../../assets/js/custom/validations/employeeValidation.js"></script>
 
 
     <script src="../../assets/js/file-upload.js"></script>

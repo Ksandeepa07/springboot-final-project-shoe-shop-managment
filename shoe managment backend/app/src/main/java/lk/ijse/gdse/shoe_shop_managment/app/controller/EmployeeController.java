@@ -7,6 +7,7 @@ import lk.ijse.gdse.shoe_shop_managment.app.service.EmployeeService;
 import lk.ijse.gdse.shoe_shop_managment.app.util.Gender;
 import lk.ijse.gdse.shoe_shop_managment.app.util.Role;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -98,6 +99,7 @@ public class EmployeeController {
                             @RequestParam("dob") String dob,
                             @RequestParam("joinDate") String joinDate) throws IOException, ParseException {
 
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date newDate = dateFormat.parse(dob);
         Date newJoinDate = dateFormat.parse(joinDate);
@@ -108,6 +110,12 @@ public class EmployeeController {
                 addressLine1, addressLine2,contact,email,guardianName,guardianContact);
 
         return employeeService.updateEmployee(employeeDTO);
+    }
+
+    /*search employee*/
+    @GetMapping("/search")
+    public List<EmployeeDTO> search(@RequestParam ("name") String name){
+       return employeeService.searchEmployee(name);
     }
 }
 

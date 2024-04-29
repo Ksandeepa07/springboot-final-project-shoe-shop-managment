@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl implements CustomerService{
@@ -31,9 +32,18 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public CustomerDTO updateCustomer(CustomerDTO customerDTO) {
+
         if (!customerRepo.existsById(customerDTO.getCode())){
             throw new NotFoundException("Can't find customer id !!");
         }
+
+        Customer customer = customerRepo.findById(customerDTO.getCode()).get();
+        System.out.println("customer is "+customer);
+
+        customerDTO.setLoyaltyLevel(customer.getLoyaltyLevel());
+        customerDTO.setLoyaltyPoints(customer.getLoyaltyPoints());
+        customerDTO.setRecentPurchaseDate(customer.getRecentPurchaseDate());
+
         return mapper.map(customerRepo.save(mapper.map(customerDTO, Customer.class)), CustomerDTO.class);
     }
 

@@ -37,6 +37,7 @@ function getAllEmployees() {
     })
 }
 function loadEmployeeDataInTable(response) {
+    $("#eTable").empty();
     $.each(response, function (index, employee) {
 
         let newGender=employeeCapitalizeFirstLetter(employee.gender)
@@ -53,7 +54,7 @@ function loadEmployeeDataInTable(response) {
                     <td>${newRole}</td>
                     <td>${employee.civilStatus}</td>
                     <td>${employee.designation}</td>
-                    <td>${employee.addressLine1}${employee.addressLine2}</td>
+                    <td>${employee.addressLine1} ${employee.addressLine2}</td>
                     <td>${employee.contact}</td>
                     <td>${employee.branch}</td>
                     <td>${employee.guardianName}</td>
@@ -111,6 +112,10 @@ function saveEmployee(){
     formData.append('designation', designation);
     formData.append('role', role.toUpperCase());
 
+    if(dob==="" ||joinDate==="" || gender==="Choose..." || designation==="Choose..." || branch==="Choose..." || civilStatus==="Choose..." || role==="Choose..." || $('#eImage').val()===""){
+        alert("fill all empty fields !!")
+        return;
+    }
 
     $.ajax({
         url: 'http://localhost:8080/api/v1/employee/save',
@@ -121,9 +126,18 @@ function saveEmployee(){
 
         success:function (response) {
             console.log(response)
+            getAllEmployees();
+            $("#eSaveBtn").prop("disabled", true);
+            $("#eUpdateBtn").prop("disabled", true);
+            $("#eDeleteBtn").prop("disabled", true);
+            clearEmployeeInputFields();
         },
         error:function (xhr,status,err) {
             console.log(err)
+            console.log(xhr.status)
+            if(xhr.status===409){
+                alert("This employee is already in the system !!")
+            }
         }
     })
 
@@ -182,9 +196,19 @@ function updateEmployee(){
 
         success:function (response) {
             console.log(response)
+            getAllEmployees();
+            $("#eSaveBtn").prop("disabled", true);
+            $("#eUpdateBtn").prop("disabled", true);
+            $("#eDeleteBtn").prop("disabled", true);
+            clearEmployeeInputFields();
         },
         error:function (xhr,status,err) {
             console.log(err)
+            console.log(xhr.status)
+            if(xhr.status===404){
+                alert("This employee is not in system.Try with another!!")
+            }
+
         }
     })
 
@@ -209,6 +233,10 @@ $('#eTable').on('click', 'tr', function (){
     var guardianContact = $(this).find('td:eq(14)').text();
     var address = $(this).find('td:eq(15)').text();
     var state = $(this).find('td:eq(16)').text();
+
+    $("#eSaveBtn").prop("disabled", false);
+    $("#eUpdateBtn").prop("disabled", false);
+    $("#eDeleteBtn").prop("disabled", false);
 
 
     console.log("1 "+id)
@@ -281,55 +309,57 @@ $('#eTable').on('click', 'tr', function (){
 
 /*search table*/
 $("#eSearch").on("input", function () {
-    alert("dd")
     $("#eTable").empty();
-    // let name=$("#cSearch").val();
-    // console.log(name.trim())
-    // $.ajax({
-    //     url: 'http://localhost:8080/api/v1/customer/search?name='+name,
-    //     method:"GET",
-    //     dataType: "json",
-    //
-    //     success:function (response) {
-    //
-    //         console.log(response)
-    //
-    //         $.each(response, function (index, customer) {
-    //
-    //             setTimeout(function (){
-    //                 let newGender = customerCapitalizeFirstLetter(customer.gender)
-    //
-    //                 if (customer.recentPurchaseDate === null) {
-    //                     customer.recentPurchaseDate = "No Purchases Yet";
-    //                 }
-    //                 let data = `<tr>
-    //                         <td>${customer.code}</td>
-    //                         <td style="display: none" >${customer.code}</td>
-    //                         <td>${customer.name}</td>
-    //                         <td>${customer.email}</td>
-    //                         <td>${customer.contact}</td>
-    //                         <td>${customer.dob}</td>
-    //                         <td>${newGender}</td>
-    //                         <td>${customer.addressLine1} ${customer.addressLine2}</td>
-    //                         <td style="display: none">${customer.addressLine2}</td>
-    //                         <td>${customer.loyaltyDate}</td>
-    //                         <td><div class="badge badge-outline-danger">${customer.loyaltyLevel}</div></td>
-    //                         <td><div class="badge badge-outline-success">${customer.loyaltyPoints}</div></td>
-    //                         <td>${customer.recentPurchaseDate}</td>
-    //                         <td style="display: none">${customer.addressLine1}</td>
-    //                         </tr>`
-    //                 $("#cTable").append(data);
-    //             },600,index)
-    //         })
-    //
-    //     },
-    //     error:function (xhr,status,err) {
-    //         console.log(err)
-    //     }
-    // })
+    let name=$("#eSearch").val();
+    console.log(name)
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/employee/search?name='+name,
+        method:"GET",
+        dataType: "json",
+
+        success:function (response) {
+            console.log(response)
+            $.each(response, function (index, employee) {
+
+                setTimeout(function (){
+                    let newGender=employeeCapitalizeFirstLetter(employee.gender)
+                    let newRole=employeeCapitalizeFirstLetter(employee.role)
+
+                    let data = `<tr>
+                    <td>${employee.code}</td>
+                    <td><img alt="image" src="data:image/png;base64,${employee.proPic}"/></td>
+                    <td>${employee.name}</td>
+                    <td>${employee.email}</td>
+                    <td>${employee.dob}</td>
+                    <td>${newGender}</td>
+                    <td>${employee.joinDate}</td>
+                    <td>${newRole}</td>
+                    <td>${employee.civilStatus}</td>
+                    <td>${employee.designation}</td>
+                    <td>${employee.addressLine1} ${employee.addressLine2}</td>
+                    <td>${employee.contact}</td>
+                    <td>${employee.branch}</td>
+                    <td>${employee.guardianName}</td>
+                    <td>${employee.guardianContact}</td>
+                    <td style="display: none">${employee.addressLine1}</td>
+                    <td style="display: none">${employee.addressLine2}</td>
+                  
+                </tr>`;
+                    $("#eTable").append(data);
+                },600,index)
+            })
+
+        },
+        error:function (xhr,status,err) {
+            console.log(err)
+        }
+    })
 });
 
 
+$("#eCLearBtn").click(function (){
+    clearEmployeeInputFields();
+})
 
 /*capital only first letter*/
 function employeeCapitalizeFirstLetter(str) {
