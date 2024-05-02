@@ -43,6 +43,11 @@ public class SupplierController {
 
     }
 
+    @DeleteMapping("/delete/{id}")
+    public boolean delete (@PathVariable String id){
+        return supplierService.deleteSupplier(id);
+    }
+
     @GetMapping("/search")
     public List<SupplierDTO> search(@RequestParam("name") String name){
         return supplierService.searchSupplier(name);

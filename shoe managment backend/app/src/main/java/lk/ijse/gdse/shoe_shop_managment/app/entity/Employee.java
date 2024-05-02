@@ -40,6 +40,7 @@ public class Employee {
     private String addressLine1;
     private String addressLine2;
     private String contact;
+    @Column(unique = true)
     private String email;
     private String guardianName;
     private String guardianContact;

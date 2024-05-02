@@ -28,7 +28,6 @@ public class CustomerController {
     @PostMapping("/save")
     public CustomerDTO save(@RequestBody CustomerDTO customerDTO){
         System.out.println(customerDTO);
-//        customerDTO.setCode(customerService.generateNextId());
         return customerService.saveCustomer(customerDTO);
     }
 
@@ -36,6 +35,11 @@ public class CustomerController {
     public CustomerDTO update(@RequestBody CustomerDTO customerDTO){
         System.out.println(customerDTO);
         return customerService.updateCustomer(customerDTO);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public boolean delete (@PathVariable String id){
+       return customerService.deleteCustomer(id);
     }
 
     @GetMapping("/nextId")

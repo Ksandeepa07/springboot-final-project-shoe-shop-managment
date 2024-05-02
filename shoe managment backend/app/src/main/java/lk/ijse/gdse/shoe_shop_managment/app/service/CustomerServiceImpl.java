@@ -25,20 +25,29 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public CustomerDTO saveCustomer(CustomerDTO customerDTO) {
         if (customerRepo.existsById(customerDTO.getCode())){
-            throw new DuplicateRecordException("Customer Id is already exists !!");
+            throw new DuplicateRecordException("id");
+        }if (customerRepo.existsByEmail(customerDTO.getEmail())){
+            throw new DuplicateRecordException("email");
         }
       return mapper.map(customerRepo.save(mapper.map(customerDTO, Customer.class)),CustomerDTO.class);
     }
 
     @Override
     public CustomerDTO updateCustomer(CustomerDTO customerDTO) {
-
         if (!customerRepo.existsById(customerDTO.getCode())){
             throw new NotFoundException("Can't find customer id !!");
         }
 
         Customer customer = customerRepo.findById(customerDTO.getCode()).get();
         System.out.println("customer is "+customer);
+
+       if (!customer.getEmail().equals(customerDTO.getEmail())){
+            if (customerRepo.existsByEmail(customerDTO.getEmail())){
+                throw new DuplicateRecordException("email");
+            }
+        }
+
+
 
         customerDTO.setLoyaltyLevel(customer.getLoyaltyLevel());
         customerDTO.setLoyaltyPoints(customer.getLoyaltyPoints());
@@ -52,7 +61,15 @@ public class CustomerServiceImpl implements CustomerService{
         if (!customerRepo.existsById(id)){
             throw new NotFoundException("Can't find customer id !!");
         }
-        return false;
+
+        try{
+            customerRepo.deleteById(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+
+
     }
 
     @Override

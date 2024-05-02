@@ -440,6 +440,21 @@
                     <form class="forms-sample">
 
                       <div class="form-group row">
+                        <label for="iVariety" class="col-sm-3 col-form-label">Variety :</label>
+                        <div class="col-sm-9">
+                          <select class="form-control" id="iVariety">
+                            <option>FSM</option>
+                            <option>FSW</option>
+                            <option>CSM</option>
+                            <option>CSW</option>
+                            <option>SSM</option>
+                            <option>SSW</option>
+
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
                         <label for="iCode" class="col-sm-3 col-form-label">Code :</label>
                         <div class="col-sm-9">
                           <input type="text" class="form-control" id="iCode" placeholder="">
@@ -453,17 +468,25 @@
                         </div>
                       </div>
 
-                      <div class="form-group row">
-                        <label for="iCategory" class="col-sm-3 col-form-label">Category :</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" id="iCategory" placeholder="">
-                        </div>
-                      </div>
 
                       <div class="form-group row">
                         <label for="iSize" class="col-sm-3 col-form-label">Size :</label>
                         <div class="col-sm-9">
                           <input type="number" class="form-control" id="iSize" placeholder="">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="iQty" class="col-sm-3 col-form-label">Quantity :</label>
+                        <div class="col-sm-9">
+                          <input type="number" class="form-control" id="iQty" placeholder="">
+                        </div>
+                      </div>
+
+                      <div class="form-group row">
+                        <label for="iCategory" class="col-sm-3 col-form-label">Category :</label>
+                        <div class="col-sm-9">
+                          <input type="text" class="form-control" id="iCategory" placeholder="">
                         </div>
                       </div>
 
@@ -531,7 +554,7 @@
                       <div class="form-group row">
 
                         <label class="col-sm-3 col-form-label">File upload :</label>
-                        <input type="file" name="img[]" class="file-upload-default">
+                        <input id="iImage" type="file" name="img[]" class="file-upload-default">
                         <div class="input-group col-sm-9">
                           <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                           <span class="input-group-append">
@@ -539,6 +562,8 @@
                           </span>
                         </div>
                       </div>
+
+
 
 <!--                      <div class="form-group row">-->
 <!--                        <label for="eBranch" class="col-sm-3 col-form-label">Branch :</label>-->
@@ -585,7 +610,7 @@
                         <label for="iStatus" class="col-sm-3 col-form-label">Status :</label>
                         <div class="col-sm-9">
                           <select class="form-control" id="iStatus">
-                            <!--                            <option>Single</option>-->
+                                                        <option>ok</option>
                             <!--                            <option>Married</option>-->
                             <!--                            <option>Divorced</option>-->
                             <!--                            <option>Widowed</option>-->
@@ -617,10 +642,10 @@
                       <!--                      </div>-->
 
                       <div class="mt-4">
-                        <button type="submit" class="btn btn-primary mr-2 " style="background-color: #00d25b">Submit</button>
-                        <button type="submit" class="btn btn-primary mr-2" style="background-color: #fc424a">Update</button>
-                        <button type="submit" class="btn btn-primary mr-2" style="background-color: #ffab00">Delete</button>
-                        <button class="btn btn-dark" style="background-color: #8f5fe8">Clear</button>
+                        <button id="iSaveBtn" type="button" class="btn btn-primary mr-2 " style="background-color: #00d25b">Submit</button>
+                        <button id="iUpdateBtn" type="button" class="btn btn-primary mr-2" style="background-color: #fc424a">Update</button>
+                        <button id="iDeleteBtn" type="button" class="btn btn-primary mr-2" style="background-color: #ffab00">Delete</button>
+                        <button id="iClearBtn" type="button" class="btn btn-dark" style="background-color: #8f5fe8">Clear</button>
                       </div>
 
                     </form>
@@ -1151,128 +1176,25 @@
                       <table class="table">
                         <thead>
                         <tr>
-                          <th>
-                            <div class="form-check form-check-muted m-0">
-                              <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox">
-                              </label>
-                            </div>
-                          </th>
-                          <th> Client Name</th>
-                          <th> Order No</th>
-                          <th> Product Cost</th>
-                          <th> Project</th>
-                          <th> Payment Mode</th>
-                          <th> Start Date</th>
-                          <th> Payment Status</th>
+
+                          <th>Item Pic</th>
+                          <th>Code</th>
+                          <th>Description</th>
+                          <th>Size</th>
+                          <th>Quantity</th>
+                          <th>Category</th>
+                          <th>Sale Price</th>
+                          <th>Buy Price</th>
+                          <th>Profit</th>
+                          <th>Profit Margin</th>
+                          <th>Status</th>
+                          <th>Supplier Code</th>
+                          <th>Supplier Name</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                          <td>
-                            <div class="form-check form-check-muted m-0">
-                              <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox">
-                              </label>
-                            </div>
-                          </td>
-                          <td>
-                            <img alt="image" src="../../assets/images/faces/face1.jpg"/>
-                            <span class="pl-2">Henry Klein</span>
-                          </td>
-                          <td> 02312</td>
-                          <td> $14,500</td>
-                          <td> Dashboard</td>
-                          <td> Credit card</td>
-                          <td> 04 Dec 2019</td>
-                          <td>
-                            <div class="badge badge-outline-success">Approved</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="form-check form-check-muted m-0">
-                              <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox">
-                              </label>
-                            </div>
-                          </td>
-                          <td>
-                            <img alt="image" src="../../assets/images/faces/face2.jpg"/>
-                            <span class="pl-2">Estella Bryan</span>
-                          </td>
-                          <td> 02312</td>
-                          <td> $14,500</td>
-                          <td> Website</td>
-                          <td> Cash on delivered</td>
-                          <td> 04 Dec 2019</td>
-                          <td>
-                            <div class="badge badge-outline-warning">Pending</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="form-check form-check-muted m-0">
-                              <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox">
-                              </label>
-                            </div>
-                          </td>
-                          <td>
-                            <img alt="image" src="../../assets/images/faces/face5.jpg"/>
-                            <span class="pl-2">Lucy Abbott</span>
-                          </td>
-                          <td> 02312</td>
-                          <td> $14,500</td>
-                          <td> App design</td>
-                          <td> Credit card</td>
-                          <td> 04 Dec 2019</td>
-                          <td>
-                            <div class="badge badge-outline-danger">Rejected</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="form-check form-check-muted m-0">
-                              <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox">
-                              </label>
-                            </div>
-                          </td>
-                          <td>
-                            <img alt="image" src="../../assets/images/faces/face3.jpg"/>
-                            <span class="pl-2">Peter Gill</span>
-                          </td>
-                          <td> 02312</td>
-                          <td> $14,500</td>
-                          <td> Development</td>
-                          <td> Online Payment</td>
-                          <td> 04 Dec 2019</td>
-                          <td>
-                            <div class="badge badge-outline-success">Approved</div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <div class="form-check form-check-muted m-0">
-                              <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox">
-                              </label>
-                            </div>
-                          </td>
-                          <td>
-                            <img alt="image" src="../../assets/images/faces/face4.jpg"/>
-                            <span class="pl-2">Sallie Reyes</span>
-                          </td>
-                          <td> 02312</td>
-                          <td> $14,500</td>
-                          <td> Website</td>
-                          <td> Credit card</td>
-                          <td> 04 Dec 2019</td>
-                          <td>
-                            <div class="badge badge-outline-success">Approved</div>
-                          </td>
-                        </tr>
+                        <tbody id="iTable">
+
+
                         </tbody>
                       </table>
                     </div>
@@ -1298,9 +1220,8 @@
 
 
     <!--bootstrap js-->
-    <script crossorigin="anonymous"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
     <script crossorigin="anonymous"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
             src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
@@ -1319,10 +1240,11 @@
     <!-- Custom js for this page -->
 
     <script src="../../assets/js/custom/main.js"></script>
+    <script src="../../assets/js/custom/inventory.js"></script>
 
 
     <script src="../../assets/js/file-upload.js"></script>
-    <script src="../../assets/js/typeahead.js"></script>
+<!--    <script src="../../assets/js/typeahead.js"></script>-->
     <script src="../../assets/js/select2.js"></script>
 
   </body>

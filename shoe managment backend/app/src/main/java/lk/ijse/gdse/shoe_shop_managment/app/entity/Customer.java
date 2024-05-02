@@ -21,6 +21,8 @@ public class Customer {
 //@GeneratedValue(strategy = GenerationType.AUTO)
     private String code;
     private String name;
+
+    @Column(unique = true)
     private String email;
     @Enumerated(EnumType.STRING)
     private Gender gender;

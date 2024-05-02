@@ -112,6 +112,12 @@ public class EmployeeController {
         return employeeService.updateEmployee(employeeDTO);
     }
 
+    /*delete employee*/
+    @DeleteMapping("/delete/{id}")
+    public boolean delete (@PathVariable String id){
+        return employeeService.deleteEmployee(id);
+    }
+
     /*search employee*/
     @GetMapping("/search")
     public List<EmployeeDTO> search(@RequestParam ("name") String name){

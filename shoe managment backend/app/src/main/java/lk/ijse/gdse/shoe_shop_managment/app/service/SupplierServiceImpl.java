@@ -9,10 +9,12 @@ import lk.ijse.gdse.shoe_shop_managment.app.service.exception.NotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class SupplierServiceImpl implements SupplierService{
     @Autowired
     private SupplierRepo supplierRepo;
@@ -22,8 +24,10 @@ public class SupplierServiceImpl implements SupplierService{
     @Override
     public SupplierDTO saveSupplier(SupplierDTO supplierDTO) {
         if(supplierRepo.existsById(supplierDTO.getCode())){
-            throw new DuplicateRecordException("Supplier id is already exist !!");
-        }
+            throw new DuplicateRecordException("id");
+        }if (supplierRepo.existsByEmail(supplierDTO.getEmail())){
+        throw new DuplicateRecordException("email");
+    }
           return mapper.map(supplierRepo.save(mapper.map(supplierDTO, Supplier.class)),SupplierDTO.class);
     }
 
@@ -32,12 +36,30 @@ public class SupplierServiceImpl implements SupplierService{
         if(!supplierRepo.existsById(supplierDTO.getCode())){
             throw new NotFoundException("Supplier id is not found !!");
         }
+
+        Supplier supplier= supplierRepo.findById(supplierDTO.getCode()).get();
+
+        if(!supplier.getEmail().equals(supplierDTO.getEmail())){
+            if (supplierRepo.existsByEmail(supplierDTO.getEmail())){
+                throw new DuplicateRecordException("email");
+            }
+        }
+
         return mapper.map(supplierRepo.save(mapper.map(supplierDTO, Supplier.class)),SupplierDTO.class);
     }
 
     @Override
     public boolean deleteSupplier(String id) {
-        return false;
+        if (!supplierRepo.existsById(id)){
+            throw new NotFoundException("Can't find supplier id !!");
+        }
+
+        try{
+            supplierRepo.deleteById(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
     @Override
@@ -73,5 +95,10 @@ public class SupplierServiceImpl implements SupplierService{
 
         return id;
     }
+
+    @Override
+    public SupplierDTO findByCode(String code) {
+       return mapper.map(supplierRepo.findById(code),SupplierDTO.class);
     }
+}
 

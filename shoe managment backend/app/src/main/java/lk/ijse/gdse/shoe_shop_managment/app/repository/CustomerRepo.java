@@ -12,4 +12,6 @@ public interface CustomerRepo extends JpaRepository<Customer,String> {
     Customer findTopByOrderByCodeDesc();
 
     List<Customer> findByNameStartingWith(String name);
+
+    boolean existsByEmail(String email);
 }

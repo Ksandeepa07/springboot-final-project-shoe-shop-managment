@@ -22,7 +22,9 @@ public class EmployeeServiceImpl implements EmployeeService{
     @Override
     public EmployeeDTO saveEmployee(EmployeeDTO employeeDTO) {
         if (employeeRepo.existsById(employeeDTO.getCode())){
-            throw new DuplicateRecordException("Customer Id is already exists !!");
+            throw new DuplicateRecordException("id");
+        }if (employeeRepo.existsByEmail(employeeDTO.getEmail())){
+            throw new DuplicateRecordException("email");
         }
         return mapper.map(employeeRepo.save(mapper.map(employeeDTO, Employee.class)),EmployeeDTO.class);
     }
@@ -33,12 +35,28 @@ public class EmployeeServiceImpl implements EmployeeService{
             throw new NotFoundException("Can't find employee id !!");
         }
 
+        Employee employee=employeeRepo.findById(employeeDTO.getCode()).get();
+       if (!employee.getEmail().equals(employeeDTO.getEmail())){
+            if (employeeRepo.existsByEmail(employeeDTO.getEmail())){
+                throw new DuplicateRecordException("email");
+            }
+        }
+
         return mapper.map(employeeRepo.save(mapper.map(employeeDTO, Employee.class)),EmployeeDTO.class);
     }
 
     @Override
     public boolean deleteEmployee(String id) {
-        return false;
+        if (!employeeRepo.existsById(id)){
+            throw new NotFoundException("Can't find employee id !!");
+        }
+
+        try{
+            employeeRepo.deleteById(id);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 
     @Override

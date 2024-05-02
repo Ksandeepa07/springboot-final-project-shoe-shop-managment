@@ -45,7 +45,7 @@
 
 select.form-control{
    border: 1px solid #2c2e33;
-color: white;
+   color: white;
 }
 
 select.form-control:focus{
@@ -64,6 +64,13 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .form-check .form-check-label input {
    opacity: unset;
 }
+
+/*input[type="text"]:focus,*/
+/*input[type="email"]:focus,*/
+/*input[type="password"]:focus{*/
+/*    color: white;*/
+/*}*/
+
 
 
 /*end here*/
@@ -91,5 +98,10 @@ hr:not([size]) {
      height: 0;
 }
 
+
+/*.productImg{*/
+/*    background: url("");*/
+/*    background-position: center;*/
+/*}*/
 
 
