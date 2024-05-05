@@ -73,8 +73,6 @@ window.onload = function() {
     }
 
 
-
-
     /*save employee*/
     $("#eSaveBtn").click(function (){
         saveEmployee();
@@ -155,8 +153,6 @@ window.onload = function() {
         })
 
     }
-
-
 
 
     /*update employee*/

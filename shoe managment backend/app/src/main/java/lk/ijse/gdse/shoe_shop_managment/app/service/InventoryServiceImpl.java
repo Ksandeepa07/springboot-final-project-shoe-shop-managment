@@ -1,12 +1,15 @@
 package lk.ijse.gdse.shoe_shop_managment.app.service;
 
-import lk.ijse.gdse.shoe_shop_managment.app.dto.InventoryDTO;
-import lk.ijse.gdse.shoe_shop_managment.app.dto.SupplierDTO;
+import lk.ijse.gdse.shoe_shop_managment.app.dto.*;
 import lk.ijse.gdse.shoe_shop_managment.app.entity.Employee;
 import lk.ijse.gdse.shoe_shop_managment.app.entity.Inventory;
+import lk.ijse.gdse.shoe_shop_managment.app.entity.ShoeSizes;
 import lk.ijse.gdse.shoe_shop_managment.app.entity.Supplier;
 import lk.ijse.gdse.shoe_shop_managment.app.repository.InventoryRepo;
+import lk.ijse.gdse.shoe_shop_managment.app.repository.ShoeSizeRepo;
 import lk.ijse.gdse.shoe_shop_managment.app.repository.SupplierRepo;
+import lk.ijse.gdse.shoe_shop_managment.app.service.exception.DuplicateRecordException;
+import lk.ijse.gdse.shoe_shop_managment.app.service.exception.NotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.awt.event.MouseAdapter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -30,62 +34,92 @@ public class InventoryServiceImpl implements InventoryService {
     @Autowired
     private SupplierRepo supplierRepo;
 
+    @Autowired
+    private ShoeSizeRepo shoeSizeRepo;
+
     @Override
     public InventoryDTO saveInventory(InventoryDTO inventoryDTO) {
 
-        System.out.println("serivecce "+inventoryDTO);
-        Supplier supplier = supplierRepo.findById(inventoryDTO.getSCode()).get();
+        if (inventoryRepo.existsById(inventoryDTO.getCode())){
+            throw new DuplicateRecordException("id");
+        }
 
-//        System.out.println(supplier.getCode());
-//        System.out.println(supplier.getName());
+        Supplier supplier = supplierRepo.findById(inventoryDTO.getSCode()).get();
 
         Inventory inventory = mapper.map(inventoryDTO, Inventory.class);
         inventory.setSupplier(supplier);
+//        inventory.setShoeSizes(inventory.getShoeSizes());
 
-//        Inventory save = inventoryRepo.save(inventory);
-//        InventoryDTO send= mapper.map(inventoryRepo.save(inventory),InventoryDTO.class);
-//        send.setSCode(String.valueOf(save.getSupplier()));
-//
-//        return send;
+        Inventory save = inventoryRepo.save(inventory);
 
-        return mapper.map(inventoryRepo.save(inventory),InventoryDTO.class);
+        saveShoes(inventoryRepo.save(inventory),inventoryDTO.getShoeSizes());
+//        System.out.println("hello "+save);
+        return mapper.map(save,InventoryDTO.class);
 
+    }
 
+    public void saveShoes(Inventory inventory,List<ShoeSizesDTO> shoeSizesDTOS){
+
+        List<ShoeSizes> shoeSizes = new ArrayList<>();
+        for (ShoeSizesDTO shoeSizesDTO : shoeSizesDTOS) {
+            ShoeSizes shoeSize = mapper.map(shoeSizesDTO, ShoeSizes.class);
+            shoeSize.setInventory(inventory); // Associate with the inventory item
+            shoeSizes.add(shoeSize);
+        }
+        shoeSizeRepo.saveAll(shoeSizes);
     }
 
     @Override
     public InventoryDTO updateInventory(InventoryDTO inventoryDTO) {
-        return null;
+        if (!inventoryRepo.existsById(inventoryDTO.getCode())){
+            throw new NotFoundException("id");
+        }
+
+        Supplier supplier = supplierRepo.findById(inventoryDTO.getSCode()).get();
+
+        Inventory inventory = mapper.map(inventoryDTO, Inventory.class);
+        inventory.setSupplier(supplier);
+
+        Inventory save = inventoryRepo.save(inventory);
+
+        updateShoes(inventory,inventoryDTO.getShoeSizes());
+
+        return mapper.map(save,InventoryDTO.class);
     }
 
+    public void updateShoes(Inventory inventory,List<ShoeSizesDTO> shoeSizesDTOS){
+
+        List<ShoeSizes> shoeSizes = new ArrayList<>();
+        for (ShoeSizesDTO shoeSizesDTO : shoeSizesDTOS) {
+            ShoeSizes shoeSize = mapper.map(shoeSizesDTO, ShoeSizes.class);
+            shoeSize.setInventory(inventory);
+            shoeSizes.add(shoeSize);
+            }
+        shoeSizeRepo.saveAll(shoeSizes);
+
+        }
+
+
     @Override
-    public boolean deleteInventory(String id) {
-        return false;
+    public boolean deleteInventory(String code) {
+        if (!inventoryRepo.existsById(code)){
+            throw new NotFoundException("id");
+        }
+
+        try {
+            shoeSizeRepo.deleteByItemCode(code);
+            inventoryRepo.deleteById(code);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+
     }
+
+
 
     @Override
     public List<InventoryDTO> getAllInventory() {
-//        List<Inventory> list = inventoryRepo.findAll();
-//        List<InventoryDTO> inventoryDTOS = new ArrayList<>();
-//
-//        for (Inventory inventory : list) {
-//            inventoryDTOS.add(new InventoryDTO(
-//                   inventory.getCode(),
-//                   inventory.getName(),
-//                   inventory.getItemPic(),
-//                   inventory.getCategory(),
-//                   inventory.getSize(),
-//                   inventory.getSalePrice(),
-//                   inventory.getBuyPrice(),
-//                   inventory.getProfit(),
-//                   inventory.getProfitMargin(),
-//                   inventory.getStatus(),
-//                   inventory.getQty(),
-//                    inventory.getSupplier().getCode(),
-//                    inventory.getSName()
-//            ));
-//        }
-//        return inventoryDTOS;
         return inventoryRepo.findAll()
                 .stream()
                 .map(inventory -> {
@@ -98,7 +132,14 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public List<InventoryDTO> searchInventory(String name) {
-        return null;
+        return inventoryRepo.findByNameStartingWith(name)
+                .stream()
+                .map(inventory -> {
+                    InventoryDTO dto = mapper.map(inventory, InventoryDTO.class);
+                    dto.setSCode( inventory.getSupplier().getCode());
+                    return dto;
+                })
+                .toList();
     }
 
     @Override
@@ -107,7 +148,8 @@ public class InventoryServiceImpl implements InventoryService {
             String prefix=variety;
             String id = "";
 
-            Inventory lastInventory = inventoryRepo.findTopByCodeStartingWith(variety);
+//            Inventory lastInventory = inventoryRepo.findTopByCodeStartingWith(variety);
+            Inventory lastInventory = inventoryRepo.findTopByCodeStartingWithOrderByCodeDesc(variety);
             int nextNumericPart;
             if (lastInventory != null) {
                 String lastCode = lastInventory.getCode();
@@ -131,6 +173,92 @@ public class InventoryServiceImpl implements InventoryService {
     public List<SupplierDTO>  loadSupplierCode() {
        return supplierRepo.findAll().stream().map(supplier -> mapper.map(supplier,SupplierDTO.class)).toList();
     }
+
+    @Override
+    public Long countIds() {
+       return inventoryRepo.count();
+    }
+
+    @Override
+    public List<InventoryDTO> searchByCategoryAndSize(SearchDTO searchDTO) {
+
+
+        return inventoryRepo.findAllByCategoryAndCodeStartingWith(searchDTO.getCategory(),searchDTO.getType())
+                .stream()
+                .map(inventory -> {
+                    InventoryDTO dto = mapper.map(inventory, InventoryDTO.class);
+                    dto.setSCode( inventory.getSupplier().getCode());
+                    return dto;
+                })
+                .toList();
+
+    }
+
+    @Override
+    public List<InventoryDTO> searchByCategory(String category) {
+        System.out.println("service "+category);
+        return inventoryRepo.findAllByCategoryStartingWith(category)
+                .stream()
+                .map(inventory -> {
+                    InventoryDTO dto = mapper.map(inventory, InventoryDTO.class);
+                    dto.setSCode( inventory.getSupplier().getCode());
+                    return dto;
+                })
+                .toList();
+    }
+
+    @Override
+    public List<InventoryDTO> searchByAllConditions(String category, String type, Double minPrice, Double maxPrice) {
+        return inventoryRepo.findAllByCategoryAndCodeStartingWithAndSalePriceBetween(category,type,minPrice,maxPrice)
+                .stream()
+                .map(inventory -> {
+                    InventoryDTO dto = mapper.map(inventory, InventoryDTO.class);
+                    dto.setSCode( inventory.getSupplier().getCode());
+                    return dto;
+                })
+                .toList();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /*check with different codes*/
 

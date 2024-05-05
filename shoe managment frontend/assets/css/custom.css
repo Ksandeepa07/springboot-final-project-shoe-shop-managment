@@ -98,10 +98,11 @@ hr:not([size]) {
      height: 0;
 }
 
+@media all and (min-width:1800px) {
+  .productGrid{
+     padding: 0 60px;
+  }
+}
 
-/*.productImg{*/
-/*    background: url("");*/
-/*    background-position: center;*/
-/*}*/
-
+/*////*/
 

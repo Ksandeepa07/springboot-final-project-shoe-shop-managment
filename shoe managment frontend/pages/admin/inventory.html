@@ -443,6 +443,7 @@
                         <label for="iVariety" class="col-sm-3 col-form-label">Variety :</label>
                         <div class="col-sm-9">
                           <select class="form-control" id="iVariety">
+                            <option selected>Choose...</option>
                             <option>FSM</option>
                             <option>FSW</option>
                             <option>CSM</option>
@@ -468,38 +469,35 @@
                         </div>
                       </div>
 
+                      <div id="sizeFields">
 
-                      <div class="form-group row">
-                        <label for="iSize" class="col-sm-3 col-form-label">Size :</label>
-                        <div class="col-sm-9">
-                          <input type="number" class="form-control" id="iSize" placeholder="">
-                        </div>
                       </div>
 
                       <div class="form-group row">
-                        <label for="iQty" class="col-sm-3 col-form-label">Quantity :</label>
+                        <label for="iDesc" class="col-sm-3 col-form-label">Sizes :</label>
                         <div class="col-sm-9">
-                          <input type="number" class="form-control" id="iQty" placeholder="">
+                        <button id="addSizeBtn" type="button" class="btn btn-primary mr-2 " style="background-color: #00d25b">Add Sizes & Quantities</button>
                         </div>
                       </div>
 
-                      <div class="form-group row">
-                        <label for="iCategory" class="col-sm-3 col-form-label">Category :</label>
-                        <div class="col-sm-9">
-                          <input type="text" class="form-control" id="iCategory" placeholder="">
-                        </div>
-                      </div>
+
+                                          <div class="form-group row">
+                                                <label for="iCategory" class="col-sm-3 col-form-label">Category :</label>
+                                                <div class="col-sm-9">
+                                                  <select class="form-control" id="iCategory">
+                                                    <option selected>Choose...</option>
+                                                    <option>Mens</option>
+                                                    <option>Womens</option>
+                                                    <option>Other</option>
+                                                  </select>
+                                                </div>
+                                              </div>
 
                       <div class="form-group row">
                         <label for="iSupplierCode" class="col-sm-3 col-form-label">Supplier Code :</label>
                         <div class="col-sm-9">
                           <select class="form-control" id="iSupplierCode">
-<!--                            <option>Single</option>-->
-<!--                            <option>Married</option>-->
-<!--                            <option>Divorced</option>-->
-<!--                            <option>Widowed</option>-->
-<!--                            <option>Separated</option>-->
-<!--                            <option>Remarried</option>-->
+                            <option selected>Choose...</option>
                           </select>
                         </div>
                       </div>
@@ -507,37 +505,9 @@
                       <div class="form-group row">
                         <label for="iSupplierName" class="col-sm-3 col-form-label">Supplier Name :</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" id="iSupplierName" placeholder="">                        </div>
+                          <input type="text" class="form-control" id="iSupplierName" placeholder="">
+                        </div>
                       </div>
-
-<!--                      <div class="form-group row">-->
-<!--                        <label for="eDesignation" class="col-sm-3 col-form-label">Designation :</label>-->
-<!--                        <div class="col-sm-9">-->
-<!--                          <select class="form-control" id="eDesignation">-->
-<!--                            <option>Manager</option>-->
-<!--                            <option>Supervisor</option>-->
-<!--                            <option>Cashier</option>-->
-<!--                          </select>-->
-<!--                        </div>-->
-<!--                      </div>-->
-
-<!--                      <div class="form-group row">-->
-<!--                        <label for="eJoinDate" class="col-sm-3 col-form-label">Date of Join:</label>-->
-<!--                        <div class="col-sm-9">-->
-<!--                          <input type="date" class="form-control" id="eJoinDate" name="dob">-->
-<!--                        </div>-->
-<!--                      </div>-->
-
-
-<!--                      <div class="form-group row">-->
-<!--                        <label for="eROle" class="col-sm-3 col-form-label">Access Role :</label>-->
-<!--                        <div class="col-sm-9">-->
-<!--                          <select class="form-control" id="eROle">-->
-<!--                            <option>Admin</option>-->
-<!--                            <option>Regula User</option>-->
-<!--                          </select>-->
-<!--                        </div>-->
-<!--                      </div>-->
 
                     </form>
                   </div>
@@ -564,20 +534,6 @@
                       </div>
 
 
-
-<!--                      <div class="form-group row">-->
-<!--                        <label for="eBranch" class="col-sm-3 col-form-label">Branch :</label>-->
-<!--                        <div class="col-sm-9">-->
-<!--                          <select class="form-control" id="eBranch">-->
-<!--                            <option>Galle</option>-->
-<!--                            <option>Colombo</option>-->
-<!--                            <option>Matara</option>-->
-<!--                          </select>-->
-<!--                        </div>-->
-<!--                      </div>-->
-
-
-
                       <div class="form-group row">
                         <label for="iSalePrice" class="col-sm-3 col-form-label">Unit Price (sale) :</label>
                         <div class="col-sm-9">
@@ -595,14 +551,14 @@
                       <div class="form-group row">
                         <label for="iProfit" class="col-sm-3 col-form-label">Profit :</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" id="iProfit" placeholder="">
+                          <input type="number" class="form-control" id="iProfit" placeholder="">
                         </div>
                       </div>
 
                       <div class="form-group row">
                         <label for="iProfitMargin" class="col-sm-3 col-form-label">Profit Margin :</label>
                         <div class="col-sm-9">
-                          <input type="text" class="form-control" id="iProfitMargin" placeholder="">
+                          <input type="number" class="form-control" id="iProfitMargin" placeholder="">
                         </div>
                       </div>
 
@@ -610,36 +566,12 @@
                         <label for="iStatus" class="col-sm-3 col-form-label">Status :</label>
                         <div class="col-sm-9">
                           <select class="form-control" id="iStatus">
-                                                        <option>ok</option>
-                            <!--                            <option>Married</option>-->
-                            <!--                            <option>Divorced</option>-->
-                            <!--                            <option>Widowed</option>-->
-                            <!--                            <option>Separated</option>-->
-                            <!--                            <option>Remarried</option>-->
+                            <option selected>Choose...</option>
+                                                        <option>Low Stock</option>
+
                           </select>
                         </div>
                       </div>
-
-
-
-<!--                      <div class="form-group row">-->
-<!--                        <label for="eAddress" class="col-sm-3 col-form-label">Address :</label>-->
-<!--                        <div class="col-sm-9">-->
-<!--                          <input type="text" class="form-control" id="eAddress" placeholder="Password">-->
-<!--                        </div>-->
-<!--                      </div>-->
-
-<!--                      <div class="form-group row">-->
-<!--                        <label for="eState" class="col-sm-3 col-form-label">City & State :</label>-->
-<!--                        <div class="col-sm-9">-->
-<!--                          <input type="password" class="form-control" id="eState" placeholder="Password">-->
-<!--                        </div>-->
-<!--                      </div>-->
-
-                      <!--                      <div class="form-check form-check-flat form-check-primary">-->
-                      <!--                        <label class="form-check-label">-->
-                      <!--                          <input type="checkbox" class="form-check-input"> Remember me </label>-->
-                      <!--                      </div>-->
 
                       <div class="mt-4">
                         <button id="iSaveBtn" type="button" class="btn btn-primary mr-2 " style="background-color: #00d25b">Submit</button>
@@ -1170,6 +1102,21 @@
             <div class="row ">
               <div class="col-12 grid-margin">
                 <div class="card">
+
+                  <div class="card-header text-right" >
+
+                    <div class="row">
+                      <div class="col"></div>
+                      <div class="col"></div>
+                      <div class="col">
+                        <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex  search">
+                          <input id="iSearch" style="border-radius: 20px;background: transparent" type="text" class="form-control w-100" placeholder="Search Inventory">
+                        </form>
+                      </div>
+                    </div>
+
+                  </div>
+
                   <div class="card-body">
                     <h4 class="card-title">Order Status</h4>
                     <div class="table-responsive">
@@ -1190,7 +1137,9 @@
                           <th>Status</th>
                           <th>Supplier Code</th>
                           <th>Supplier Name</th>
+                          <th style="display: none">foreign</th>
                         </tr>
+
                         </thead>
                         <tbody id="iTable">
 
@@ -1241,6 +1190,7 @@
 
     <script src="../../assets/js/custom/main.js"></script>
     <script src="../../assets/js/custom/inventory.js"></script>
+    <script src="../../assets/js/custom/validations/inventoryValidation.js"></script>
 
 
     <script src="../../assets/js/file-upload.js"></script>
