@@ -1,6 +1,6 @@
 getAllProducts();
-countIds();
-
+countMensIds();
+countWomensIds();
 function getAllProducts() {
     $.ajax({
         url: "http://localhost:8080/api/v1/inventory/getALl",
@@ -8,7 +8,8 @@ function getAllProducts() {
         dataType: "json",
         success: function (response) {
             console.log(response);
-            console.log(response.length);
+            $(".productCount").text(response.length)
+            $(".countOnSearch").text(response.length);
             loadProductsData(response);
 
         },
@@ -62,43 +63,20 @@ function loadProductsData(response) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function countIds(){
+/*count ids*/
+function countMensIds(){
     $.ajax({
-        url: "http://localhost:8080/api/v1/inventory/countIds",
+        url: "http://localhost:8080/api/v1/inventory/countByCategories/Mens",
         method: "GET",
         // dataType: "json",
         success: function (response) {
             console.log(response);
             console.log(response.length);
             if(response<10){
-                $(".productCount").text("0"+response)
+                $(".mensCount").text("0"+response)
             }else{
-                $(".productCount").text(response)
+                $(".mensCount").text(response)
+
             }
 
 
@@ -108,6 +86,33 @@ function countIds(){
         }
     })
 }
+
+function countWomensIds(){
+    $.ajax({
+        url: "http://localhost:8080/api/v1/inventory/countByCategories/Womens",
+        method: "GET",
+        // dataType: "json",
+        success: function (response) {
+            console.log(response);
+            console.log(response.length);
+            if(response<10){
+                $(".womensCount").text("0"+response)
+            }else{
+                $(".womensCount").text(response)
+
+            }
+
+
+        },
+        error: function (xhr, status, err) {
+            console.log(err)
+        }
+    })
+}
+
+
+
+
 
 
 
@@ -138,6 +143,8 @@ $("#applyBtn").click(function (){
     console.log(minPrice);
     console.log(maxPrice);
 
+
+/*search with all conditions enabled*/
     if (categoryBoxesArray.length===1 && typeBoxesArray.length===1 && minPrice!=="" && maxPrice!==""){
         $.ajax({
             url: "http://localhost:8080/api/v1/inventory/searchByAllConditions/"+categoryBoxesArray[0]+"/"+typeBoxesArray[0]+"/"+minPrice+"/"+maxPrice,
@@ -146,12 +153,16 @@ $("#applyBtn").click(function (){
                 console.log(response);
                 console.log(response.length);
                 loadProductBasedOnSearch(response);
+                $(".countOnSearch").text(response.length);
 
             },
             error: function (xhr, status, err) {
                 console.log(err)
             }
         })
+
+        /*search by single category*/
+
     }else if(categoryBoxesArray.length===1 && typeBoxesArray.length===0 && minPrice==="" && maxPrice===""){
 
         $.ajax({
@@ -161,14 +172,101 @@ $("#applyBtn").click(function (){
                 console.log(response);
                 console.log(response.length);
                 loadProductBasedOnSearch(response);
+                $(".countOnSearch").text(response.length);
 
             },
             error: function (xhr, status, err) {
                 console.log(err)
             }
         })
-    }else if(categoryBoxesArray.length===0 && typeBoxesArray.length===1){
-        alert("only type search !! ")
+
+        /*search by single type*/
+    }else if(categoryBoxesArray.length===0 && typeBoxesArray.length===1 && minPrice==="" && maxPrice===""){
+        $.ajax({
+            url: "http://localhost:8080/api/v1/inventory/searchByType/"+typeBoxesArray[0],
+            method: "GET",
+            success: function (response) {
+                console.log(response);
+                console.log(response.length);
+                loadProductBasedOnSearch(response);
+                $(".countOnSearch").text(response.length);
+
+            },
+            error: function (xhr, status, err) {
+                console.log(err)
+            }
+        })
+
+        /*search by single price*/
+    }else if(categoryBoxesArray.length===0 && typeBoxesArray.length===0 && minPrice !=="" && maxPrice!==""){
+        $.ajax({
+            url: "http://localhost:8080/api/v1/inventory/searchByPrice/"+minPrice+"/"+maxPrice,
+            method: "GET",
+            success: function (response) {
+                console.log(response);
+                console.log(response.length);
+                loadProductBasedOnSearch(response);
+                $(".countOnSearch").text(response.length);
+
+            },
+            error: function (xhr, status, err) {
+                console.log(err)
+            }
+        })
+
+        /*search by category and type*/
+    }else if(categoryBoxesArray.length===1 && typeBoxesArray.length===1 && minPrice ==="" && maxPrice===""){
+        $.ajax({
+            url: "http://localhost:8080/api/v1/inventory/searchByCategoryAndType/"+categoryBoxesArray[0]+"/"+typeBoxesArray[0],
+            method: "GET",
+            success: function (response) {
+                console.log(response);
+                console.log(response.length);
+                loadProductBasedOnSearch(response);
+                $(".countOnSearch").text(response.length);
+
+            },
+            error: function (xhr, status, err) {
+                console.log(err)
+            }
+        })
+
+        /*search by category and price*/
+    }else if(categoryBoxesArray.length===1 && typeBoxesArray.length===0 && minPrice !=="" && maxPrice!==""){
+        $.ajax({
+            url: "http://localhost:8080/api/v1/inventory/searchByCategoryAndPrice/"+categoryBoxesArray[0]+"/"+minPrice+"/"+maxPrice,
+            method: "GET",
+            success: function (response) {
+                console.log(response);
+                console.log(response.length);
+                loadProductBasedOnSearch(response);
+                $(".countOnSearch").text(response.length);
+
+            },
+            error: function (xhr, status, err) {
+                console.log(err)
+            }
+        })
+    }
+    /*search by type and  price*/
+    else if(categoryBoxesArray.length===0 && typeBoxesArray.length===1 && minPrice !=="" && maxPrice!==""){
+        $.ajax({
+            url: "http://localhost:8080/api/v1/inventory/searchByTypeAndPrice/"+typeBoxesArray[0]+"/"+minPrice+"/"+maxPrice,
+            method: "GET",
+            success: function (response) {
+                console.log(response);
+                console.log(response.length);
+                loadProductBasedOnSearch(response);
+                $(".countOnSearch").text(response.length);
+
+            },
+            error: function (xhr, status, err) {
+                console.log(err)
+            }
+        })
+    }
+    else{
+        alert("Choose only one option in each section !!")
     }
 
 

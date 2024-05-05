@@ -17,8 +17,14 @@ public interface InventoryService {
     String generateNextId(String variety);
     List<SupplierDTO> loadSupplierCode();
 
-    Long countIds();
-    List<InventoryDTO> searchByCategoryAndSize(SearchDTO searchDTO);
+    Long countByCategory(String category);
+
     List<InventoryDTO> searchByCategory(String category);
     List<InventoryDTO> searchByAllConditions(String category,String type,Double minPrice,Double maxPrice);
+    List<InventoryDTO> searchByType(String type);
+    List<InventoryDTO> searchByPrice(Double minPrice,Double maxPrice);
+
+    List<InventoryDTO> searchByCategoryAndType(String category,String type);
+    List<InventoryDTO> searchByCategoryAndPrice(String category,Double minPrice,Double maxPrice);
+    List<InventoryDTO> searchByTypeAndPrice(String type,Double minPrice,Double maxPrice);
 }

@@ -472,6 +472,7 @@
                       <div class="collapse card d-lg-block mb-5" id="navbarSupportedContent">
                         <div class="accordion" id="accordionPanelsStayOpenExample">
 
+                            <!--first acc-->
                           <div class="accordion-item">
                             <h2 class="accordion-header " id="headingOne">
                               <button style="background-color: #191c24;border-bottom: 1px solid grey" class="accordion-button text-white font-weight-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -480,18 +481,18 @@
                             </h2>
 
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                              <div class="accordion-body">
+                              <div class="accordion-body categoriesAccordionBody">
 
                                 <div class="form-check">
                                   <div class="row">
 
-                                    <div class="col">
-                                      <input checked class="form-check-input categoryBox" id="flexCheckChecked1"
+                                    <div class="col-6  col-xl-6">
+                                      <input  class="form-check-input categoryBox" id="flexCheckChecked1"
                                              type="checkbox" value="Mens"/>
                                       <label class="form-check-label " for="flexCheckChecked1" >Mens</label>
                                     </div>
-                                    <div class="col">
-                                      <span class="badge badge-primary float-end">120</span>
+                                    <div class="col-6  col-xl-6">
+                                      <span class="badge badge-primary float-end mensCount">120</span>
                                     </div>
                                   </div>
                                 </div>
@@ -499,34 +500,35 @@
                                 <div class="form-check">
                                   <div class="row">
                                     <div class="col">
-                                      <input checked class="form-check-input categoryBox" id="flexCheckChecked2"
+                                      <input  class="form-check-input categoryBox" id="flexCheckChecked2"
                                              type="checkbox" value="Womens"/>
                                       <label class="form-check-label" for="flexCheckChecked2">Womens</label>
                                     </div>
                                     <div class="col">
-                                      <span class="badge badge-primary float-end">120</span>
+                                      <span class="badge badge-primary float-end womensCount">120</span>
                                     </div>
                                   </div>
                                 </div>
 
-                                <div class="form-check">
-                                  <div class="row">
-                                    <div class="col">
-                                      <input checked class="form-check-input categoryBox" id="flexCheckChecked3"
-                                             type="checkbox" value="Others"/>
-                                      <label class="form-check-label" for="flexCheckChecked3">Others</label>
-                                    </div>
-                                    <div class="col">
-                                      <span class="badge badge-primary float-end">120</span>
-                                    </div>
-                                  </div>
-                                </div>
+<!--                                <div class="form-check">-->
+<!--                                  <div class="row">-->
+<!--                                    <div class="col">-->
+<!--                                      <input  class="form-check-input categoryBox" id="flexCheckChecked3"-->
+<!--                                             type="checkbox" value="Others"/>-->
+<!--                                      <label class="form-check-label" for="flexCheckChecked3">Others</label>-->
+<!--                                    </div>-->
+<!--                                    <div class="col">-->
+<!--                                      <span class="badge badge-primary float-end">120</span>-->
+<!--                                    </div>-->
+<!--                                  </div>-->
+<!--                                </div>-->
 
                               </div>
                             </div>
                           </div>
 
-                            <!--third acc-->
+
+                            <!--second acc-->
 
                           <div class="accordion-item">
                             <h2 class="accordion-header" id="headingThree">
@@ -541,13 +543,13 @@
                                   <div class="row d-flex justify-content-center align-items-center">
 
                                     <div class="col-12 mb-2">
-                                      <input checked class="form-check-input typeChecked" id="sizeCheck1"
+                                      <input  class="form-check-input typeChecked" id="sizeCheck1"
                                              type="checkbox" value="F" />
                                       <label class="form-check-label " for="flexCheckChecked1">Formal</label>
                                     </div>
 
                                     <div class="col-12 mb-2">
-                                      <input checked class="form-check-input typeChecked" id="sizeCheck2"
+                                      <input  class="form-check-input typeChecked" id="sizeCheck2"
                                              type="checkbox" value="C" />
                                       <label class="form-check-label" for="flexCheckChecked1">Casual</label>
                                     </div>
@@ -575,7 +577,7 @@
 
 
 
-                            <!--second acc-->
+                            <!--third acc-->
 
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingTwo">
@@ -586,29 +588,29 @@
                                 <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
 
-                                        <div class="range">
-                                            <input class="form-range" id="customRange1" type="range"/>
-                                        </div>
+<!--                                        <div class="range">-->
+<!--                                            <input class="form-range" id="customRange1" type="range"/>-->
+<!--                                        </div>-->
                                         <div class="row mb-3">
                                             <div class="col-6">
-                                                <p class="mb-0">
+                                                <p class="mb-2">
                                                     Min
                                                 </p>
                                                 <div class="form-outline">
                                                     <input class="form-control" id="minPrice"
                                                            type="number"/>
-                                                    <label class="form-label" for="minPrice">$0</label>
+                                                    <label style="font-size: 13px" class="form-label" for="minPrice">$0</label>
                                                 </div>
                                             </div>
 
                                             <div class="col-6">
-                                                <p class="mb-0">
+                                                <p class="mb-2">
                                                     Max
                                                 </p>
                                                 <div class="form-outline">
                                                     <input class="form-control" id="maxPrice"
                                                            type="number"/>
-                                                    <label class="form-label"
+                                                    <label style="font-size: 13px" class="form-label"
                                                            for="maxPrice">$1,0000</label>
                                                 </div>
                                             </div>
@@ -632,7 +634,7 @@
                     <!-- content product list here -->
                     <div class="col-lg-9   ">
                       <header class="d-sm-flex d-flex justify-content-end ">
-                        <strong style="position: relative;top: 10px" class="d-block py-2 px-5 "><span class="productCount">32</span> Items found </strong>
+                        <p style="position: relative;top: 10px; font-size: 15px;font-weight: 500;margin-right: 90px" class="d-block py-2 ">showing <strong class="text-primary">1-</strong><strong class="text-primary countOnSearch">21</strong> of <strong class="productCount text-primary">32</strong> Items  </p>
                       </header>
 
                         <hr>

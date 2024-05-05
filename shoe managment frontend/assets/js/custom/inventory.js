@@ -136,6 +136,11 @@ window.onload = function() {
             alert("please fill all the empty fields !!");
         }
 
+        if (salePrice<0 || buyPrice<0 || profit<0 ){
+            alert("check prices!!")
+            return false;
+        }
+
         let showAlert=true;
         $('.sizeFields').each(function () {
              if($(this).find('.size-input').val()==="" || $(this).find('.qty-input').val()===""){
@@ -229,6 +234,11 @@ window.onload = function() {
             alert("please fill all the empty fields !!");
         }
 
+        if (salePrice<0 || buyPrice<0 || profit<0 ){
+            alert("check prices!!")
+            return false;
+        }
+
         let showAlert=true;
         $('.sizeFields').each(function () {
             if($(this).find('.size-input').val()==="" || $(this).find('.qty-input').val()===""){
@@ -238,6 +248,7 @@ window.onload = function() {
                 }
                 return false
             }
+            return false;
         })
 
         /*file reader for image files*/
@@ -556,6 +567,31 @@ window.onload = function() {
     });
 
 
+
+/*calculating profits and margin*/
+    let buyPrice;
+    let salePrice
+    $("#iBuyPrice").on("keyup",function (e){
+        if($("#iSalePrice").val()===""){
+            $("#iProfit").val( $("#iBuyPrice").val())
+        }
+            $("#iProfit").val($("#iSalePrice").val()- $("#iBuyPrice").val());
+
+       let profitMargin= ($("#iProfit").val()/$("#iSalePrice").val()*100).toFixed(2);
+       $("#iProfitMargin").val(profitMargin);
+
+
+    });
+
+    $("#iSalePrice").on("keyup",function (e){
+        if($("#iBuyPrice").val()===""){
+            $("#iProfit").val( $("#iSalePrice").val())
+        }
+        $("#iProfit").val($("#iSalePrice").val()- $("#iBuyPrice").val());
+
+        let profitMargin= ($("#iProfit").val()/$("#iSalePrice").val()*100).toFixed(2);
+        $("#iProfitMargin").val(profitMargin);
+    });
 
 
 

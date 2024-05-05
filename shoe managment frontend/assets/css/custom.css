@@ -104,5 +104,12 @@ hr:not([size]) {
   }
 }
 
+@media all and (min-width:992px) and (max-width:1176px) {
+    .categoriesAccordionBody{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
 /*////*/
 

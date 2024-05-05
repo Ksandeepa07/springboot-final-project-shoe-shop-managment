@@ -69,28 +69,19 @@ public class InventoryController {
         return inventoryService.searchInventory(name);
     }
 
-    @GetMapping("/countIds")
-    public Long countIds(){
-        return inventoryService.countIds();
+    @GetMapping("/countByCategories/{category}")
+    public Long countMensIds(@PathVariable String category){
+        return inventoryService.countByCategory(category);
     }
 
-    @GetMapping("/searchByCategoryAndSize/{category}/{type}")
-    public List<InventoryDTO> searchByCategoryAndSize(@PathVariable String category, @PathVariable String type){
-        System.out.println(category);
-        System.out.println(type);
+//    @GetMapping("/countIds")
+//    public Long countIds(){
+//        return inventoryService.countIds();
+//    }
 
-       return inventoryService.searchByCategoryAndSize(new SearchDTO(category,type));
 
-    }
 
-    @GetMapping("/searchByCategory/{category}")
-    public List<InventoryDTO> searchByCategory(@PathVariable String category){
-        System.out.println(category);
-
-        return inventoryService.searchByCategory(category);
-
-    }
-
+    /*search wit all conditions enabled*/
 
     @GetMapping("/searchByAllConditions/{category}/{type}/{minPrice}/{maxPrice}")
     public List<InventoryDTO> searchByAllConditions(@PathVariable String category, @PathVariable Double maxPrice, @PathVariable Double minPrice, @PathVariable String type){
@@ -100,6 +91,66 @@ public class InventoryController {
         System.out.println(type);
 
         return inventoryService.searchByAllConditions(category,type,minPrice,maxPrice);
+    }
+
+    /*search by single category*/
+    @GetMapping("/searchByCategory/{category}")
+    public List<InventoryDTO> searchByCategory(@PathVariable String category){
+        System.out.println(category);
+
+        return inventoryService.searchByCategory(category);
+
+    }
+
+    /*search by single type*/
+    @GetMapping("/searchByType/{type}")
+    public List<InventoryDTO> searchByType(@PathVariable String type){
+        System.out.println(type);
+
+        return inventoryService.searchByType(type);
+
+    }
+
+    /*search by single price*/
+    @GetMapping("/searchByPrice/{minPrice}/{maxPrice}")
+    public List<InventoryDTO> searchByPrice(@PathVariable Double minPrice, @PathVariable Double maxPrice){
+        System.out.println(minPrice);
+        System.out.println(maxPrice);
+
+        return inventoryService.searchByPrice(minPrice,maxPrice);
+
+    }
+
+
+   /*search by category and type*/
+    @GetMapping("/searchByCategoryAndType/{category}/{type}")
+    public List<InventoryDTO> searchByCategoryAndType(@PathVariable String category, @PathVariable String type){
+        System.out.println(category);
+        System.out.println(type);
+
+        return inventoryService.searchByCategoryAndType(category,type);
+
+    }
+
+    /*search by category and price*/
+    @GetMapping("/searchByCategoryAndPrice/{category}/{minPrice}/{maxPrice}")
+    public List<InventoryDTO> searchByCategoryAndPrice(@PathVariable String category, @PathVariable Double maxPrice, @PathVariable Double minPrice){
+        System.out.println(category);
+        System.out.println(minPrice);
+        System.out.println(maxPrice);
+
+        return inventoryService.searchByCategoryAndPrice(category,minPrice,maxPrice);
+
+    }
+
+    /*search by type and type*/
+    @GetMapping("/searchByTypeAndPrice/{type}/{minPrice}/{maxPrice}")
+    public List<InventoryDTO> searchByTypeAndPrice(@PathVariable String type, @PathVariable Double maxPrice, @PathVariable Double minPrice){
+        System.out.println(type);
+        System.out.println(minPrice);
+        System.out.println(maxPrice);
+
+        return inventoryService.searchByTypeAndPrice(type,minPrice,maxPrice);
 
     }
 

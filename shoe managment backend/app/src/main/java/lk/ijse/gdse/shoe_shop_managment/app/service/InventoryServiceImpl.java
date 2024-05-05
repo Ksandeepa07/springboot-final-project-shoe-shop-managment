@@ -175,15 +175,17 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
-    public Long countIds() {
-       return inventoryRepo.count();
+    public Long countByCategory(String category) {
+       return inventoryRepo.countByCategory(category);
     }
 
+
+
+    /*search by all conditions enabled*/
+
     @Override
-    public List<InventoryDTO> searchByCategoryAndSize(SearchDTO searchDTO) {
-
-
-        return inventoryRepo.findAllByCategoryAndCodeStartingWith(searchDTO.getCategory(),searchDTO.getType())
+    public List<InventoryDTO> searchByAllConditions(String category, String type, Double minPrice, Double maxPrice) {
+        return inventoryRepo.findAllByCategoryAndCodeStartingWithAndSalePriceBetween(category,type,minPrice,maxPrice)
                 .stream()
                 .map(inventory -> {
                     InventoryDTO dto = mapper.map(inventory, InventoryDTO.class);
@@ -191,9 +193,9 @@ public class InventoryServiceImpl implements InventoryService {
                     return dto;
                 })
                 .toList();
-
     }
 
+    /*search single category*/
     @Override
     public List<InventoryDTO> searchByCategory(String category) {
         System.out.println("service "+category);
@@ -207,9 +209,70 @@ public class InventoryServiceImpl implements InventoryService {
                 .toList();
     }
 
+    /*search by single type*/
+
     @Override
-    public List<InventoryDTO> searchByAllConditions(String category, String type, Double minPrice, Double maxPrice) {
-        return inventoryRepo.findAllByCategoryAndCodeStartingWithAndSalePriceBetween(category,type,minPrice,maxPrice)
+    public List<InventoryDTO> searchByType(String type) {
+        System.out.println("service "+type);
+        return inventoryRepo.findAllByCodeStartingWith(type)
+                .stream()
+                .map(inventory -> {
+                    InventoryDTO dto = mapper.map(inventory, InventoryDTO.class);
+                    dto.setSCode( inventory.getSupplier().getCode());
+                    return dto;
+                })
+                .toList();
+    }
+
+    /*search by single price*/
+    @Override
+    public List<InventoryDTO> searchByPrice(Double minPrice,Double maxPrice) {
+        System.out.println("service "+minPrice);
+        System.out.println("service "+maxPrice);
+        return inventoryRepo.findAllBySalePriceBetween(minPrice,maxPrice)
+                .stream()
+                .map(inventory -> {
+                    InventoryDTO dto = mapper.map(inventory, InventoryDTO.class);
+                    dto.setSCode( inventory.getSupplier().getCode());
+                    return dto;
+                })
+                .toList();
+    }
+
+    /*search by category and type */
+
+    @Override
+    public List<InventoryDTO> searchByCategoryAndType(String category,String type) {
+
+        return inventoryRepo.findAllByCategoryAndCodeStartingWith(category,type)
+                .stream()
+                .map(inventory -> {
+                    InventoryDTO dto = mapper.map(inventory, InventoryDTO.class);
+                    dto.setSCode( inventory.getSupplier().getCode());
+                    return dto;
+                })
+                .toList();
+
+    }
+
+    /*search by category and price */
+
+    @Override
+    public List<InventoryDTO> searchByCategoryAndPrice(String category, Double minPrice, Double maxPrice) {
+        return inventoryRepo.findAllByCategoryAndSalePriceBetween(category,minPrice,maxPrice)
+                .stream()
+                .map(inventory -> {
+                    InventoryDTO dto = mapper.map(inventory, InventoryDTO.class);
+                    dto.setSCode( inventory.getSupplier().getCode());
+                    return dto;
+                })
+                .toList();
+    }
+
+    /*search by type and type */
+    @Override
+    public List<InventoryDTO> searchByTypeAndPrice(String type, Double minPrice, Double maxPrice) {
+        return inventoryRepo.findAllByCodeStartingWithAndSalePriceBetween(type,minPrice,maxPrice)
                 .stream()
                 .map(inventory -> {
                     InventoryDTO dto = mapper.map(inventory, InventoryDTO.class);
