@@ -23,7 +23,7 @@ public class Inventory {
     private Double buyPrice;
     private Double profit;
     private Double profitMargin;
-    private String status;
+//    private String status;
 
     @ManyToOne
     @JoinColumn(name = "sCode")
@@ -33,6 +33,11 @@ public class Inventory {
 
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "inventory")
     private List<ShoeSizes> shoeSizes;
+
+    @OneToMany(mappedBy = "item_id")
+    private List<SalesService> salesServices;
+
+
 
 
 }

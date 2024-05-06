@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 public class ShoeSizesDTO {
     private Integer code;
     private String size;
-    private String qty;
+    private Integer qty;
+    private String status;
 }

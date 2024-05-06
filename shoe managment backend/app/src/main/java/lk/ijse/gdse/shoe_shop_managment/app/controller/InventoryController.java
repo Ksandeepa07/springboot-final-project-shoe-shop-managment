@@ -154,5 +154,10 @@ public class InventoryController {
 
     }
 
+    @GetMapping("/findByCode/{code}")
+    public InventoryDTO findByCode(@PathVariable String code){
+        return inventoryService.findByCode(code);
+    }
+
 
 }

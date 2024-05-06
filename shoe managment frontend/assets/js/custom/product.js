@@ -1,6 +1,7 @@
 getAllProducts();
 countMensIds();
 countWomensIds();
+
 function getAllProducts() {
     $.ajax({
         url: "http://localhost:8080/api/v1/inventory/getALl",
@@ -30,25 +31,23 @@ function loadProductsData(response) {
         }
 
 
-        let product = `<div class="col-12 col-xl-4 col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
-            <div style="width: 300px" class="card my-2 shadow-2-strong productCard" >
+        let product =
+            `<div class="col-12 col-xl-4 col-lg-6 col-md-6 col-sm-6 d-flex justify-content-center align-items-center">
+                 <div style="width: 300px" class="card my-2 shadow-2-strong productCard">
               <div class="productImg"> <img class="card-img-top" src="${inventory.itemPic}" style="aspect-ratio: 1 / 0.8;"/></div>
-<!--                <img class="card-img-top" src="${inventory.itemPic}" style="aspect-ratio: 1 / 1"/>-->
                 <div  class="card-body d-flex flex-column productCardBody shadow ">
                 <div class="titleAndPrice row">
                 <div class="col-6 d-flex justify-content-start align-items-center">
                   <p class="card-title font-weight-bold  m-0">${inventory.name}</p>
-</div>
+              </div>
                 <div class="col-6 d-flex justify-content-end align-items-center">
                  <p style="font-size: 16px" class="card-text font-weight-bold mt-0 badge-outline-primary  px-2 py-1">$ ${inventory.salePrice}.00</p>
-</div>
+              </div>
 
-</div>
-
-
+               </div>
                       <div class="sizes mt-3">Sizes : ${sizesHTML}</div>
                     <div class="card-footer text-left  px-0 pb-0 mt-auto border-0 ">
-                        <a class="btn btn-primary shadow-0 mt-2" href="#!">Add to cart</a>
+<!--                        <a class="btn btn-primary shadow-0 mt-2 addToCartBtn" href="#!">Add to cart</a>-->
                     </div>
                 </div>
             </div>
@@ -64,17 +63,17 @@ function loadProductsData(response) {
 
 
 /*count ids*/
-function countMensIds(){
+function countMensIds() {
     $.ajax({
-        url: "http://localhost:8080/api/v1/inventory/countByCategories/Mens",
+        url: "http://localhost:8080/api/v1/inventory/countByCategories/M",
         method: "GET",
         // dataType: "json",
         success: function (response) {
             console.log(response);
             console.log(response.length);
-            if(response<10){
-                $(".mensCount").text("0"+response)
-            }else{
+            if (response < 10) {
+                $(".mensCount").text("0" + response)
+            } else {
                 $(".mensCount").text(response)
 
             }
@@ -87,17 +86,17 @@ function countMensIds(){
     })
 }
 
-function countWomensIds(){
+function countWomensIds() {
     $.ajax({
-        url: "http://localhost:8080/api/v1/inventory/countByCategories/Womens",
+        url: "http://localhost:8080/api/v1/inventory/countByCategories/W",
         method: "GET",
         // dataType: "json",
         success: function (response) {
             console.log(response);
             console.log(response.length);
-            if(response<10){
-                $(".womensCount").text("0"+response)
-            }else{
+            if (response < 10) {
+                $(".womensCount").text("0" + response)
+            } else {
                 $(".womensCount").text(response)
 
             }
@@ -111,28 +110,23 @@ function countWomensIds(){
 }
 
 
-
-
-
-
-
 /*get check box values for search*/
-$("#applyBtn").click(function (){
+$("#applyBtn").click(function () {
     let categoryBoxesArray = [];
-    let typeBoxesArray=[]
-    let minPrice=$("#minPrice").val();
-    let maxPrice=$("#maxPrice").val();
+    let typeBoxesArray = []
+    let minPrice = $("#minPrice").val();
+    let maxPrice = $("#maxPrice").val();
 
 
-    let categoryBoxes= document.querySelectorAll('.categoryBox');
-    categoryBoxes.forEach(function(checkbox) {
-            if (checkbox.checked) {
-                categoryBoxesArray.push(checkbox.value);
-            }
-        });
+    let categoryBoxes = document.querySelectorAll('.categoryBox');
+    categoryBoxes.forEach(function (checkbox) {
+        if (checkbox.checked) {
+            categoryBoxesArray.push(checkbox.value);
+        }
+    });
 
-    let typeBoxes= document.querySelectorAll('.typeChecked');
-    typeBoxes.forEach(function(checkbox) {
+    let typeBoxes = document.querySelectorAll('.typeChecked');
+    typeBoxes.forEach(function (checkbox) {
         if (checkbox.checked) {
             typeBoxesArray.push(checkbox.value);
         }
@@ -144,10 +138,10 @@ $("#applyBtn").click(function (){
     console.log(maxPrice);
 
 
-/*search with all conditions enabled*/
-    if (categoryBoxesArray.length===1 && typeBoxesArray.length===1 && minPrice!=="" && maxPrice!==""){
+    /*search with all conditions enabled*/
+    if (categoryBoxesArray.length === 1 && typeBoxesArray.length === 1 && minPrice !== "" && maxPrice !== "") {
         $.ajax({
-            url: "http://localhost:8080/api/v1/inventory/searchByAllConditions/"+categoryBoxesArray[0]+"/"+typeBoxesArray[0]+"/"+minPrice+"/"+maxPrice,
+            url: "http://localhost:8080/api/v1/inventory/searchByAllConditions/" + categoryBoxesArray[0] + "/" + typeBoxesArray[0] + "/" + minPrice + "/" + maxPrice,
             method: "GET",
             success: function (response) {
                 console.log(response);
@@ -163,10 +157,10 @@ $("#applyBtn").click(function (){
 
         /*search by single category*/
 
-    }else if(categoryBoxesArray.length===1 && typeBoxesArray.length===0 && minPrice==="" && maxPrice===""){
+    } else if (categoryBoxesArray.length === 1 && typeBoxesArray.length === 0 && minPrice === "" && maxPrice === "") {
 
         $.ajax({
-            url: "http://localhost:8080/api/v1/inventory/searchByCategory/"+categoryBoxesArray[0],
+            url: "http://localhost:8080/api/v1/inventory/searchByCategory/" + categoryBoxesArray[0],
             method: "GET",
             success: function (response) {
                 console.log(response);
@@ -181,9 +175,9 @@ $("#applyBtn").click(function (){
         })
 
         /*search by single type*/
-    }else if(categoryBoxesArray.length===0 && typeBoxesArray.length===1 && minPrice==="" && maxPrice===""){
+    } else if (categoryBoxesArray.length === 0 && typeBoxesArray.length === 1 && minPrice === "" && maxPrice === "") {
         $.ajax({
-            url: "http://localhost:8080/api/v1/inventory/searchByType/"+typeBoxesArray[0],
+            url: "http://localhost:8080/api/v1/inventory/searchByType/" + typeBoxesArray[0],
             method: "GET",
             success: function (response) {
                 console.log(response);
@@ -198,9 +192,9 @@ $("#applyBtn").click(function (){
         })
 
         /*search by single price*/
-    }else if(categoryBoxesArray.length===0 && typeBoxesArray.length===0 && minPrice !=="" && maxPrice!==""){
+    } else if (categoryBoxesArray.length === 0 && typeBoxesArray.length === 0 && minPrice !== "" && maxPrice !== "") {
         $.ajax({
-            url: "http://localhost:8080/api/v1/inventory/searchByPrice/"+minPrice+"/"+maxPrice,
+            url: "http://localhost:8080/api/v1/inventory/searchByPrice/" + minPrice + "/" + maxPrice,
             method: "GET",
             success: function (response) {
                 console.log(response);
@@ -215,9 +209,9 @@ $("#applyBtn").click(function (){
         })
 
         /*search by category and type*/
-    }else if(categoryBoxesArray.length===1 && typeBoxesArray.length===1 && minPrice ==="" && maxPrice===""){
+    } else if (categoryBoxesArray.length === 1 && typeBoxesArray.length === 1 && minPrice === "" && maxPrice === "") {
         $.ajax({
-            url: "http://localhost:8080/api/v1/inventory/searchByCategoryAndType/"+categoryBoxesArray[0]+"/"+typeBoxesArray[0],
+            url: "http://localhost:8080/api/v1/inventory/searchByCategoryAndType/" + categoryBoxesArray[0] + "/" + typeBoxesArray[0],
             method: "GET",
             success: function (response) {
                 console.log(response);
@@ -232,9 +226,9 @@ $("#applyBtn").click(function (){
         })
 
         /*search by category and price*/
-    }else if(categoryBoxesArray.length===1 && typeBoxesArray.length===0 && minPrice !=="" && maxPrice!==""){
+    } else if (categoryBoxesArray.length === 1 && typeBoxesArray.length === 0 && minPrice !== "" && maxPrice !== "") {
         $.ajax({
-            url: "http://localhost:8080/api/v1/inventory/searchByCategoryAndPrice/"+categoryBoxesArray[0]+"/"+minPrice+"/"+maxPrice,
+            url: "http://localhost:8080/api/v1/inventory/searchByCategoryAndPrice/" + categoryBoxesArray[0] + "/" + minPrice + "/" + maxPrice,
             method: "GET",
             success: function (response) {
                 console.log(response);
@@ -249,9 +243,9 @@ $("#applyBtn").click(function (){
         })
     }
     /*search by type and  price*/
-    else if(categoryBoxesArray.length===0 && typeBoxesArray.length===1 && minPrice !=="" && maxPrice!==""){
+    else if (categoryBoxesArray.length === 0 && typeBoxesArray.length === 1 && minPrice !== "" && maxPrice !== "") {
         $.ajax({
-            url: "http://localhost:8080/api/v1/inventory/searchByTypeAndPrice/"+typeBoxesArray[0]+"/"+minPrice+"/"+maxPrice,
+            url: "http://localhost:8080/api/v1/inventory/searchByTypeAndPrice/" + typeBoxesArray[0] + "/" + minPrice + "/" + maxPrice,
             method: "GET",
             success: function (response) {
                 console.log(response);
@@ -264,15 +258,14 @@ $("#applyBtn").click(function (){
                 console.log(err)
             }
         })
-    }
-    else{
+    } else {
         alert("Choose only one option in each section !!")
     }
 
 
 })
 
-function loadProductBasedOnSearch(response){
+function loadProductBasedOnSearch(response) {
 
     $(".productGrid").empty();
 
@@ -316,6 +309,10 @@ function loadProductBasedOnSearch(response){
 }
 
 
+$(document).on('click', '.addToCartBtn', function () {
+    // console.log( $(this).find(".productCard").closest(".card-title").text())
+    console.log($(this).closest(".productCard").find(".card-title").text());
+});
 
 
 

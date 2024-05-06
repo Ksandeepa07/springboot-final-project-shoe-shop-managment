@@ -27,10 +27,12 @@ window.onload = function() {
             console.log(index)
             let size = "";
             let qty = "";
+            let status = "";
             let foreignKey="";
             for (let i = 0; i < inventory.shoeSizes.length; i++) {
                 size += `<p><span style="font-size: 13px " class="font-weight-bold size text-primary ">${inventory.shoeSizes[i].size}</span></p><br>`
                 qty += `<p><span style="font-size: 13px " class="font-weight-bold qty text-primary text-center">${inventory.shoeSizes[i].qty}</span></p><br>`
+                status += `<p><span style="font-size: 13px " class="font-weight-bold qty text-primary text-center">${inventory.shoeSizes[i].status}</span></p><br>`
                 foreignKey += `<p><span style="font-size: 13px " class="font-weight-bold foriegnKey">${inventory.shoeSizes[i].code}</span></p><br>`
             }
 
@@ -41,12 +43,12 @@ window.onload = function() {
                     <td>${inventory.name}</td>
                     <td>${size}</td>
                     <td>${qty}</td>
+                    <td>${status}</td>
                     <td>${inventory.category}</td>
                     <td>${inventory.salePrice}</td>
                     <td>${inventory.buyPrice}</td>
                     <td>${inventory.profit}</td>
                     <td>${inventory.profitMargin}</td>
-                    <td>${inventory.status}</td>
                     <td>${inventory.scode}</td>
                     <td>${inventory.sname}</td>
                     <td style="display: none">${foreignKey}</td>
@@ -168,7 +170,7 @@ window.onload = function() {
                 "buyPrice": buyPrice,
                 "profit": profit,
                 "profitMargin": profitMargin,
-                "status": status,
+                // "status": status,
                 "itemPic": base64String,
                 "shoeSizes": []
             }
@@ -177,7 +179,12 @@ window.onload = function() {
             $('.sizeFields').each(function () {
                 let size = $(this).find('.size-input').val();
                 let qty = $(this).find('.qty-input').val();
-                 itemData.shoeSizes.push({size: size, qty: qty});
+                if(qty<50){
+                    itemData.shoeSizes.push({size: size, qty: qty,status:"Low stock"});
+                }if(qty>50){
+                    itemData.shoeSizes.push({size: size, qty: qty,status:"Available"});
+                }
+
 
             })
 
@@ -277,7 +284,13 @@ window.onload = function() {
                 let size = $(this).find('.size-input').val();
                 let qty = $(this).find('.qty-input').val();
                 let foreignKey = $(this).find('.foreign-input').val();
-                itemData.shoeSizes.push({size: size, qty: qty,code:foreignKey});
+
+                if(qty<50){
+                    itemData.shoeSizes.push({size: size, qty: qty,code:foreignKey,status:"Low Stock"});
+                }if (qty>50){
+                    itemData.shoeSizes.push({size: size, qty: qty,code:foreignKey,status:"Available"});
+                }
+
 
             })
 
@@ -322,14 +335,14 @@ window.onload = function() {
         var itemPic= $(this).find('td:eq(0)').html();
         var code = $(this).find('td:eq(1)').text();
         var name = $(this).find('td:eq(2)').text();
-        var size = $(this).find('td:eq(3)').text();
-        var qty = $(this).find('td:eq(4)').text();
-        var category = $(this).find('td:eq(5)').text();
-        var salePrice = $(this).find('td:eq(6)').text();
-        var buyPrice = $(this).find('td:eq(7)').text();
-        var profit = $(this).find('td:eq(8)').text();
-        var profitMargin = $(this).find('td:eq(9)').text();
-        var status = $(this).find('td:eq(10)').text();
+        // var size = $(this).find('td:eq(3)').text();
+        // var qty = $(this).find('td:eq(4)').text();
+        var category = $(this).find('td:eq(6)').text();
+        var salePrice = $(this).find('td:eq(7)').text();
+        var buyPrice = $(this).find('td:eq(8)').text();
+        var profit = $(this).find('td:eq(9)').text();
+        var profitMargin = $(this).find('td:eq(10)').text();
+        // var status = $(this).find('td:eq(11)').text();
         var supplierCode = $(this).find('td:eq(11)').text();
         var supplierName = $(this).find('td:eq(12)').text();
 
@@ -382,35 +395,74 @@ window.onload = function() {
 
         /*set image*/
 
-        var base64Data;
-        var matches = itemPic.match(/src="data:image\/png;base64,([^"]+)"/);
+        // var base64Data;
+        // var matches = itemPic.match(/src="data:image\/png;base64,([^"]+)"/);
+        // if (matches) {
+        //     base64Data = matches[1];
+        //     console.log(base64Data);
+        //
+        //     // Decode base64 data into a blob
+        //     var byteCharacters = atob(base64Data);
+        //     var byteNumbers = new Array(byteCharacters.length);
+        //     for (var i = 0; i < byteCharacters.length; i++) {
+        //         byteNumbers[i] = byteCharacters.charCodeAt(i);
+        //     }
+        //     var byteArray = new Uint8Array(byteNumbers);
+        //     var blob = new Blob([byteArray], { type: 'image/png' });
+        //
+        //     // Create a file from the blob
+        //     var file = new File([blob], 'image.png', { type: 'image/png' });
+        //     console.log(file)
+        //
+        //     var dataTransfer = new DataTransfer();
+        //     dataTransfer.items.add(file);
+        //
+        //     // Set the files property of the file chooser input field using the files property of the DataTransfer object
+        //     var fileInput = document.getElementById('iImage');
+        //     fileInput.files = dataTransfer.files;
+        //
+        // } else {
+        //     console.log("No image data found in the table cell.");
+        // }
+
+        ///
+
+        var matches = itemPic.match(/src="data:image\/(jpeg|png);base64,([^"]+)"/);
         if (matches) {
-            base64Data = matches[1];
-            console.log(base64Data);
+            var base64Data = matches[2];
 
-            // Decode base64 data into a blob
-            var byteCharacters = atob(base64Data);
-            var byteNumbers = new Array(byteCharacters.length);
-            for (var i = 0; i < byteCharacters.length; i++) {
-                byteNumbers[i] = byteCharacters.charCodeAt(i);
-            }
-            var byteArray = new Uint8Array(byteNumbers);
-            var blob = new Blob([byteArray], { type: 'image/png' });
+            // Convert to jpeg
+            var canvas = document.createElement('canvas');
+            var img = new Image();
+            img.onload = function() {
+                canvas.width = img.width;
+                canvas.height = img.height;
+                var ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                var newDataURL = canvas.toDataURL('image/jpeg', 1.0);
+                var jpegBase64Data = newDataURL.split(',')[1];
 
-            // Create a file from the blob
-            var file = new File([blob], 'image.png', { type: 'image/png' });
-            console.log(file)
+                var byteCharacters = atob(jpegBase64Data);
+                var byteNumbers = new Array(byteCharacters.length);
+                for (var i = 0; i < byteCharacters.length; i++) {
+                    byteNumbers[i] = byteCharacters.charCodeAt(i);
+                }
+                var byteArray = new Uint8Array(byteNumbers);
+                var blob = new Blob([byteArray], { type: 'image/jpeg' });
 
-            var dataTransfer = new DataTransfer();
-            dataTransfer.items.add(file);
+                var file = new File([blob], 'item.jpg', { type: 'image/jpeg' });
 
-            // Set the files property of the file chooser input field using the files property of the DataTransfer object
-            var fileInput = document.getElementById('iImage');
-            fileInput.files = dataTransfer.files;
+                var dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
 
+                var fileInput = document.getElementById('iImage');
+                fileInput.files = dataTransfer.files;
+            };
+            img.src = 'data:image/' + matches[1] + ';base64,' + base64Data;
         } else {
             console.log("No image data found in the table cell.");
         }
+
 
 
         $("#iSaveBtn").prop("disabled", false);
@@ -594,6 +646,10 @@ window.onload = function() {
     });
 
 
+
+    $("#iVariety").click(function (){
+        $("#iCategory").val( $("#iVariety").val());
+    })
 
 }
 

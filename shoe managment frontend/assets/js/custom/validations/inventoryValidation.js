@@ -13,15 +13,19 @@ function clearInventoryInputFields() {
     $("#iBuyPrice").val("");
     $("#iProfit").val("")
     $("#iProfitMargin").val("")
+    $("#iImage").val("")
+    $("#iCode").val("")
 
     $('#iSupplierCode').prop('selectedIndex', 0);
     $('#iCategory').prop('selectedIndex', 0);
     $('#iStatus').prop('selectedIndex', 0);
 
-    $(".sizeFields").each(function () {
-        $(this).find('.size-input').val("");
-        $(this).find('.qty-input').val("");
-    })
+    // $(".sizeFields").each(function () {
+    //     $(this).find('.size-input').val("");
+    //     $(this).find('.qty-input').val("");
+    // })
+
+    $("#sizeFields").empty();
 
     setBtn();
 }

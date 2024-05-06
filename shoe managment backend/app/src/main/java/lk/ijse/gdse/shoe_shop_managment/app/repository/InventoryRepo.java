@@ -18,17 +18,17 @@ public interface InventoryRepo extends JpaRepository<Inventory,String> {
 
     List<Inventory> findByNameStartingWith(String name);
 
-    Long countByCategory(String category);
+    Long countByCategoryEndingWith(String category);
 
 
-    List<Inventory> findAllByCategoryAndCodeStartingWithAndSalePriceBetween(String category,String type,Double minPrice,Double maxPrice);
+    List<Inventory> findAllByCategoryEndingWithAndCodeStartingWithAndSalePriceBetween(String category,String type,Double minPrice,Double maxPrice);
 
-    List<Inventory> findAllByCategoryStartingWith(String category);
+    List<Inventory> findAllByCategoryEndingWith(String category);
     List<Inventory> findAllByCodeStartingWith(String type);
     List<Inventory> findAllBySalePriceBetween(Double minPrice,Double maxPrice);
 
-    List<Inventory> findAllByCategoryAndCodeStartingWith(String category,String type);
-    List<Inventory> findAllByCategoryAndSalePriceBetween(String category,Double minPrice,Double maxPrice);
+    List<Inventory> findAllByCategoryEndingWithAndCodeStartingWith(String category,String type);
+    List<Inventory> findAllByCategoryEndingWithAndSalePriceBetween(String category,Double minPrice,Double maxPrice);
     List<Inventory> findAllByCodeStartingWithAndSalePriceBetween(String type,Double minPrice,Double maxPrice);
 
 

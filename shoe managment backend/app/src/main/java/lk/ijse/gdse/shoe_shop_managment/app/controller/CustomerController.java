@@ -51,4 +51,9 @@ public class CustomerController {
     public List<CustomerDTO> search(@RequestParam("name") String name){
        return customerService.searchCustomer(name);
     }
+
+    @GetMapping("/findByCode/{code}")
+    public CustomerDTO findById(@PathVariable String code){
+        return customerService.findById(code);
+    }
 }

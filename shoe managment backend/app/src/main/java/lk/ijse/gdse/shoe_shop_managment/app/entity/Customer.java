@@ -10,6 +10,7 @@ import org.hibernate.annotations.ColumnDefault;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Data
@@ -37,6 +38,9 @@ public class Customer {
 
     private Integer loyaltyPoints;
     private Timestamp recentPurchaseDate;
+
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "customerId")
+    private List<Sales> sales;
 
 
 }

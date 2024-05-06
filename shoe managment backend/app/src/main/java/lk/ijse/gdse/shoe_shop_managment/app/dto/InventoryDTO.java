@@ -24,7 +24,7 @@ public class InventoryDTO{
     private Double buyPrice;
     private Double profit;
     private Double profitMargin;
-    private String status;
+//    private String status;
     private String  sCode;
     private String sName;
     private List<ShoeSizesDTO> shoeSizes;

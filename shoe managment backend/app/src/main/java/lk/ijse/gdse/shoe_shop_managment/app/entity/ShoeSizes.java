@@ -16,7 +16,8 @@ public class ShoeSizes {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer code;
     private String size;
-    private String qty;
+    private Integer qty;
+    private String status;
 
     @ManyToOne
     @JoinColumn(name = "iCode")

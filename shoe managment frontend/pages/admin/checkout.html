@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Corona Admin</title>
+
+    <!--    <link rel="stylesheet" href="../../assets/vendors/mdi/css/materialdesignicons.min.css">-->
+    <!--    <link rel="stylesheet" href="../../assets/vendors/css/vendor.bundle.base.css">-->
+    <!--    <link rel="stylesheet" href="../../assets/vendors/select2/select2.min.css">-->
+    <!--    <link rel="stylesheet" href="../../assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">-->
+
+
+    <!--cdn for icons-->
+    <link href="https://cdn.jsdelivr.net/npm/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css" rel="stylesheet">
+
+    <!--style files-->
+    <link href="../../assets/css/style.css" rel="stylesheet">
+    <link href="../../assets/css/custom.css" rel="stylesheet">
+    <link href="../../assets/images/favicon.png" rel="shortcut icon"/>
+
+</head>
+
+<body>
+<div class="container-scroller">
+    <!-- partial:../../partials/_sidebar.html -->
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+            <a class="sidebar-brand brand-logo" href="adminDashboard.html"><img alt="logo"
+                                                                                src="../../assets/images/logo.svg"/></a>
+            <a class="sidebar-brand brand-logo-mini" href="adminDashboard.html"><img
+                    alt="logo" src="../../assets/images/logo-mini.svg"/></a>
+        </div>
+        <ul class="nav">
+            <li class="nav-item profile">
+                <div class="profile-desc">
+                    <div class="profile-pic">
+                        <div class="count-indicator">
+                            <img alt="" class="img-xs rounded-circle " src="../../assets/images/faces/face15.jpg">
+                            <span class="count bg-success"></span>
+                        </div>
+                        <div class="profile-name">
+                            <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
+                            <span>Gold Member</span>
+                        </div>
+                    </div>
+                    <a data-toggle="dropdown" href="#" id="profile-dropdown"><i class="mdi mdi-dots-vertical"></i></a>
+                    <div aria-labelledby="profile-dropdown"
+                         class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list">
+                        <a class="dropdown-item preview-item" href="#">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-dark rounded-circle">
+                                    <i class="mdi mdi-settings text-primary"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item preview-item" href="#">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-dark rounded-circle">
+                                    <i class="mdi mdi-onepassword  text-info"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item preview-item" href="#">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-dark rounded-circle">
+                                    <i class="mdi mdi-calendar-today text-success"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item nav-category">
+                <span class="nav-link">Navigation</span>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="adminDashboard.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+                    <span class="menu-title">Dashboard</span>
+                </a>
+            </li>
+
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="../../pages/admin/products.html">
+                              <span class="menu-icon">
+                                <i class="mdi mdi-table-large"></i>
+                              </span>
+                    <span class="menu-title">Products</span>
+                </a>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="customers.html">
+                              <span class="menu-icon">
+                                <i class="mdi mdi-table-large"></i>
+                              </span>
+                    <span class="menu-title">Customers</span>
+                </a>
+            </li>
+
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="employees.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+                    <span class="menu-title">Employees</span>
+                </a>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="inventory.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+                    <span class="menu-title">Inventory</span>
+                </a>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="suppliers.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+                    <span class="menu-title">Suppliers</span>
+                </a>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="checkout.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+                    <span class="menu-title">Checkout</span>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_navbar.html -->
+        <nav class="navbar p-0 fixed-top d-flex flex-row">
+            <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo-mini" href="adminDashboard.html"><img
+                        alt="logo" src="../../assets/images/logo-mini.svg"/></a>
+            </div>
+            <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+                <button class="navbar-toggler navbar-toggler align-self-center" data-toggle="minimize" type="button">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+                <ul class="navbar-nav w-100">
+                    <li class="nav-item w-100">
+                        <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                            <input class="form-control" placeholder="Search products" type="text">
+                        </form>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item dropdown d-none d-lg-block">
+                        <a aria-expanded="false" class="nav-link btn btn-success create-new-button"
+                           data-toggle="dropdown" href="#" id="createbuttonDropdown">+ Create New Project</a>
+                        <div aria-labelledby="createbuttonDropdown"
+                             class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list">
+                            <h6 class="p-3 mb-0">Projects</h6>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-dark rounded-circle">
+                                        <i class="mdi mdi-file-outline text-primary"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject ellipsis mb-1">Software Development</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-dark rounded-circle">
+                                        <i class="mdi mdi-web text-info"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject ellipsis mb-1">UI Development</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-dark rounded-circle">
+                                        <i class="mdi mdi-layers text-danger"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject ellipsis mb-1">Software Testing</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <p class="p-3 mb-0 text-center">See all projects</p>
+                        </div>
+                    </li>
+                    <li class="nav-item nav-settings d-none d-lg-block">
+                        <a class="nav-link" href="#">
+                            <i class="mdi mdi-view-grid"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown border-left">
+                        <a aria-expanded="false" class="nav-link count-indicator dropdown-toggle" data-toggle="dropdown"
+                           href="#" id="messageDropdown">
+                            <i class="mdi mdi-email"></i>
+                            <span class="count bg-success"></span>
+                        </a>
+                        <div aria-labelledby="messageDropdown"
+                             class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list">
+                            <h6 class="p-3 mb-0">Messages</h6>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <img alt="image" class="rounded-circle profile-pic"
+                                         src="../../assets/images/faces/face4.jpg">
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject ellipsis mb-1">Mark send you a message</p>
+                                    <p class="text-muted mb-0"> 1 Minutes ago </p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <img alt="image" class="rounded-circle profile-pic"
+                                         src="../../assets/images/faces/face2.jpg">
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
+                                    <p class="text-muted mb-0"> 15 Minutes ago </p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <img alt="image" class="rounded-circle profile-pic"
+                                         src="../../assets/images/faces/face3.jpg">
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
+                                    <p class="text-muted mb-0"> 18 Minutes ago </p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <p class="p-3 mb-0 text-center">4 new messages</p>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown border-left">
+                        <a class="nav-link count-indicator dropdown-toggle" data-toggle="dropdown" href="#"
+                           id="notificationDropdown">
+                            <i class="mdi mdi-bell"></i>
+                            <span class="count bg-danger"></span>
+                        </a>
+                        <div aria-labelledby="notificationDropdown"
+                             class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list">
+                            <h6 class="p-3 mb-0">Notifications</h6>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-dark rounded-circle">
+                                        <i class="mdi mdi-calendar text-success"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject mb-1">Event today</p>
+                                    <p class="text-muted ellipsis mb-0"> Just a reminder that you have an event
+                                        today </p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-dark rounded-circle">
+                                        <i class="mdi mdi-settings text-danger"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject mb-1">Settings</p>
+                                    <p class="text-muted ellipsis mb-0"> Update dashboard </p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-dark rounded-circle">
+                                        <i class="mdi mdi-link-variant text-warning"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject mb-1">Launch Admin</p>
+                                    <p class="text-muted ellipsis mb-0"> New admin wow! </p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <p class="p-3 mb-0 text-center">See all notifications</p>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" data-toggle="dropdown" href="#" id="profileDropdown">
+                            <div class="navbar-profile">
+                                <img alt="" class="img-xs rounded-circle" src="../../assets/images/faces/face15.jpg">
+                                <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
+                                <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                            </div>
+                        </a>
+                        <div aria-labelledby="profileDropdown"
+                             class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list">
+                            <h6 class="p-3 mb-0">Profile</h6>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-dark rounded-circle">
+                                        <i class="mdi mdi-settings text-success"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject mb-1">Settings</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item" href="../auth/login.html">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-dark rounded-circle">
+                                        <i class="mdi mdi-logout text-danger"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject mb-1">Log out</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <p class="p-3 mb-0 text-center">Advanced settings</p>
+                        </div>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" data-toggle="offcanvas"
+                        type="button">
+                    <span class="mdi mdi-format-line-spacing"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="page-header">
+                    <!--              <h3 class="page-title"> Form elements </h3>-->
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                            <li aria-current="page" class="breadcrumb-item active">Checkout</li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <!--start of forms-->
+
+                <div class="row">
+
+                  <!--details page-->
+                    <div class="col-xl-8 col-lg-8 mb-4">
+
+                        <!-- Checkout -->
+
+                        <div class="card shadow-0 border">
+                            <div class="p-4">
+<!--                                <h5 class="card-title mb-3">Guest checkout</h5>-->
+
+                              <section class="signup-step-container">
+                                  <div class="row d-flex justify-content-center">
+
+                                    <div class="col">
+
+                                      <div class="wizard">
+                                        <div class="wizard-inner">
+
+                                          <div class="connecting-line"></div>
+                                          <ul class="nav nav-tabs" role="tablist">
+                                            <li role="presentation" class="active">
+                                              <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" aria-expanded="true"><span class="round-tab">1 </span> <i>Customer Details</i></a>
+                                            </li>
+                                            <li role="presentation" class="disabled">
+                                              <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" aria-expanded="false"><span class="round-tab">2</span> <i>Item Details</i></a>
+                                            </li>
+                                            <li role="presentation" class="disabled">
+                                              <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab"><span class="round-tab">3</span> <i>Payment Details</i></a>
+                                            </li>
+                                            <li role="presentation" class="disabled">
+                                              <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab"><span class="round-tab">4</span> <i>Success</i></a>
+                                            </li>
+                                          </ul>
+                                        </div>
+
+
+                                        <form role="form" action="index.html" class="login-box">
+
+                                          <div class="tab-content" id="main_form">
+
+
+                                            <div class="tab-pane active" role="tabpanel" id="step1">
+
+                                              <div class="row">
+                                                <div class="col"></div>
+                                                <div class="col">
+<!--                                                  <h4 class="text-center mb-5">Customer Details</h4>-->
+                                                </div>
+                                                <div class="col text-right">
+                                                  <h5><span id="pLevel" style="border-radius: 20px" class="badge-outline-primary py-1 px-3 ">?</span></h5>
+                                                </div>
+
+                                              </div>
+
+                                              <div class="row">
+
+                                                <div class="col-6 mb-4">
+                                                  <p class="mb-3">Customer Code : </p>
+                                                  <div class="form-outline">
+                                                    <select class="form-control" id="pCustomerCode">
+                                                        <option selected>Choose...</option>
+
+                                                      </select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-6 mb-4">
+                                                  <p class="mb-3">Customer Name : </p>
+                                                  <div class="form-outline">
+                                                    <input class="form-control" id="pCustomerName" placeholder=""
+                                                           type="text"/>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-6 mb-4 ">
+                                                  <p class="mb-3">Customer Email : </p>
+                                                  <div class="form-outline">
+                                                    <input class="form-control" id="pCustomerEmail" type="tel" value=""/>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-6 mb-4">
+                                                  <p class="mb-3">Customer Contact</p>
+                                                  <div class="form-outline">
+                                                    <input class="form-control" id="PCustomerContact" placeholder=""
+                                                           type="email"/>
+                                                  </div>
+
+
+                                                </div>
+
+                                              </div>
+
+                                              <div class="row d-flex justify-content-center">
+                                                <button type="button" class="default-btn next-step">Continue</button>
+                                              </div>
+
+                                            </div>
+
+
+
+                                            <div class="tab-pane" role="tabpanel" id="step2">
+<!--                                              <h4 class="text-center mb-3">Item Details</h4>-->
+
+                                              <div class="row mb-5 ">
+                                                <div class="col"></div>
+                                                <div class="col"></div>
+                                                <div class="col text-center ">
+
+                                                  <div class="row">
+                                                    <div class="col text-center">
+                                                      <div style="display: none" class="mb-4 pItemImage" ></div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="row">
+
+                                                <div class="col-6 mb-4">
+                                                  <p class="mb-3">Item Code : </p>
+                                                  <div class="form-outline">
+                                                    <select class="form-control" id="pItemCode">
+                                                      <option selected>Choose...</option>
+                                                    </select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-6 mb-4">
+                                                  <p class="mb-3">Item Name : </p>
+                                                  <div class="form-outline">
+                                                    <input class="form-control" id="pItemName" placeholder=""
+                                                           type="text"/>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-6 mb-4">
+                                                  <p class="mb-3">Item Sizes : </p>
+                                                  <div class="form-outline">
+                                                    <select class="form-control" id="pItemSizes">
+                                                      <option selected>Choose...</option>
+                                                    </select>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-6 mb-4">
+                                                  <p class="mb-3">Item Quantity On Hand : </p>
+                                                  <div class="form-outline">
+                                                    <input class="form-control" id="pItemQuantity" placeholder=""
+                                                           type="email"/>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-6 mb-4">
+                                                  <p class="mb-3">Item Category : </p>
+                                                  <div class="form-outline">
+                                                    <input class="form-control" id="pItemCategory" placeholder=""
+                                                           type="text"/>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-6 mb-4">
+                                                  <p class="mb-3">Item Price : </p>
+                                                  <div class="form-outline">
+                                                    <input class="form-control" id="pItemPrice" placeholder=""
+                                                           type="number"/>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-6 mb-4">
+                                                    <p class="mb-3">Status : </p>
+                                                    <div class="form-outline">
+                                                        <input class="form-control" id="pItemStatus" placeholder=""
+                                                               type="text"/>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-6 mb-4">
+                                                  <p class="mb-3">Buying Quantity : </p>
+                                                  <div class="form-outline">
+                                                    <input class="form-control" id="pBuyingQuantity" placeholder=""
+                                                           type="text"/>
+                                                  </div>
+                                                </div>
+
+                                              </div>
+
+                                                <div class="row d-flex justify-content-end">
+                                                    <button id="pAddTOCartBtn"  type="button" class="btn btn-primary mr-2 " >Add to cart</button>
+                                                </div>
+
+                                              <div class="row d-flex justify-content-center">
+                                                <button type="button" class="default-btn prev-step mx-2">Back</button>
+                                                <button type="button" class="default-btn next-step mx-2">Continue</button>
+                                              </div>
+
+                                            </div>
+
+
+
+                                            <div class="tab-pane" role="tabpanel" id="step3">
+<!--                                              <h4 class="text-center mb-5">Payment Details</h4>-->
+                                              <div class="row">
+
+                                                <div class="col-6 mb-3">
+                                                  <p class="mb-0">First name</p>
+                                                  <div class="form-outline">
+                                                    <input class="form-control" id="typeText" placeholder=""
+                                                           type="text"/>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-6">
+                                                  <p class="mb-0">Last name</p>
+                                                  <div class="form-outline">
+                                                    <input class="form-control" id="typeText" placeholder=""
+                                                           type="text"/>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-6 mb-3">
+                                                  <p class="mb-0">Phone</p>
+                                                  <div class="form-outline">
+                                                    <input class="form-control" id="typePhone" type="tel" value=""/>
+                                                  </div>
+                                                </div>
+
+                                                <div class="col-6 mb-3">
+                                                  <p class="mb-0">Email</p>
+                                                  <div class="form-outline">
+                                                    <input class="form-control" id="typeEmail" placeholder=""
+                                                           type="email"/>
+                                                  </div>
+
+
+                                                </div>
+
+                                              </div>
+
+                                              <div class="row d-flex justify-content-center">
+                                                <button type="button" class="default-btn prev-step mx-2">Back</button>
+                                                <button type="button" class="default-btn next-step mx-2 ">Continue</button>
+                                              </div>
+
+                                            </div>
+
+
+                                            <div class="tab-pane" role="tabpanel" id="step4">
+<!--                                              <h4 class="text-center">Step 4</h4>-->
+                                              <div class="row">
+
+                                              </div>
+
+                                                <div class="row d-flex justify-content-center">
+                                                    <button type="button" class="default-btn prev-step mx-2">Back</button>
+                                                    <button type="button" class="default-btn next-step mx-2">Continue</button>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="clearfix"></div>
+
+                                          </div>
+
+                                        </form>
+
+                                      </div>
+                                    </div>
+                                  </div>
+
+                              </section>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                  <!--summary page-->
+
+                    <div class="card col-xl-4 col-lg-4 d-flex justify-content-lg-end">
+                      <div class="card-body">
+                        <div class=" ms-lg-4 mt-4 mt-lg-0">
+
+                          <h6 class="mb-3">Summary</h6>
+
+                            <div class="row ">
+                                <div class="col-6 d-flex align-items-center mb-2 ">   <p class="mb-2">Order Id :</p></div>
+                                <div class="col-6 mb-2"><input style="background-color: #2c2e33"  class="form-control" id="orderId" placeholder="" type="text"/></div>
+                            </div>
+
+                            <div class="row ">
+                                <div class="col-6 d-flex align-items-center mb-2 ">   <p class="mb-2">Total price :</p></div>
+                                <div class="col-6 mb-2"><input style="background-color: #2c2e33" disabled class="form-control" id="netTotal" placeholder="" type="text"/></div>
+                            </div>
+
+                          <div class="row ">
+                              <div class="col-6 d-flex align-items-center mb-2 "> <p class="mb-0">Discount :</p></div>
+                              <div class="col-6 mb-2"><input class="form-control" id="discountPoints" placeholder="" type="text"/></div>
+                          </div>
+
+                            <div class="row ">
+                                <div class="col-6 d-flex align-items-center mb-2 "> <p class="mb-0">Net Total :</p></div>
+                                <div class="col-6 mb-2"><input style="background-color: #2c2e33" disabled class="form-control" id="newNetTotal" placeholder="" type="text"/></div>
+                            </div>
+
+                            <div class="row ">
+                                <div class="col-6 d-flex align-items-center mb-2 "> <p class="mb-0"></p></div>
+                                <div class="col-6 mb-2"> <button id="placeOrderBtn"  type="button" class="btn btn-primary mr-2 " >Pay Here</button>
+                                </div>
+                            </div>
+
+
+
+                          <hr style="background-color:dimgrey !important;"/>
+
+                          <h6 class="my-4">Items in cart</h6>
+
+                         <div class="row appendToCart " style="height: 460px;overflow-y:scroll">
+
+<!--                             <div class="col-12 d-flex align-items-center mb-4">-->
+<!--                                 <div class="me-3 position-relative">-->
+<!--                                     <img class="img-sm rounded border"-->
+<!--                                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTPlhIjtDcKckJw4I1XjTi_KUCMffaVDv6IA&s" style="height: 96px; width: 120px;" alt=""/>-->
+<!--                                 </div>-->
+<!--                                 <div class="">-->
+<!--                                     <p class="nav-link" href="#">-->
+<!--                                         Gaming Headset with Mic <br/>-->
+<!--                                         Darkblue color-->
+<!--                                     </p>-->
+<!--                                     <div class="price mx-3">Total: $295.99</div>-->
+<!--                                 </div>-->
+<!--                             </div>-->
+
+<!--                             <div class="col-12 d-flex align-items-center mb-4">-->
+<!--                                 <div class="me-3 position-relative">-->
+<!--                                     <img class="img-sm rounded border"-->
+<!--                                          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTPlhIjtDcKckJw4I1XjTi_KUCMffaVDv6IA&s" style="height: 96px; width: 120px;" alt=""/>-->
+<!--                                 </div>-->
+<!--                                 <div class="">-->
+<!--                                     <p class="nav-link" href="#">-->
+<!--                                         Gaming Headset with Mic <br/>-->
+<!--                                         Darkblue color-->
+<!--                                     </p>-->
+<!--                                     <div class="price mx-3">Total: $295.99</div>-->
+<!--                                 </div>-->
+<!--                             </div>-->
+
+                         </div>
+
+
+
+
+
+<!--                          <div class="d-flex align-items-center mb-4">-->
+<!--                            <div class="me-3 position-relative">-->
+<!--                              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-secondary"></span>-->
+<!--                            </div>-->
+<!--                          </div>-->
+
+                        </div>
+
+                      </div>
+                    </div>
+
+                            <!--end of forms-->
+
+                            <!-- partial -->
+                        </div>
+                        <!-- main-panel ends -->
+                    </div>
+                    <!-- page-body-wrapper ends -->
+                </div>
+                <!-- container-scroller -->
+
+                <!--bootstrap js-->
+
+      <!--jquery lib for checkout step by step-->
+
+      <!--end-->
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+      <!--                <script crossorigin="anonymous"-->
+<!--                        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="-->
+<!--                        src="https://code.jquery.com/jquery-3.7.1.min.js"></script>-->
+
+                <script crossorigin="anonymous"
+                        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                        src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+                <script crossorigin="anonymous"
+                        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                        src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+
+                <!-- inject:js -->
+                <!--    <script src="../../assets/js/off-canvas.js"></script>-->
+                <!--    <script src="../../assets/js/hoverable-collapse.js"></script>-->
+                <!--    <script src="../../assets/js/misc.js"></script>-->
+                <!--    <script src="../../assets/js/settings.js"></script>-->
+                <!--    <script src="../../assets/js/todolist.js"></script>-->
+
+                <!-- Custom js for this page -->
+                <script src="../../assets/js/custom/main.js"></script>
+                <script src="../../assets/js/custom/main.js"></script>
+                <script src="../../assets/js/custom/checkout.js"></script>
+
+
+
+                <script src="../../assets/js/file-upload.js"></script>
+                <!--    <script src="../../assets/js/typeahead.js"></script>-->
+                <script src="../../assets/js/select2.js"></script>
+
+</body>
+</html>

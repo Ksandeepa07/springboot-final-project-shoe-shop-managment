@@ -176,7 +176,12 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public Long countByCategory(String category) {
-       return inventoryRepo.countByCategory(category);
+       return inventoryRepo.countByCategoryEndingWith(category);
+    }
+
+    @Override
+    public InventoryDTO findByCode(String code) {
+        return mapper.map(inventoryRepo.findById(code),InventoryDTO.class);
     }
 
 
@@ -185,7 +190,7 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public List<InventoryDTO> searchByAllConditions(String category, String type, Double minPrice, Double maxPrice) {
-        return inventoryRepo.findAllByCategoryAndCodeStartingWithAndSalePriceBetween(category,type,minPrice,maxPrice)
+        return inventoryRepo.findAllByCategoryEndingWithAndCodeStartingWithAndSalePriceBetween(category,type,minPrice,maxPrice)
                 .stream()
                 .map(inventory -> {
                     InventoryDTO dto = mapper.map(inventory, InventoryDTO.class);
@@ -199,7 +204,7 @@ public class InventoryServiceImpl implements InventoryService {
     @Override
     public List<InventoryDTO> searchByCategory(String category) {
         System.out.println("service "+category);
-        return inventoryRepo.findAllByCategoryStartingWith(category)
+        return inventoryRepo.findAllByCategoryEndingWith(category)
                 .stream()
                 .map(inventory -> {
                     InventoryDTO dto = mapper.map(inventory, InventoryDTO.class);
@@ -244,7 +249,7 @@ public class InventoryServiceImpl implements InventoryService {
     @Override
     public List<InventoryDTO> searchByCategoryAndType(String category,String type) {
 
-        return inventoryRepo.findAllByCategoryAndCodeStartingWith(category,type)
+        return inventoryRepo.findAllByCategoryEndingWithAndCodeStartingWith(category,type)
                 .stream()
                 .map(inventory -> {
                     InventoryDTO dto = mapper.map(inventory, InventoryDTO.class);
@@ -259,7 +264,7 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public List<InventoryDTO> searchByCategoryAndPrice(String category, Double minPrice, Double maxPrice) {
-        return inventoryRepo.findAllByCategoryAndSalePriceBetween(category,minPrice,maxPrice)
+        return inventoryRepo.findAllByCategoryEndingWithAndSalePriceBetween(category,minPrice,maxPrice)
                 .stream()
                 .map(inventory -> {
                     InventoryDTO dto = mapper.map(inventory, InventoryDTO.class);

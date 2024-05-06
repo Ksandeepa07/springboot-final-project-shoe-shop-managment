@@ -19,6 +19,8 @@ public interface InventoryService {
 
     Long countByCategory(String category);
 
+    InventoryDTO findByCode(String code);
+
     List<InventoryDTO> searchByCategory(String category);
     List<InventoryDTO> searchByAllConditions(String category,String type,Double minPrice,Double maxPrice);
     List<InventoryDTO> searchByType(String type);
