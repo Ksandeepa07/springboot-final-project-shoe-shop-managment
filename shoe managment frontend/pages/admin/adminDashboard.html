@@ -4,14 +4,7 @@
 
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Corona Admin</title>
-
-    <!--    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">-->
-    <!--    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">-->
-    <!--    <link rel="stylesheet" href="assets/vendors/jvectormap/jquery-jvectormap.css">-->
-    <!--    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">-->
-    <!--    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css">-->
-    <!--    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css">-->
+<!--    <title>Corona Admin</title>-->
 
     <!--cdn for icons-->
     <link href="https://cdn.jsdelivr.net/npm/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
@@ -31,11 +24,12 @@
 <div class="container-scroller">
     <!-- partial:partials/_sidebar.html -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-            <a class="sidebar-brand brand-logo" href="adminDashboard.html"><img alt="logo" src="../../assets/images/logo.svg"/></a>
-            <a class="sidebar-brand brand-logo-mini" href="adminDashboard.html"><img alt="logo"
-                                                                                     src="../../assets/images/logo-mini.svg"/></a>
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-start  fixed-top">
+<!--            <a class="sidebar-brand brand-logo" href="adminDashboard.html"><img alt="logo" src="../../assets/images/logo.svg"/></a>-->
+<!--            <a class="sidebar-brand brand-logo-mini" href="adminDashboard.html"><img alt="logo" src="../../assets/images/logo-mini.svg"/></a>-->
+            <h5 class="mx-4">Hello Shoes</h5>
         </div>
+
         <ul class="nav">
             <li class="nav-item profile">
                 <div class="profile-desc">
@@ -46,7 +40,7 @@
                         </div>
                         <div class="profile-name">
                             <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
-                            <span>Gold Member</span>
+
                         </div>
                     </div>
                     <a data-toggle="dropdown" href="#" id="profile-dropdown"><i class="mdi mdi-dots-vertical"></i></a>
@@ -88,7 +82,6 @@
                 </div>
             </li>
             <li class="nav-item nav-category">
-                <span class="nav-link">Navigation</span>
             </li>
             <li class="nav-item menu-items">
                 <a class="nav-link" href="adminDashboard.html" onclick="location.reload(true);">
@@ -98,25 +91,6 @@
                     <span class="menu-title">Dashboard</span>
                 </a>
             </li>
-
-<!--            <li class="nav-item menu-items">-->
-<!--                <a aria-controls="ui-basic" aria-expanded="false" class="nav-link" data-toggle="collapse"-->
-<!--                   href="#ui-basic">-->
-<!--                          <span class="menu-icon">-->
-<!--                            <i class="mdi mdi-laptop"></i>-->
-<!--                          </span>-->
-<!--                    <span class="menu-title">Categories</span>-->
-<!--                    <i class="menu-arrow"></i>-->
-<!--                </a>-->
-<!--                <div class="collapse" id="ui-basic">-->
-<!--                    <ul class="nav flex-column sub-menu">-->
-<!--                        <li class="nav-item"><a class="nav-link" href="pages/admin/mens.html">Mens</a></li>-->
-<!--                        <li class="nav-item"><a class="nav-link" href="pages/admin/products.html">Womens</a></li>-->
-<!--                        <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html">others</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div>-->
-<!--            </li>-->
 
             <li class="nav-item menu-items">
                 <a class="nav-link" href="products.html">
@@ -224,6 +198,7 @@
 
         </ul>
     </nav>
+
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_navbar.html -->
@@ -243,151 +218,9 @@
                         </form>
                     </li>
                 </ul>
+
                 <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item dropdown d-none d-lg-block">
-                        <a aria-expanded="false" class="nav-link btn btn-success create-new-button"
-                           data-toggle="dropdown" href="#" id="createbuttonDropdown">+ Create New Project</a>
-                        <div aria-labelledby="createbuttonDropdown"
-                             class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list">
-                            <h6 class="p-3 mb-0">Projects</h6>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-file-outline text-primary"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">Software Development</p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-web text-info"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">UI Development</p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-layers text-danger"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">Software Testing</p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <p class="p-3 mb-0 text-center">See all projects</p>
-                        </div>
-                    </li>
-                    <li class="nav-item nav-settings d-none d-lg-block">
-                        <a class="nav-link" href="#">
-                            <i class="mdi mdi-view-grid"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown border-left">
-                        <a aria-expanded="false" class="nav-link count-indicator dropdown-toggle" data-toggle="dropdown"
-                           href="#" id="messageDropdown">
-                            <i class="mdi mdi-email"></i>
-                            <span class="count bg-success"></span>
-                        </a>
-                        <div aria-labelledby="messageDropdown"
-                             class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list">
-                            <h6 class="p-3 mb-0">Messages</h6>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img alt="image" class="rounded-circle profile-pic"
-                                         src="../../assets/images/faces/face4.jpg">
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">Mark send you a message</p>
-                                    <p class="text-muted mb-0"> 1 Minutes ago </p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img alt="image" class="rounded-circle profile-pic"
-                                         src="../../assets/images/faces/face2.jpg">
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
-                                    <p class="text-muted mb-0"> 15 Minutes ago </p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img alt="image" class="rounded-circle profile-pic"
-                                         src="../../assets/images/faces/face3.jpg">
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
-                                    <p class="text-muted mb-0"> 18 Minutes ago </p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <p class="p-3 mb-0 text-center">4 new messages</p>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown border-left">
-                        <a class="nav-link count-indicator dropdown-toggle" data-toggle="dropdown" href="#"
-                           id="notificationDropdown">
-                            <i class="mdi mdi-bell"></i>
-                            <span class="count bg-danger"></span>
-                        </a>
-                        <div aria-labelledby="notificationDropdown"
-                             class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list">
-                            <h6 class="p-3 mb-0">Notifications</h6>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-calendar text-success"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject mb-1">Event today</p>
-                                    <p class="text-muted ellipsis mb-0"> Just a reminder that you have an event
-                                        today </p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-settings text-danger"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject mb-1">Settings</p>
-                                    <p class="text-muted ellipsis mb-0"> Update dashboard </p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-link-variant text-warning"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject mb-1">Launch Admin</p>
-                                    <p class="text-muted ellipsis mb-0"> New admin wow! </p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <p class="p-3 mb-0 text-center">See all notifications</p>
-                        </div>
-                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#" id="profileDropdown">
                             <div class="navbar-profile">
@@ -398,19 +231,11 @@
                         </a>
                         <div aria-labelledby="profileDropdown"
                              class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list">
-                            <h6 class="p-3 mb-0">Profile</h6>
+
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-settings text-success"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject mb-1">Settings</p>
-                                </div>
-                            </a>
+
                             <div class="dropdown-divider"></div>
+
                             <a class="dropdown-item preview-item" href="../auth/login.html">
                                 <div class="preview-thumbnail">
                                     <div class="preview-icon bg-dark rounded-circle">
@@ -424,46 +249,24 @@
                                 </div>
                             </a>
                             <div class="dropdown-divider"></div>
-                            <p class="p-3 mb-0 text-center">Advanced settings</p>
+
                         </div>
                     </li>
+
                 </ul>
+
                 <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" data-toggle="offcanvas"
                         type="button">
                     <span class="mdi mdi-format-line-spacing"></span>
                 </button>
             </div>
         </nav>
+
+        <!--middle part starts here-->
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <div class="row">
-                    <div class="col-12 grid-margin stretch-card">
-                        <div class="card corona-gradient-card">
-                            <div class="card-body py-0 px-0 px-sm-3">
-                                <div class="row align-items-center">
-                                    <div class="col-4 col-sm-3 col-xl-2">
-                                        <img alt=""
-                                             class="gradient-corona-img img-fluid"
-                                             src="../../assets/images/dashboard/Group126@2x.png">
-                                    </div>
-                                    <div class="col-5 col-sm-7 col-xl-8 p-0">
-                                        <h4 class="mb-1 mb-sm-0">Want even more features?</h4>
-                                        <p class="mb-0 font-weight-normal d-none d-sm-block">Check out our Pro version
-                                            with 5 unique layouts!</p>
-                                    </div>
-                                    <div class="col-3 col-sm-2 col-xl-2 pl-0 text-center">
-                        <span>
-                          <a class="btn btn-outline-light btn-rounded get-started-btn"
-                             href="https://www.bootstrapdash.com/product/corona-admin-template/"
-                             target="_blank">Upgrade to PRO</a>
-                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="row">
                     <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                         <div class="card">
@@ -485,6 +288,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
@@ -505,6 +309,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
@@ -525,6 +330,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
@@ -546,6 +352,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-4 grid-margin stretch-card">
                         <div class="card">
@@ -573,6 +380,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-8 grid-margin stretch-card">
                         <div class="card">
                             <div class="card-body">
@@ -675,6 +483,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-sm-4 grid-margin">
                         <div class="card">
@@ -695,6 +504,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-sm-4 grid-margin">
                         <div class="card">
                             <div class="card-body">
@@ -714,6 +524,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-sm-4 grid-margin">
                         <div class="card">
                             <div class="card-body">
@@ -734,6 +545,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row ">
                     <div class="col-12 grid-margin">
                         <div class="card">
@@ -874,16 +686,7 @@
                 </div>
 
             </div>
-            <!-- content-wrapper ends -->
 
-            <!-- partial:partials/_footer.html -->
-            <!--            <footer class="footer">-->
-            <!--                <div class="d-sm-flex justify-content-center justify-content-sm-between">-->
-            <!--                    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>-->
-            <!--                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a-->
-            <!--                            href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>-->
-            <!--                </div>-->
-            <!--            </footer>-->
 
             <!-- partial -->
         </div>
@@ -894,16 +697,12 @@
 <!-- container-scroller -->
 
 <!--bootstrap js-->
-<!--<script crossorigin="anonymous"-->
-<!--        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"-->
-<!--        src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>-->
 
-<script src="../../assets/js/jquery/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-<!--<script crossorigin="anonymous"-->
-<!--        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"-->
-<!--        src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>-->
-
+<script crossorigin="anonymous"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
 <script crossorigin="anonymous"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
@@ -920,6 +719,7 @@
 <!-- Custom js for this page -->
 <script src="../../assets/js/custom/main.js"></script>
 <script src="../../assets/js/dashboard.js"></script>
+
 
 </body>
 </html>

@@ -21,6 +21,15 @@
     <link href="../../assets/css/custom.css" rel="stylesheet">
     <link href="../../assets/images/favicon.png" rel="shortcut icon"/>
 
+<!--    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/v4-shims.min.js" rel="shortcut icon"/>-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+    <!--bootstrap 5-->
+
 </head>
 
 <body>
@@ -388,8 +397,15 @@
                         <!-- Checkout -->
 
                         <div class="card shadow-0 border">
-                            <div class="p-4">
-<!--                                <h5 class="card-title mb-3">Guest checkout</h5>-->
+                            <div class="px-4 py-2">
+
+                                <div class="card-header">
+                                    <div class="row d-flex justify-content-end">
+                                        <label id="pOrderDate" class="mx-3 font-weight-bold" ></label>
+                                        <label id="pOrderTIme" class="mx-3 font-weight-bold" ></label>
+
+                                    </div>
+                                </div>
 
                               <section class="signup-step-container">
                                   <div class="row d-flex justify-content-center">
@@ -563,7 +579,7 @@
                                                   <p class="mb-3">Buying Quantity : </p>
                                                   <div class="form-outline">
                                                     <input class="form-control" id="pBuyingQuantity" placeholder=""
-                                                           type="text"/>
+                                                           type="number"/>
                                                   </div>
                                                 </div>
 
@@ -583,65 +599,154 @@
 
 
                                             <div class="tab-pane" role="tabpanel" id="step3">
-<!--                                              <h4 class="text-center mb-5">Payment Details</h4>-->
-                                              <div class="row">
 
-                                                <div class="col-6 mb-3">
-                                                  <p class="mb-0">First name</p>
-                                                  <div class="form-outline">
-                                                    <input class="form-control" id="typeText" placeholder=""
-                                                           type="text"/>
-                                                  </div>
-                                                </div>
+                                                     <div class="row ">
+                                                         <div id="accordion" style="width: 100%">
 
-                                                <div class="col-6">
-                                                  <p class="mb-0">Last name</p>
-                                                  <div class="form-outline">
-                                                    <input class="form-control" id="typeText" placeholder=""
-                                                           type="text"/>
-                                                  </div>
-                                                </div>
+                                                             <div class="card ">
+                                                                 <div class="bg-white card-header " id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                     <div class="d-flex align-items-center justify-content-between" style="width: 100%; !important;">
+                                                                         <span class="text-dark ">Cash</span>
+                                                                         <img src="https://i.imgur.com/7kQEsHU.png" width="30">
+                                                                     </div>
+                                                                 </div>
+                                                                 <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                                                                     <div class="card-body">
+                                                                         <strong style="display: none" class="text-dark cardOrCash">Cash</strong>
 
-                                                <div class="col-6 mb-3">
-                                                  <p class="mb-0">Phone</p>
-                                                  <div class="form-outline">
-                                                    <input class="form-control" id="typePhone" type="tel" value=""/>
-                                                  </div>
-                                                </div>
+                                                                         <div class="row">
+                                                                             <div class="col-6 mb-4">
+                                                                                 <p class="mb-3">Cash : </p>
+                                                                                 <div class="form-outline">
+                                                                                     <input class="form-control" id="pCash" placeholder=""
+                                                                                            type="text"/>
+                                                                                 </div>
+                                                                             </div>
 
-                                                <div class="col-6 mb-3">
-                                                  <p class="mb-0">Email</p>
-                                                  <div class="form-outline">
-                                                    <input class="form-control" id="typeEmail" placeholder=""
-                                                           type="email"/>
-                                                  </div>
+                                                                             <div class="col-6 mb-4">
+                                                                                 <p class="mb-3">Balance : </p>
+                                                                                 <div class="form-outline">
+                                                                                     <input class="form-control" id="pBalance" placeholder=""
+                                                                                            type="text"/>
+                                                                                 </div>
+                                                                             </div>
+                                                                         </div>
+
+                                                                         <div class="row d-flex justify-content-end">
+                                                                            <button   type="button" class="btn btn-primary mr-2 placeOrderBtn ">Pay Here</button>
+                                                                             </div>
+
+                                                                     </div>
+                                                                 </div>
+                                                             </div>
+
+                                                             <div class="card">
+                                                                 <div class="card-header bg-white" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                     <div class="d-flex align-items-center justify-content-between" style="width: 100%; !important;">
+                                                                         <span class="text-dark ">Credit card</span>
+                                                                         <div class="icons">
+                                                                             <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                                                                             <img src="https://i.imgur.com/W1vtnOV.png" width="30">
+                                                                             <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+
+                                                                     <div class="card-body">
+                                                                         <strong style="display: none" class="text-dark cardOrCash">Card</strong>
+
+<!--                                                                         <span style="font-size: 13px" class="font-weight-normal card-text">Card Number</span>-->
+
+                                                                         <div class="input">
+<!--                                                                             <i class="fa fa-credit-card"></i>-->
+                                                                             <img class="img-fluid" src="https://img.icons8.com/color/48/000000/visa.png"/>
+                                                                             <span style="font-size: 13px" class="font-weight-normal card-text">Card Number</span>
+                                                                             <input type="text" class="form-control" placeholder="0000 0000 0000 0000">
+                                                                         </div>
+
+                                                                         <div class="row mt-4 mb-3">
+
+                                                                             <div class="col-md-6">
+                                                                                 <span style="font-size: 13px" class="font-weight-normal card-text">Expiry Date</span>
+                                                                                 <div class="input input-container">
+                                                                                     <i style="font-size: 13px;" class="fa fa-calendar mb-4"></i>
+                                                                                     <input type="text" class="form-control" placeholder="MM/YY">
+
+                                                                                 </div>
+                                                                             </div>
+
+                                                                             <div class="col-md-6">
+                                                                                 <span style="font-size: 13px" class="font-weight-normal card-text">CVC/CVV</span>
+                                                                                 <div class="input input-container">
+                                                                                     <i class="fa fa-lock"></i>
+                                                                                     <input type="text" class="form-control" placeholder="000">
+                                                                                 </div>
+                                                                             </div>
+
+                                                                         </div>
+
+                                                                         <div class="row d-flex justify-content-end">
+                                                                             <button type="button" class="btn btn-primary mr-2 placeOrderBtn" >Pay Here</button>
+                                                                         </div>
+
+                                                                     </div>
+
+                                                                 </div>
+                                                             </div>
+
+                                                         </div>
+
+                                                     </div>
 
 
-                                                </div>
-
-                                              </div>
 
                                               <div class="row d-flex justify-content-center">
                                                 <button type="button" class="default-btn prev-step mx-2">Back</button>
-                                                <button type="button" class="default-btn next-step mx-2 ">Continue</button>
+                                                <button style="display: none" id="pContinueBtn" type="button" class="default-btn next-step mx-2 ">Continue</button>
                                               </div>
 
                                             </div>
 
 
                                             <div class="tab-pane" role="tabpanel" id="step4">
-<!--                                              <h4 class="text-center">Step 4</h4>-->
+
                                               <div class="row">
+
+                                                  <div class="container paymentSlip">
+                                                      <div class="printer-top"></div>
+
+                                                      <div class="paper-container">
+                                                          <div class="printer-bottom"></div>
+
+                                                          <div class="paper">
+                                                              <div class="main-contents">
+                                                                  <div class="success-icon">&#10004;</div>
+                                                                  <div class="success-title">
+                                                                      Payment Complete
+                                                                  </div>
+                                                                  <div class="success-description">
+                                                                      Your payment for $N in USDT has been recieved and send to SHOPNAME.
+                                                                  </div>
+                                                                  <div class="order-details">
+                                                                      <div class="order-number-label">Payment id</div>
+                                                                      <div class="order-number">JPZZ1V-WQRR94-78E1VE</div>
+                                                                  </div>
+                                                                  <div class="order-footer">You can close this page!</div>
+                                                              </div>
+                                                              <div class="jagged-edge"></div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+
 
                                               </div>
 
                                                 <div class="row d-flex justify-content-center">
-                                                    <button type="button" class="default-btn prev-step mx-2">Back</button>
-                                                    <button type="button" class="default-btn next-step mx-2">Continue</button>
+<!--                                                    <button type="button" class="default-btn prev-step mx-2">Back</button>-->
+                                                    <button type="button" class="default-btn next-step mx-2">Finish</button>
                                                 </div>
                                             </div>
-
-
 
                                             <div class="clearfix"></div>
 
@@ -667,7 +772,9 @@
                       <div class="card-body">
                         <div class=" ms-lg-4 mt-4 mt-lg-0">
 
-                          <h6 class="mb-3">Summary</h6>
+<!--                          <h6 class="mb-3">Summary</h6>-->
+
+
 
                             <div class="row ">
                                 <div class="col-6 d-flex align-items-center mb-2 ">   <p class="mb-2">Order Id :</p></div>
@@ -681,7 +788,7 @@
 
                           <div class="row ">
                               <div class="col-6 d-flex align-items-center mb-2 "> <p class="mb-0">Discount :</p></div>
-                              <div class="col-6 mb-2"><input class="form-control" id="discountPoints" placeholder="" type="text"/></div>
+                              <div class="col-6 mb-2"><input class="form-control" id="discountPoints" placeholder="" type="number"/></div>
                           </div>
 
                             <div class="row ">
@@ -689,11 +796,11 @@
                                 <div class="col-6 mb-2"><input style="background-color: #2c2e33" disabled class="form-control" id="newNetTotal" placeholder="" type="text"/></div>
                             </div>
 
-                            <div class="row ">
-                                <div class="col-6 d-flex align-items-center mb-2 "> <p class="mb-0"></p></div>
-                                <div class="col-6 mb-2"> <button id="placeOrderBtn"  type="button" class="btn btn-primary mr-2 " >Pay Here</button>
-                                </div>
-                            </div>
+<!--                            <div class="row ">-->
+<!--                                <div class="col-6 d-flex align-items-center mb-2 "> <p class="mb-0"></p></div>-->
+<!--                                <div class="col-6 mb-2"> <button id="placeOrderBtn"  type="button" class="btn btn-primary mr-2 " >Pay Here</button>-->
+<!--                                </div>-->
+<!--                            </div>-->
 
 
 

@@ -14,4 +14,6 @@ import java.io.Serializable;
 public class SalesServicePK implements Serializable {
     private String order_id;
     private String item_id;
+    private String size;
+
 }

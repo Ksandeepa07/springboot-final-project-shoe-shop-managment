@@ -47,6 +47,7 @@ $('.nav-tabs').on('click', 'li', function() {
 
 loadAllCustomerInCheckOut();
 loadAllItemInCheckOut();
+loadDate();
 
 /*customers load*/
 function loadAllCustomerInCheckOut(){
@@ -198,9 +199,24 @@ $("#pAddTOCartBtn").click(function (){
 
     // console.log(code)
     // console.log(name)
-    // console.log(size)
+    console.log(size)
     // console.log(unitPrice)
     // console.log(buyingQty)
+
+    if (code==="Choose..." || name==="" || size==="Choose..." || unitPrice==="" || buyingQty ===""){
+        alert("please fill all the required fields before proceed !!")
+        return;
+    }
+
+    if (buyingQty<=0){
+        alert("Buying Quantity can't be 0")
+        return;
+    }
+
+    if ($("#pItemQuantity").val()<=0){
+        alert("This Item is out of stock !!")
+        return;
+    }
 
     let cartItems={
         item_id:code,
@@ -301,9 +317,9 @@ function searchOrder(id,size) {
 $("#placeOrderBtn").click(function (){
     let orderCode=$("#orderId").val()
     let cashierName="kaveen";
-    let date="2022-11-20";
+    let date=new Date().getDate();
     let points=$("#discountPoints").val();
-    let totalPrice=$("#netTotal").val();
+    let totalPrice=$("#newNetTotal").val();
     let paymentMethod="card";
     let customerId=$("#pCustomerCode").val();
     let customerName=$("#pCustomerName").val();
@@ -343,3 +359,128 @@ $("#placeOrderBtn").click(function (){
     })
 
 })
+
+
+$(".placeOrderBtn").click(function (){
+    var cardBody = $(this).closest('.card-body');
+    var spanElements = cardBody.find('strong');
+    let paymentMethod;
+    spanElements.each(function() {
+       paymentMethod=$(this).text();
+    });
+
+    let orderCode=$("#orderId").val()
+    let cashierName="kaveen";
+    let date=new Date();
+    let points=$("#discountPoints").val();
+    let customerId=$("#pCustomerCode").val();
+    let customerName=$("#pCustomerName").val();
+
+    let totalPrice;
+    if ($("#newNetTotal").val()===""){
+        totalPrice=$("#netTotal").val();
+    }else{
+        totalPrice=$("#newNetTotal").val();
+    }
+
+    console.log(totalPrice)
+
+    if (addToCartArray.length===0){
+        alert("Can't place order please select at least one item !!")
+        return;
+    }
+
+    if ($("#newNetTotal").val()===""){
+        if ($("#pCash").val()<$("#netTotal").val()){
+            alert("More Cash Required to place order !!")
+            return;
+        }
+    }else{
+        if ($("#pCash").val()<$("#newNetTotal").val()){
+            alert("More Cash Required to place order !!")
+            return;
+        }
+    }
+
+
+
+    var sales={
+        "orderId":orderCode,
+        "orderDate":date,
+        "paymentMethod":paymentMethod,
+        "totalPrice":totalPrice,
+        "addedPoints":points,
+        "cashierName":cashierName,
+        "customerId":customerId,
+        "customerName":customerName,
+        "salesServices":addToCartArray
+    }
+
+    console.log(sales)
+
+
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/sales/save',
+        method:"Post",
+        contentType:"application/json",
+        data:JSON.stringify(sales),
+
+        success:function (response) {
+            console.log(response)
+            $('#pContinueBtn').trigger('click');
+
+        },
+        error:function (xhr,status,err) {
+            console.log(err)
+            console.log(xhr.status)
+
+        }
+    })
+
+
+})
+
+$("#pCash").on("keyup", function(){
+
+    if ($("#netTotal").val()!==""){
+        $("#pBalance").val(parseInt($("#netTotal").val())-parseInt($("#pCash").val()));
+    }
+
+})
+
+/*load date*/
+function loadDate(){
+
+    var currentDate = new Date();
+
+// Extract the date components
+    var day = currentDate.getDate();
+    var month = currentDate.getMonth() + 1; // Months are zero-based, so we add 1
+    var year = currentDate.getFullYear();
+
+// Format the date as desired (in this case, YYYY-MM-DD)
+    var formattedDate = year + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
+
+    $("#pOrderDate").text(formattedDate);
+}
+
+
+function updateTime() {
+    var now = new Date();
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+    var seconds = now.getSeconds();
+
+    // Add leading zeros if necessary
+    hours = (hours < 10 ? '0' : '') + hours;
+    minutes = (minutes < 10 ? '0' : '') + minutes;
+    seconds = (seconds < 10 ? '0' : '') + seconds;
+
+    // Display the time
+    var currentTime = hours + ':' + minutes + ':' + seconds;
+    $("#pOrderTIme").text(currentTime);
+
+}
+
+// Update time every second
+setInterval(updateTime, 1000);

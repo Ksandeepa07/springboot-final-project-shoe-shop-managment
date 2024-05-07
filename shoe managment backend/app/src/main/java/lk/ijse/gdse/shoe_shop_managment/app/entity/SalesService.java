@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SalesService {
+
+
     @EmbeddedId
     private SalesServicePK salesServicePK;
 
@@ -24,7 +26,7 @@ public class SalesService {
     private Inventory item_id;
 
     private String name;
-    private String size;
+//    private String size;
     private Double unitPrice;
     private Integer itemQty;
 

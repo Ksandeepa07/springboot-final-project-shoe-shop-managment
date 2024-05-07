@@ -188,6 +188,8 @@ window.onload = function() {
 
             })
 
+            console.log(itemData.shoeSizes)
+
 
             $.ajax({
                 url: 'http://localhost:8080/api/v1/inventory/save',
