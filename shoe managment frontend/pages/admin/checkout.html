@@ -36,11 +36,9 @@
 <div class="container-scroller">
     <!-- partial:../../partials/_sidebar.html -->
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-            <a class="sidebar-brand brand-logo" href="adminDashboard.html"><img alt="logo"
-                                                                                src="../../assets/images/logo.svg"/></a>
-            <a class="sidebar-brand brand-logo-mini" href="adminDashboard.html"><img
-                    alt="logo" src="../../assets/images/logo-mini.svg"/></a>
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-start fixed-top">
+            <h5 class="mx-4">Hello Shoes</h5>
+
         </div>
         <ul class="nav">
             <li class="nav-item profile">
@@ -177,158 +175,9 @@
                 <button class="navbar-toggler navbar-toggler align-self-center" data-toggle="minimize" type="button">
                     <span class="mdi mdi-menu"></span>
                 </button>
-                <ul class="navbar-nav w-100">
-                    <li class="nav-item w-100">
-                        <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                            <input class="form-control" placeholder="Search products" type="text">
-                        </form>
-                    </li>
-                </ul>
+
                 <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item dropdown d-none d-lg-block">
-                        <a aria-expanded="false" class="nav-link btn btn-success create-new-button"
-                           data-toggle="dropdown" href="#" id="createbuttonDropdown">+ Create New Project</a>
-                        <div aria-labelledby="createbuttonDropdown"
-                             class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list">
-                            <h6 class="p-3 mb-0">Projects</h6>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-file-outline text-primary"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">Software Development</p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-web text-info"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">UI Development</p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-layers text-danger"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">Software Testing</p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <p class="p-3 mb-0 text-center">See all projects</p>
-                        </div>
-                    </li>
-                    <li class="nav-item nav-settings d-none d-lg-block">
-                        <a class="nav-link" href="#">
-                            <i class="mdi mdi-view-grid"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown border-left">
-                        <a aria-expanded="false" class="nav-link count-indicator dropdown-toggle" data-toggle="dropdown"
-                           href="#" id="messageDropdown">
-                            <i class="mdi mdi-email"></i>
-                            <span class="count bg-success"></span>
-                        </a>
-                        <div aria-labelledby="messageDropdown"
-                             class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list">
-                            <h6 class="p-3 mb-0">Messages</h6>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img alt="image" class="rounded-circle profile-pic"
-                                         src="../../assets/images/faces/face4.jpg">
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">Mark send you a message</p>
-                                    <p class="text-muted mb-0"> 1 Minutes ago </p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img alt="image" class="rounded-circle profile-pic"
-                                         src="../../assets/images/faces/face2.jpg">
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
-                                    <p class="text-muted mb-0"> 15 Minutes ago </p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <img alt="image" class="rounded-circle profile-pic"
-                                         src="../../assets/images/faces/face3.jpg">
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
-                                    <p class="text-muted mb-0"> 18 Minutes ago </p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <p class="p-3 mb-0 text-center">4 new messages</p>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown border-left">
-                        <a class="nav-link count-indicator dropdown-toggle" data-toggle="dropdown" href="#"
-                           id="notificationDropdown">
-                            <i class="mdi mdi-bell"></i>
-                            <span class="count bg-danger"></span>
-                        </a>
-                        <div aria-labelledby="notificationDropdown"
-                             class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list">
-                            <h6 class="p-3 mb-0">Notifications</h6>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-calendar text-success"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject mb-1">Event today</p>
-                                    <p class="text-muted ellipsis mb-0"> Just a reminder that you have an event
-                                        today </p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-settings text-danger"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject mb-1">Settings</p>
-                                    <p class="text-muted ellipsis mb-0"> Update dashboard </p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-link-variant text-warning"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject mb-1">Launch Admin</p>
-                                    <p class="text-muted ellipsis mb-0"> New admin wow! </p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <p class="p-3 mb-0 text-center">See all notifications</p>
-                        </div>
-                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#" id="profileDropdown">
                             <div class="navbar-profile">
@@ -339,18 +188,9 @@
                         </a>
                         <div aria-labelledby="profileDropdown"
                              class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list">
-                            <h6 class="p-3 mb-0">Profile</h6>
+
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-dark rounded-circle">
-                                        <i class="mdi mdi-settings text-success"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <p class="preview-subject mb-1">Settings</p>
-                                </div>
-                            </a>
+
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item preview-item" href="../auth/login.html">
                                 <div class="preview-thumbnail">
@@ -363,9 +203,10 @@
                                 </div>
                             </a>
                             <div class="dropdown-divider"></div>
-                            <p class="p-3 mb-0 text-center">Advanced settings</p>
+
                         </div>
                     </li>
+
                 </ul>
                 <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" data-toggle="offcanvas"
                         type="button">
@@ -607,7 +448,7 @@
                                                                  <div class="bg-white card-header " id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                                                      <div class="d-flex align-items-center justify-content-between" style="width: 100%; !important;">
                                                                          <span class="text-dark ">Cash</span>
-                                                                         <img src="https://i.imgur.com/7kQEsHU.png" width="30">
+                                                                         <img src="https://cdn-icons-png.flaticon.com/128/4305/4305547.png" width="30">
                                                                      </div>
                                                                  </div>
                                                                  <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
@@ -619,15 +460,15 @@
                                                                                  <p class="mb-3">Cash : </p>
                                                                                  <div class="form-outline">
                                                                                      <input class="form-control" id="pCash" placeholder=""
-                                                                                            type="text"/>
+                                                                                            type="number"/>
                                                                                  </div>
                                                                              </div>
 
                                                                              <div class="col-6 mb-4">
                                                                                  <p class="mb-3">Balance : </p>
                                                                                  <div class="form-outline">
-                                                                                     <input class="form-control" id="pBalance" placeholder=""
-                                                                                            type="text"/>
+                                                                                     <input style="background-color: #2c2e33" disabled class="form-control" id="pBalance" placeholder=""
+                                                                                            type="number"/>
                                                                                  </div>
                                                                              </div>
                                                                          </div>
@@ -711,8 +552,7 @@
 
                                             <div class="tab-pane" role="tabpanel" id="step4">
 
-                                              <div class="row">
-
+                                              <div style="display: none" class="row paymentBillSlip">
                                                   <div class="container paymentSlip">
                                                       <div class="printer-top"></div>
 
@@ -726,13 +566,50 @@
                                                                       Payment Complete
                                                                   </div>
                                                                   <div class="success-description">
-                                                                      Your payment for $N in USDT has been recieved and send to SHOPNAME.
+<!--                                                                      Your payment for $N in USDT has been recieved and send to SHOPNAME.-->
                                                                   </div>
+
                                                                   <div class="order-details">
-                                                                      <div class="order-number-label">Payment id</div>
-                                                                      <div class="order-number">JPZZ1V-WQRR94-78E1VE</div>
+
+                                                                      <div class="order-number-label d-flex justify-content-between">
+                                                                          <p class="mb-0" style="color: #cccccc;font-weight: 500">Order Id : </p>
+                                                                          <p class="mb-0 billOrderId" style="color: #cccccc;font-weight: 500"></p>
+                                                                      </div>
+                                                                      <hr class="mt-0" style="color: #cccccc">
+
+                                                                      <div class="order-number-label d-flex justify-content-between">
+                                                                          <p class="mb-0" style="color: #cccccc;font-weight: 500">Order Date : </p>
+                                                                          <p class="mb-0 billOrderDate" style="color: #cccccc;font-weight: 500"></p>
+                                                                      </div>
+<!--                                                                      <hr class="mt-0" style="color: #cccccc">-->
+
+                                                                      <div class="billItemList">
+<!--                                                                          <div class="order-number-label d-flex justify-content-between">-->
+<!--                                                                          <p class="mb-0 billItemName" style="color: #cccccc;font-weight: 500">${shoe.name} : </p>-->
+<!--                                                                          <p class="mb-0 billItemQuantity" style="color: #cccccc;font-weight: 500">${shoe.itemQty}</p>-->
+<!--                                                                      </div>-->
+                                                                          <div>
+
+
+                                                                      <p class="mb-0" style="color: #cccccc">--------------------------------------</p>
+
+                                                                      <div class="order-number-label d-flex justify-content-between">
+                                                                          <p class="mb-0" style="color: #6c757d;font-weight: 500">Total : </p>
+                                                                          <p class="mb-0 billTotal" style="color: #6c757d;font-weight: 500"></p>
+                                                                      </div>
+
+                                                                      <div class="order-number-label d-flex justify-content-between">
+                                                                          <p class="mb-0" style="color: #6c757d;font-weight: 500">Cash : </p>
+                                                                          <p class="mb-0 billCash" style="color: #6c757d;font-weight: 500"></p>
+                                                                      </div>
+
+                                                                      <div class="order-number-label d-flex justify-content-between">
+                                                                          <p class="mb-0" style="color: #6c757d;font-weight: 500">Balance : </p>
+                                                                          <p class="mb-0 billBalance" style="color: #6c757d;font-weight: 500"></p>
+                                                                      </div>
+
                                                                   </div>
-                                                                  <div class="order-footer">You can close this page!</div>
+
                                                               </div>
                                                               <div class="jagged-edge"></div>
                                                           </div>
@@ -775,10 +652,9 @@
 <!--                          <h6 class="mb-3">Summary</h6>-->
 
 
-
                             <div class="row ">
                                 <div class="col-6 d-flex align-items-center mb-2 ">   <p class="mb-2">Order Id :</p></div>
-                                <div class="col-6 mb-2"><input style="background-color: #2c2e33"  class="form-control" id="orderId" placeholder="" type="text"/></div>
+                                <div class="col-6 mb-2"><input disabled style="background-color: #2c2e33"  class="form-control" id="orderId" placeholder="" type="text"/></div>
                             </div>
 
                             <div class="row ">
@@ -900,8 +776,6 @@
 
 
                 <script src="../../assets/js/file-upload.js"></script>
-                <!--    <script src="../../assets/js/typeahead.js"></script>-->
-                <script src="../../assets/js/select2.js"></script>
 
 </body>
 </html>

@@ -48,6 +48,23 @@ $('.nav-tabs').on('click', 'li', function() {
 loadAllCustomerInCheckOut();
 loadAllItemInCheckOut();
 loadDate();
+loadNextOrderId();
+
+
+/*load order id*/
+function loadNextOrderId(){
+    $.ajax({
+        url:"http://localhost:8080/api/v1/sales/nextId",
+        method:"GET",
+        success:function (response) {
+            console.log(response)
+            $("#orderId").val(response);
+        },
+        error:function (xhr, status, error) {
+            console.log(error)
+        }
+    })
+}
 
 /*customers load*/
 function loadAllCustomerInCheckOut(){
@@ -66,6 +83,7 @@ function loadAllCustomerInCheckOut(){
     })
 }
 
+/*load response customer ids to combo*/
 function loadAllCustomerInCheckOutComboBox(response) {
     $("#pCustomerCode").empty();
     $.each(response, function (index, customer) {
@@ -74,6 +92,8 @@ function loadAllCustomerInCheckOutComboBox(response) {
     });
 }
 
+
+/*customer id combo click event*/
 $("#pCustomerCode").click(function (){
     let code=$("#pCustomerCode").val();
     $.ajax({
@@ -98,7 +118,6 @@ $("#pCustomerCode").click(function (){
 
 /*items load*/
 
-
 function loadAllItemInCheckOut(){
     $.ajax({
         url: "http://localhost:8080/api/v1/inventory/getALl",
@@ -115,6 +134,8 @@ function loadAllItemInCheckOut(){
     })
 }
 
+/*load all item ids to combo from response*/
+
 function loadAllItemInCheckOutComboBox(response) {
     $("#pItemCode").empty();
     $.each(response, function (index, inventory) {
@@ -125,6 +146,8 @@ function loadAllItemInCheckOutComboBox(response) {
 
 let imageResponse;
 
+
+/*item code combo click event*/
 $("#pItemCode").click(function (){
     let code=$("#pItemCode").val();
     $.ajax({
@@ -152,6 +175,8 @@ $("#pItemCode").click(function (){
 })
 
 let newShoeSizes=[];
+
+/*load item size to combo*/
 function loadItemSizesToComboBox(response){
     $("#pItemSizes").empty();
 
@@ -170,6 +195,7 @@ function loadItemSizesToComboBox(response){
 
 }
 
+/*load available sizes when click*/
 $("#pItemSizes").click(function (){
 
     $.each(newShoeSizes, function(index, item) {
@@ -222,7 +248,8 @@ $("#pAddTOCartBtn").click(function (){
         item_id:code,
         name:name,
         size:size,
-        unitPrice:unitPrice,
+        // unitPrice:unitPrice,
+        unitPrice:parseInt(unitPrice)*parseInt(buyingQty),
         itemQty:buyingQty,
         pic:$(".pItemImage").html(),
     }
@@ -251,6 +278,8 @@ $("#pAddTOCartBtn").click(function (){
 })
 
 
+
+/*set new item to cart*/
 function setDataToCart(){
     $(".appendToCart").empty();
     $.each(addToCartArray,function (index, item){
@@ -259,17 +288,49 @@ function setDataToCart(){
 
         if (matches) {
             var base64Data = matches[2];
-            let cartItem=`<div class="col-12 d-flex " style="height: 120px">
-                                      <div class="me-3 position-relative imageAdd">
-                                            <img class="img-sm rounded border" src="data:image/jpeg;base64,${base64Data}" style="height: 96px; width: 120px;" alt="image"/>
-                                      </div>
+            // let cartItem=`<div class="col-12 d-flex" style="height: 120px">
+            //                           <div class="me-3 position-relative imageAdd">
+            //                                 <img class="img-sm rounded border" src="data:image/jpeg;base64,${base64Data}" style="height: 96px; width: 120px;" alt="image"/>
+            //                           </div>
+            //
+            //                      <div class="">
+            //                          <p class="nav-link mb-0 font-weight-bold" href="#">${item.name}<br/></p>
+            //                          <p class="price mx-3"><span class="font-weight-bold">$${item.unitPrice}</span></p>
+            //                          <p class="price mx-3"><span class="font-weight-bold">${item.size} x ${item.itemQty}</span></p>
+            //
+            //                      </div>
+            //
+            //              </div>`
 
-                                 <div class="">
-                                     <p class="nav-link mb-0 font-weight-bold" href="#">${item.name}<br/></p>
+            let cartItem=
+                `<div class="col-12">
+                       <div class="row itemCartOneRow ">
+
+                              <div class="col-4">
+                                      <div class="me-3 position-relative imageAdd">
+                                      <img class="img-sm rounded border" src="data:image/jpeg;base64,${base64Data}" style="height: 96px; width: 120px;" alt="image"/>
+                               </div>
+                              </div>
+
+
+
+                               <div class="col-6">
+                                <p style="display: none" class="nav-link mb-0 font-weight-bold itemCartItemCode" href="#">${item.item_id}<br/></p>
+                                <p style="display: none" class="nav-link mb-0 font-weight-bold itemCartItemSize" href="#">${item.size}<br/></p>
+                                  <p class="nav-link mb-0 font-weight-bold" href="#">${item.name}<br/></p>
                                      <p class="price mx-3"><span class="font-weight-bold">$${item.unitPrice}</span></p>
-                                     <p class="price mx-3"><span class="font-weight-bold">${item.size} x ${item.itemQty}</span></p>
-                                 </div>
-                         </div>`
+                                      <p class="price mx-3"><span class="font-weight-bold">${item.size} x ${item.itemQty}</span></p>
+            
+                               </div>
+                               
+                               <div class="col-2 d-flex align-items-center justify-content-center">
+                                
+                                    <button id="cartItemDelete" type="button"  class="btn btn-danger h-25 w-25 d-flex align-items-center justify-content-center" style="border-radius: 50%"><img style="width:8px" src="https://cdn0.iconfinder.com/data/icons/entypo/52/x3-512.png" alt="cancel icon"></button>
+
+                               </div>
+
+                       </div>
+                      </div>`
 
             $(".appendToCart").append(cartItem);
         }
@@ -277,14 +338,8 @@ function setDataToCart(){
     })
 }
 
+/*calculate net total */
  function calculateNetTotal(){
-    //  let netTotal=0;
-    //  for (let i = 0; i < addToCartArray.length; i++) {
-    //     console.log(parseInt(addToCartArray[i].unitPrice));
-    //     console.log(parseInt(addToCartArray[i].itemQty));
-    //     netTotal=netTotal+(parseInt(addToCartArray[i].total));
-    //      $("#netTotal").text(netTotal)
-    // }
 
      let netTotal=0;
      for (let i = 0; i < addToCartArray.length; i++) {
@@ -295,12 +350,16 @@ function setDataToCart(){
      }
 }
 
+
+/*set up net total after discount key type*/
 $("#discountPoints").on("keyup", function(){
 
     let finalDiscount=$("#netTotal").val()*$("#discountPoints").val()*2/100;
     $("#newNetTotal").val($("#netTotal").val()-finalDiscount);
 })
 
+
+// search item from array to add quantity to existing item cart row* without adding new
 function searchOrder(id,size) {
     return addToCartArray.find(function (cartDetails) {
         if (cartDetails.item_id===id && cartDetails.size===size){
@@ -313,7 +372,7 @@ function searchOrder(id,size) {
 
 
 
-/*place order starts here*/
+/*place order before (not using now)*/
 $("#placeOrderBtn").click(function (){
     let orderCode=$("#orderId").val()
     let cashierName="kaveen";
@@ -361,6 +420,8 @@ $("#placeOrderBtn").click(function (){
 })
 
 
+
+/*place order req*/
 $(".placeOrderBtn").click(function (){
     var cardBody = $(this).closest('.card-body');
     var spanElements = cardBody.find('strong');
@@ -428,6 +489,8 @@ $(".placeOrderBtn").click(function (){
         success:function (response) {
             console.log(response)
             $('#pContinueBtn').trigger('click');
+            $('.paymentBillSlip').css('display', 'block');
+            setDataToBill(sales.salesServices);
 
         },
         error:function (xhr,status,err) {
@@ -437,50 +500,106 @@ $(".placeOrderBtn").click(function (){
         }
     })
 
-
 })
 
+
+
+/*set data to payment slip*/
+function setDataToBill(salesServices) {
+
+    $(".billOrderId").text($("#orderId").val());
+    $(".billOrderDate").text( $("#pOrderDate").text());
+
+    // $.each(salesServices,function (index,shoe){
+    //     console.log(salesServices.name)
+    //     console.log(salesServices.itemQty)
+    //   let billItems= `<div class="order-number-label d-flex justify-content-between">
+    //         <p class="mb-0 billItemName" style="color: #cccccc;font-weight: 500">${shoe.name} : </p>
+    //         <p class="mb-0 billItemQuantity" style="color: #cccccc;font-weight: 500">${shoe.itemQty}</p>
+    //     </div>`
+    //
+    //     $(".billItemList").append(billItems);
+    // })
+
+    if ($("#discountPoints").val()===""){
+        $(".billTotal").text($("#netTotal").val());
+    }else{
+        $(".billTotal").text($("#newNetTotal").val());
+    }
+
+
+    $(".billCash").text( $("#pCash").val());
+    $(".billBalance").text( $("#pBalance").val());
+
+
+}
+
+
+/*make balance on key type*/
 $("#pCash").on("keyup", function(){
 
-    if ($("#netTotal").val()!==""){
-        $("#pBalance").val(parseInt($("#netTotal").val())-parseInt($("#pCash").val()));
+    if ($("#discountPoints").val()===""){
+        $("#pBalance").val(parseInt($("#pCash").val())-parseInt($("#netTotal").val()));
+    }else{
+        $("#pBalance").val(parseInt($("#pCash").val())-parseInt($("#newNetTotal").val()));
     }
 
 })
+
 
 /*load date*/
 function loadDate(){
 
     var currentDate = new Date();
-
-// Extract the date components
     var day = currentDate.getDate();
-    var month = currentDate.getMonth() + 1; // Months are zero-based, so we add 1
+    var month = currentDate.getMonth() + 1;
     var year = currentDate.getFullYear();
 
-// Format the date as desired (in this case, YYYY-MM-DD)
     var formattedDate = year + '-' + (month < 10 ? '0' : '') + month + '-' + (day < 10 ? '0' : '') + day;
 
     $("#pOrderDate").text(formattedDate);
 }
 
 
+/*set time*/
 function updateTime() {
     var now = new Date();
     var hours = now.getHours();
     var minutes = now.getMinutes();
     var seconds = now.getSeconds();
 
-    // Add leading zeros if necessary
     hours = (hours < 10 ? '0' : '') + hours;
     minutes = (minutes < 10 ? '0' : '') + minutes;
     seconds = (seconds < 10 ? '0' : '') + seconds;
-
-    // Display the time
     var currentTime = hours + ':' + minutes + ':' + seconds;
     $("#pOrderTIme").text(currentTime);
 
 }
-
 // Update time every second
 setInterval(updateTime, 1000);
+
+
+
+/*remove item form cart an array*/
+$(document).on('click', '#cartItemDelete', function() {
+    console.log("before")
+    console.log(addToCartArray)
+    $(this).closest('.itemCartOneRow').remove();
+    console.log($(this).closest('.itemCartItemCode').find().text())
+
+    var itemCode = $(this).closest('.row').find('.itemCartItemCode').text();
+    var itemSize = $(this).closest('.row').find('.itemCartItemSize').text();
+
+    console.log(itemCode)
+    console.log(itemSize)
+
+    for (let i = 0; i < addToCartArray.length; i++) {
+        if (addToCartArray[i].item_id===itemCode && addToCartArray[i].size===itemSize){
+            addToCartArray.splice(i,1);
+            break;
+        }
+    }
+
+    console.log("after")
+    console.log(addToCartArray)
+});

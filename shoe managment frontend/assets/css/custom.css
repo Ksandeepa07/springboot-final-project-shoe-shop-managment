@@ -492,7 +492,8 @@ span.round-tab i{
 
 .paper {
     background: #ffffff;
-    height: 447px;
+    /*height: 447px;*/
+    height: auto;
     position: absolute;
     z-index: 2;
     margin: 0 12px;
@@ -504,13 +505,34 @@ span.round-tab i{
 .main-contents {
     margin: 0 12px;
     padding: 24px;
+    width: 304px;
 }
+
+
+.jagged-edge {
+    position: absolute;
+    height: 20px;
+    /*width: 100%;*/
+    /* margin-top: -1px; */
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 328px;
+}
+
+/*.jagged-edge {*/
+/*    position: relative;*/
+/*    height: 20px;*/
+/*    width: 100%;*/
+/*    margin-top: -1px;*/
+/*}*/
 
 .jagged-edge:after {
     content: "";
     display: block;
     position: absolute;
-/*//bottom: 20px;*/
+    /*bottom: 20px;*/
     left: 0;
     right: 0;
     height: 20px;
@@ -532,10 +554,10 @@ span.round-tab i{
 }
 
 .success-title {
-    font-size: 22px;
+    font-size: 20px;
     text-align: center;
-    color: #666;
-    font-weight: bold;
+    color: #cccccc;
+    font-weight: 500;
     margin-bottom: 16px;
 }
 
@@ -582,4 +604,5 @@ span.round-tab i{
         transform: translateY(0%);
     }
 }
+
 
