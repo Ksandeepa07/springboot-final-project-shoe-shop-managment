@@ -605,4 +605,20 @@ span.round-tab i{
     }
 }
 
+/*all sales mini table*/
+.allSalesMiniTable thead th{
+    color: black !important;
+}
+.allSalesMiniTable td{
+    color: black !important;
+}
+
+/**refund sales mini table*/
+.rsTable thead th{
+    color: black !important;
+}
+.rsTable td{
+    color: black !important;
+}
+
 

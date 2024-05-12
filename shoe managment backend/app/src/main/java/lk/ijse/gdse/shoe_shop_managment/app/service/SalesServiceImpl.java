@@ -77,6 +77,7 @@ public class SalesServiceImpl implements lk.ijse.gdse.shoe_shop_managment.app.se
             service.setUnitPrice(salesService.getUnitPrice());
             service.setItemQty(salesService.getItemQty());
             services.add(service);
+
         }
          saleServiceRepo.saveAll(services);
     }
@@ -165,8 +166,6 @@ public class SalesServiceImpl implements lk.ijse.gdse.shoe_shop_managment.app.se
 //            ));
 //        }
 
-
-
         return saleRepo.findAll()
                 .stream()
                 .map(sales -> {
@@ -224,11 +223,15 @@ public class SalesServiceImpl implements lk.ijse.gdse.shoe_shop_managment.app.se
         for (ShoeSizes shoeSize : inventory.getShoeSizes()) {
             if (shoeSize.getInventory().getCode().equals(refundDTO.getItemId()) && shoeSize.getSize().equals(refundDTO.getSize())){
                 shoeSize.setQty(shoeSize.getQty()+refundDTO.getQty());
+
+
             }
 
         }
         inventoryRepo.save(inventory);
     }
+
+
 
 
 }

@@ -318,7 +318,7 @@ function setDataToCart(){
                                 <p style="display: none" class="nav-link mb-0 font-weight-bold itemCartItemCode" href="#">${item.item_id}<br/></p>
                                 <p style="display: none" class="nav-link mb-0 font-weight-bold itemCartItemSize" href="#">${item.size}<br/></p>
                                   <p class="nav-link mb-0 font-weight-bold" href="#">${item.name}<br/></p>
-                                     <p class="price mx-3"><span class="font-weight-bold">$${item.unitPrice}</span></p>
+                                     <p class="price mx-3"><span class="font-weight-bold itemCartItemUnitPrice">$${item.unitPrice}</span></p>
                                       <p class="price mx-3"><span class="font-weight-bold">${item.size} x ${item.itemQty}</span></p>
             
                                </div>
@@ -343,9 +343,11 @@ function setDataToCart(){
 
      let netTotal=0;
      for (let i = 0; i < addToCartArray.length; i++) {
-         console.log(parseInt(addToCartArray[i].unitPrice));
+         // console.log(parseInt(addToCartArray[i].unitPrice));
+         console.log(parseInt($("#pItemPrice").val()));
          console.log(parseInt(addToCartArray[i].itemQty));
-         netTotal=netTotal+(parseInt(addToCartArray[i].unitPrice)*parseInt(addToCartArray[i].itemQty));
+         // netTotal=netTotal+(parseInt(addToCartArray[i].unitPrice)*parseInt(addToCartArray[i].itemQty));
+         netTotal=netTotal+(parseInt($("#pItemPrice").val())*parseInt(addToCartArray[i].itemQty));
          $("#netTotal").val(netTotal)
      }
 }
@@ -589,17 +591,21 @@ $(document).on('click', '#cartItemDelete', function() {
 
     var itemCode = $(this).closest('.row').find('.itemCartItemCode').text();
     var itemSize = $(this).closest('.row').find('.itemCartItemSize').text();
+    var itemPrice = $(this).closest('.row').find('.itemCartItemUnitPrice').text();
+    // console.log(itemPrice.substring(1))
 
     console.log(itemCode)
     console.log(itemSize)
 
     for (let i = 0; i < addToCartArray.length; i++) {
         if (addToCartArray[i].item_id===itemCode && addToCartArray[i].size===itemSize){
+            console.log($("#netTotal").val());
+            $("#netTotal").val(parseInt( $("#netTotal").val())-parseInt(itemPrice.substring(1)))
             addToCartArray.splice(i,1);
+
             break;
         }
     }
-
     console.log("after")
     console.log(addToCartArray)
 });
