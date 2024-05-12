@@ -12,5 +12,6 @@ public class RefundDTO {
     private String itemId;
     private String size;
     private Integer qty;
+    private Integer price;
 
 }

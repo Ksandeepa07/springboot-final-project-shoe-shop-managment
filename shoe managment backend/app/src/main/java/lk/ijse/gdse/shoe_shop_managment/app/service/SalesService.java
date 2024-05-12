@@ -13,4 +13,6 @@ public interface SalesService {
     List<SalesDTO> getAllSales();
 
     boolean refundOrDelete(RefundDTO refundDTO);
+
+    List<SalesDTO> searchByOrderId(String id);
 }

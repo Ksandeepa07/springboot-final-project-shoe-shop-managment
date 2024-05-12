@@ -115,7 +115,7 @@ window.onload = function() {
                 "addressLine2":addressLine2,
                 "loyaltyDate":loyaltyDate,
                 "loyaltyLevel":"NEW",
-                "loyaltyPoints":8
+                "loyaltyPoints":0
             }),
 
             success:function (response) {

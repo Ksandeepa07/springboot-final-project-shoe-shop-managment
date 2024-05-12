@@ -33,6 +33,14 @@ public class Sales {
     @OneToMany(mappedBy = "order_id")
     private List<SalesService> salesServices;
 
+    public Sales(String orderId, Timestamp orderDate, String paymentMethod, Double totalPrice, Double addedPoints, String cashierName) {
+        this.orderId = orderId;
+        this.orderDate = orderDate;
+        this.paymentMethod = paymentMethod;
+        this.totalPrice = totalPrice;
+        this.addedPoints = addedPoints;
+        this.cashierName = cashierName;
+    }
 
     public Sales(String orderId, Timestamp orderDate, String paymentMethod, Double totalPrice, Double addedPoints, String cashierName, Customer customerId, String customerName) {
         this.orderId = orderId;

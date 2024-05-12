@@ -46,4 +46,9 @@ public class SalesController {
         return salesService.refundOrDelete(refundDTO);
     }
 
+    @GetMapping("/searchById")
+    public List<SalesDTO> searchById(@RequestParam String id){
+        return salesService.searchByOrderId(id);
+
+    }
 }

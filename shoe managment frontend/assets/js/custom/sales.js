@@ -44,7 +44,7 @@ function setAllSalesToTable(response) {
                             <td>${sales.totalPrice}</td>
                             <td>${sales.addedPoints}</td>
                             <td>${sales.cashierName}</td>
-                            <td><button type="button" data-toggle="modal" data-target="#exampleModal" class="btn bg-primary shoeMBtn">Show More</button></td>
+                            <td><button onclick="openSmallShowMoreTable()" type="button" data-toggle="modal" data-target="#exampleModal" class="btn bg-primary shoeMBtn">Show More</button></td>
                             </tr>`
             $("#saleTable").append(data);
 
@@ -52,7 +52,7 @@ function setAllSalesToTable(response) {
     });
 }
 
-$(document).on('click', '.shoeMBtn', function() {
+function openSmallShowMoreTable(){
 
     $('#saleTable').on('click', 'tr', function (){
         var oCode= $(this).find('td:eq(0)').text();
@@ -85,7 +85,45 @@ $(document).on('click', '.shoeMBtn', function() {
         })
 
     });
-});
+
+}
+
+/*this method takes two clicks to load open modal*/
+
+// $(document).on('click', '.shoeMBtn', function() {
+//
+//     $('#saleTable').on('click', 'tr', function (){
+//         var oCode= $(this).find('td:eq(0)').text();
+//         var cCode= $(this).find('td:eq(1)').text();
+//         var cName= $(this).find('td:eq(2)').text();
+//         var date= $(this).find('td:eq(3)').text();
+//         var paymentMethod= $(this).find('td:eq(4)').text();
+//         var ttPrice= $(this).find('td:eq(5)').text();
+//         var points= $(this).find('td:eq(6)').text();
+//         var cashierName= $(this).find('td:eq(7)').text();
+//
+//         $.each(getAllResponse,function (index,response){
+//             if (oCode===response.orderId){
+//                 $("#allSaleMiniTable").empty();
+//                 for (let i = 0; i < response.salesServices.length; i++) {
+//                     console.log(response.salesServices[i]);
+//                     console.log(response.salesServices[i].size);
+//
+//                     let data = `<tr>
+//                             <td>${response.salesServices[i].order_Id}</td>
+//                             <td>${response.salesServices[i].item_id}</td>
+//                             <td>${response.salesServices[i].size}</td>
+//                             <td>${response.salesServices[i].itemQty}</td>
+//                             <td>${response.salesServices[i].unitPrice}</td>
+//                             </tr>`
+//                     $("#allSaleMiniTable").append(data);
+//                 }
+//                 // setDataToModal(response);
+//             }
+//         })
+//
+//     });
+// });
 
 
 function convertToDateAndTime(date){
@@ -101,3 +139,56 @@ function convertToDateAndTime(date){
     const formattedDateTime = `${year}-${month}-${day} / ${hours}:${minutes}:${seconds}`;
     return formattedDateTime;
 }
+
+/*search table*/
+
+$("#saleSearch").on("input", function () {
+    $("#saleTable").empty();
+    let id=$("#saleSearch").val();
+    console.log(id.trim())
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/sales/searchById?id='+id,
+        method:"GET",
+        dataType: "json",
+        success:function (response) {
+
+            console.log(response)
+
+            $.each(response, function (index, sales) {
+
+                setTimeout(function (){
+                    $("#saleTable").empty();
+
+                    if (sales.customerName===""){
+                        sales.customerName="Not a loyalty customer"
+                    }
+
+                    if (sales.addedPoints===null){
+                        sales.addedPoints="No points added"
+                    }
+
+                    let formattedDateTime=convertToDateAndTime(sales.orderDate)
+                    let data = `<tr>
+                            <td>${sales.orderId}</td>
+                            <td>${sales.customerId}</td>
+                            <td>${sales.customerName}</td>
+                            <td>${formattedDateTime}</td>
+                            <td>${sales.paymentMethod}</td>
+                            <td>${sales.totalPrice}</td>
+                            <td>${sales.addedPoints}</td>
+                            <td>${sales.cashierName}</td>
+                            <td><button onclick="openSmallShowMoreTable()" type="button" data-toggle="modal" data-target="#exampleModal" class="btn bg-primary shoeMBtn">Show More</button></td>
+                            </tr>`
+                    $("#saleTable").append(data);
+
+
+                },600,index)
+            })
+
+        },
+        error:function (xhr,status,err) {
+            console.log(err)
+        }
+    })
+});
+

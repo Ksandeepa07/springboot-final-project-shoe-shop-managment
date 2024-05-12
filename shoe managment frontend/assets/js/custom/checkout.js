@@ -22,10 +22,16 @@ $(document).ready(function () {
 
     });
     $(".prev-step").click(function (e) {
-
         var active = $('.wizard .nav-tabs li.active');
         prevTab(active);
 
+    });
+
+    $(".firstStep").click(function (e) {
+        for (let i = 0; i <3 ; i++) {
+            var active = $('.wizard .nav-tabs li.active');
+            prevTab(active);
+        }
     });
 });
 
@@ -86,6 +92,7 @@ function loadAllCustomerInCheckOut(){
 /*load response customer ids to combo*/
 function loadAllCustomerInCheckOutComboBox(response) {
     $("#pCustomerCode").empty();
+    $("#pCustomerCode").append(` <option selected>Choose...</option>`)
     $.each(response, function (index, customer) {
        let data=`<option>${customer.code}</option>`
         $("#pCustomerCode").append(data);
@@ -239,8 +246,8 @@ $("#pAddTOCartBtn").click(function (){
         return;
     }
 
-    if ($("#pItemQuantity").val()<=0){
-        alert("This Item is out of stock !!")
+    if ($("#pItemQuantity").val()<=0 || parseInt($("#pItemQuantity").val()) < parseInt($("#pBuyingQuantity").val())){
+        alert("Low item quantity to proceed !!")
         return;
     }
 
@@ -454,19 +461,20 @@ $(".placeOrderBtn").click(function (){
     }
 
     if ($("#newNetTotal").val()===""){
-        if ($("#pCash").val()<$("#netTotal").val()){
+        if (parseInt($("#pCash").val())<parseInt($("#netTotal").val())){
             alert("More Cash Required to place order !!")
             return;
         }
     }else{
-        if ($("#pCash").val()<$("#newNetTotal").val()){
+        if (parseInt($("#pCash").val())<parseInt($("#newNetTotal").val())){
             alert("More Cash Required to place order !!")
             return;
         }
     }
 
-
-
+    if (customerId==="Choose..."){
+        customerId=null;
+    }
     var sales={
         "orderId":orderCode,
         "orderDate":date,
@@ -493,6 +501,7 @@ $(".placeOrderBtn").click(function (){
             $('#pContinueBtn').trigger('click');
             $('.paymentBillSlip').css('display', 'block');
             setDataToBill(sales.salesServices);
+            clearAllFields();
 
         },
         error:function (xhr,status,err) {
@@ -609,3 +618,39 @@ $(document).on('click', '#cartItemDelete', function() {
     console.log("after")
     console.log(addToCartArray)
 });
+
+/*clear text fields*/
+
+function clearAllFields(){
+    /*customer fields*/
+    $('#pCustomerCode').prop('selectedIndex', 0);
+    $("#pCustomerName").val("")
+    $("#pCustomerEmail").val("")
+    $("#PCustomerContact").val("")
+
+    /*item fields*/
+    $('#pItemCode').prop('selectedIndex', 0);
+    $('#pItemSizes').prop('selectedIndex', 0);
+    $("#pItemName").val("")
+    $("#pItemQuantity").val("")
+    $("#pBuyingQuantity").val("")
+    $("#pItemPrice").val("")
+    $("#pItemCategory").val("")
+    $("#pItemStatus").val("")
+
+    /*payment fields*/
+    $("#pCash").val("")
+    $("#pBalance").val("")
+
+    /*summary fields*/
+    $("#netTotal").val("")
+    $("#newNetTotal").val("")
+    $("#discountPoints").val("")
+
+    /*array*/
+    addToCartArray=[];
+
+    /*item cart*/
+    $(".appendToCart").empty();
+}
+
