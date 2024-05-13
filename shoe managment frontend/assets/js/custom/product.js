@@ -295,7 +295,7 @@ function loadProductBasedOnSearch(response) {
 
                       <div class="sizes mt-3">Sizes : ${sizesHTML}</div>
                     <div class="card-footer text-left  px-0 pb-0 mt-auto border-0 ">
-                        <a class="btn btn-primary shadow-0 mt-2" href="#!">Add to cart</a>
+<!--                        <a class="btn btn-primary shadow-0 mt-2" href="#!">Add to cart</a>-->
                     </div>
                 </div>
             </div>

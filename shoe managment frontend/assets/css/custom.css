@@ -1,7 +1,8 @@
-/**{*/
-/*    font-family: "Karla", sans-serif; ;*/
-/*    font-optical-sizing: auto; ;*/
-/*}*/
+*{
+    font-family: "Karla", sans-serif; !important; ;
+    font-optical-sizing: auto; ;
+    font-weight: bold !important;
+}
 
 .preview-subject{
     color: white !important;
@@ -145,6 +146,7 @@ hr:not([size]) {
     position: relative;
     margin-bottom: 50px;
     text-align: center;
+    margin-right: 22px;
 }
 
 .connecting-line {
@@ -605,21 +607,11 @@ span.round-tab i{
     }
 }
 
-/*!*all sales mini table*!*/
-/*.allSalesMiniTable thead th{*/
-/*    color: black !important;*/
-/*}*/
-/*.allSalesMiniTable td{*/
-/*    color: black !important;*/
-/*}*/
+/*global table*/
+.table thead th, .jsgrid .jsgrid-table thead th {
+    color: white !important;
+}
 
-/*!**refund sales mini table*!*/
-/*.rsTable thead th{*/
-/*    color: black !important;*/
-/*}*/
-/*.rsTable td{*/
-/*    color: black !important;*/
-/*}*/
-
-
-
+.table td, .jsgrid .jsgrid-table td {
+    color: lightsteelblue;
+}

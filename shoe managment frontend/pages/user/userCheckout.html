@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Corona Admin</title>
+
+
+    <!--cdn for icons-->
+    <link href="https://cdn.jsdelivr.net/npm/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.9.55/css/materialdesignicons.min.css" rel="stylesheet">
+
+    <!--style files-->
+    <link href="../../assets/css/style.css" rel="stylesheet">
+    <link href="../../assets/css/custom.css" rel="stylesheet">
+    <link href="../../assets/images/favicon.png" rel="shortcut icon"/>
+
+    <!--    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/v4-shims.min.js" rel="shortcut icon"/>-->
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <!--bootstrap 5-->
+
+</head>
+
+<body>
+<div class="container-scroller">
+    <!-- partial:../../partials/_sidebar.html -->
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-start fixed-top">
+            <h5 class="mx-4">Hello Shoes</h5>
+
+        </div>
+        <ul class="nav">
+            <li class="nav-item profile">
+                <div class="profile-desc">
+                    <div class="profile-pic">
+                        <div class="count-indicator">
+                            <img alt="" class="img-xs rounded-circle " src="../../assets/images/faces/face15.jpg">
+                            <span class="count bg-success"></span>
+                        </div>
+                        <div class="profile-name">
+                            <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
+                            <!--                            <span>Gold Member</span>-->
+                        </div>
+                    </div>
+                    <a data-toggle="dropdown" href="#" id="profile-dropdown"><i class="mdi mdi-dots-vertical"></i></a>
+                    <div aria-labelledby="profile-dropdown"
+                         class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list">
+                        <a class="dropdown-item preview-item" href="#">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-dark rounded-circle">
+                                    <i class="mdi mdi-settings text-primary"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <p class="preview-subject ellipsis mb-1 text-small">Account settings</p>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item preview-item" href="#">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-dark rounded-circle">
+                                    <i class="mdi mdi-onepassword  text-info"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <p class="preview-subject ellipsis mb-1 text-small">Change Password</p>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item preview-item" href="#">
+                            <div class="preview-thumbnail">
+                                <div class="preview-icon bg-dark rounded-circle">
+                                    <i class="mdi mdi-calendar-today text-success"></i>
+                                </div>
+                            </div>
+                            <div class="preview-item-content">
+                                <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item nav-category">
+                <!--                <span class="nav-link">Navigation</span>-->
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="userDashboard.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-speedometer"></i>
+              </span>
+                    <span class="menu-title">Dashboard</span>
+                </a>
+            </li>
+
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="userProducts.html">
+                              <span class="menu-icon">
+                                <i class="mdi mdi-table-large"></i>
+                              </span>
+                    <span class="menu-title">Products</span>
+                </a>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="userCustomers.html">
+                              <span class="menu-icon">
+                                <i class="mdi mdi-table-large"></i>
+                              </span>
+                    <span class="menu-title">Customers</span>
+                </a>
+            </li>
+
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="userEmployees.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+                    <span class="menu-title">Employees</span>
+                </a>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="userInventory.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+                    <span class="menu-title">Inventory</span>
+                </a>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="userSuppliers.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+                    <span class="menu-title">Suppliers</span>
+                </a>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="userCheckout.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+                    <span class="menu-title">Checkout</span>
+                </a>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="userRefund.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+                    <span class="menu-title">Refund</span>
+                </a>
+            </li>
+
+            <li class="nav-item menu-items">
+                <a class="nav-link" href="userSales.html">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+                    <span class="menu-title">Sales</span>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_navbar.html -->
+        <nav class="navbar p-0 fixed-top d-flex flex-row">
+            <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+                <a class="navbar-brand brand-logo-mini" href="userDashboard.html"><img
+                        alt="logo" src="../../assets/images/logo-mini.svg"/></a>
+            </div>
+            <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+                <button class="navbar-toggler navbar-toggler align-self-center" data-toggle="minimize" type="button">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+
+                <ul class="navbar-nav navbar-nav-right">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" data-toggle="dropdown" href="#" id="profileDropdown">
+                            <div class="navbar-profile">
+                                <img alt="" class="img-xs rounded-circle" src="../../assets/images/faces/face15.jpg">
+                                <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
+                                <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                            </div>
+                        </a>
+                        <div aria-labelledby="profileDropdown"
+                             class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list">
+
+                            <div class="dropdown-divider"></div>
+
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item" href="../auth/login.html">
+                                <div class="preview-thumbnail">
+                                    <div class="preview-icon bg-dark rounded-circle">
+                                        <i class="mdi mdi-logout text-danger"></i>
+                                    </div>
+                                </div>
+                                <div class="preview-item-content">
+                                    <p class="preview-subject mb-1">Log out</p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+
+                        </div>
+                    </li>
+
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" data-toggle="offcanvas"
+                        type="button">
+                    <span class="mdi mdi-format-line-spacing"></span>
+                </button>
+            </div>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="page-header">
+                    <!--              <h3 class="page-title"> Form elements </h3>-->
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                            <li aria-current="page" class="breadcrumb-item active">Checkout</li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <!--start of forms-->
+
+                <div class="row">
+
+                    <!--details page-->
+                    <div class="col-xl-8 col-lg-8 mb-4">
+
+                        <!-- Checkout -->
+
+                        <div class="card shadow-0 border">
+                            <div class="px-md-4 px-sm-0 py-2">
+
+                                <div class="card-header">
+                                    <div class="row d-flex justify-content-end">
+                                        <label class="mx-3 font-weight-bold" id="pOrderDate"></label>
+                                        <label class="mx-3 font-weight-bold" id="pOrderTIme"></label>
+
+                                    </div>
+                                </div>
+
+                                <section class="signup-step-container">
+                                    <div class="row d-flex justify-content-center">
+
+                                        <div class="col">
+
+                                            <div class="wizard">
+                                                <div class="wizard-inner">
+
+                                                    <div class="connecting-line"></div>
+                                                    <ul class="nav nav-tabs" role="tablist">
+                                                        <li class="active" role="presentation">
+                                                            <a aria-controls="step1" aria-expanded="true" data-toggle="tab"
+                                                               href="#step1" role="tab"><span
+                                                                    class="round-tab">1 </span> <i>Customer Details</i></a>
+                                                        </li>
+                                                        <li class="disabled" role="presentation">
+                                                            <a aria-controls="step2" aria-expanded="false" data-toggle="tab"
+                                                               href="#step2" role="tab"><span class="round-tab">2</span>
+                                                                <i>Item Details</i></a>
+                                                        </li>
+                                                        <li class="disabled" role="presentation">
+                                                            <a aria-controls="step3" data-toggle="tab" href="#step3"
+                                                               role="tab"><span class="round-tab">3</span> <i>Payment
+                                                                Details</i></a>
+                                                        </li>
+                                                        <li class="disabled" role="presentation">
+                                                            <a aria-controls="step4" data-toggle="tab" href="#step4"
+                                                               role="tab"><span class="round-tab">4</span>
+                                                                <i>Success</i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+
+                                                <form action="index.html" class="login-box" role="form">
+
+                                                    <div class="tab-content" id="main_form">
+
+
+                                                        <div class="tab-pane active" id="step1" role="tabpanel">
+
+                                                            <div class="row">
+                                                                <div class="col"></div>
+                                                                <div class="col">
+                                                                    <!--                                                  <h4 class="text-center mb-5">Customer Details</h4>-->
+                                                                </div>
+                                                                <div class="col text-right">
+                                                                    <h5><span class="badge-outline-primary py-1 px-3 " id="pLevel"
+                                                                              style="border-radius: 20px">?</span>
+                                                                    </h5>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="row">
+
+                                                                <div class="col-sm-12 col-md-6 mb-4">
+                                                                    <p class="mb-3">Customer Code : </p>
+                                                                    <div class="form-outline">
+                                                                        <select class="form-control" id="pCustomerCode">
+
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-12 col-md-6 mb-4">
+                                                                    <p class="mb-3">Customer Name : </p>
+                                                                    <div class="form-outline">
+                                                                        <input class="form-control" id="pCustomerName"
+                                                                               placeholder=""
+                                                                               type="text"/>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-12 col-md-6 mb-4 ">
+                                                                    <p class="mb-3">Customer Email : </p>
+                                                                    <div class="form-outline">
+                                                                        <input class="form-control" id="pCustomerEmail"
+                                                                               type="tel" value=""/>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-12 col-md-6 mb-4">
+                                                                    <p class="mb-3">Customer Contact</p>
+                                                                    <div class="form-outline">
+                                                                        <input class="form-control"
+                                                                               id="PCustomerContact" placeholder=""
+                                                                               type="email"/>
+                                                                    </div>
+
+
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="row d-flex justify-content-center">
+                                                                <button class="default-btn next-step" type="button">
+                                                                    Continue
+                                                                </button>
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="tab-pane" id="step2" role="tabpanel">
+                                                            <!--                                              <h4 class="text-center mb-3">Item Details</h4>-->
+
+                                                            <div class="row mb-5 ">
+                                                                <div class="col"></div>
+                                                                <div class="col"></div>
+                                                                <div class="col text-center ">
+
+                                                                    <div class="row">
+                                                                        <div class="col text-center">
+                                                                            <div class="mb-4 pItemImage"
+                                                                                 style="display: none"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+
+                                                                <div class="col-sm-12 col-md-6 mb-4">
+                                                                    <p class="mb-3">Item Code : </p>
+                                                                    <div class="form-outline">
+                                                                        <select class="form-control" id="pItemCode">
+                                                                            <option selected>Choose...</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-12 col-md-6 mb-4">
+                                                                    <p class="mb-3">Item Name : </p>
+                                                                    <div class="form-outline">
+                                                                        <input class="form-control" id="pItemName"
+                                                                               placeholder=""
+                                                                               type="text"/>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-12 col-md-6 mb-4">
+                                                                    <p class="mb-3">Item Sizes : </p>
+                                                                    <div class="form-outline">
+                                                                        <select class="form-control" id="pItemSizes">
+                                                                            <option selected>Choose...</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-12 col-md-6 mb-4">
+                                                                    <p class="mb-3">Item Quantity On Hand : </p>
+                                                                    <div class="form-outline">
+                                                                        <input class="form-control" id="pItemQuantity"
+                                                                               placeholder=""
+                                                                               type="email"/>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-12 col-md-6 mb-4">
+                                                                    <p class="mb-3">Item Category : </p>
+                                                                    <div class="form-outline">
+                                                                        <input class="form-control" id="pItemCategory"
+                                                                               placeholder=""
+                                                                               type="text"/>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-12 col-md-6 mb-4">
+                                                                    <p class="mb-3">Item Price : </p>
+                                                                    <div class="form-outline">
+                                                                        <input class="form-control" id="pItemPrice"
+                                                                               placeholder=""
+                                                                               type="number"/>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-12 col-md-6 mb-4">
+                                                                    <p class="mb-3">Status : </p>
+                                                                    <div class="form-outline">
+                                                                        <input class="form-control" id="pItemStatus"
+                                                                               placeholder=""
+                                                                               type="text"/>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="col-sm-12 col-md-6 mb-4">
+                                                                    <p class="mb-3">Buying Quantity : </p>
+                                                                    <div class="form-outline">
+                                                                        <input class="form-control" id="pBuyingQuantity"
+                                                                               placeholder=""
+                                                                               type="number"/>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="row d-flex justify-content-end">
+                                                                <button class="btn btn-primary mr-2 " id="pAddTOCartBtn"
+                                                                        type="button">Add to cart
+                                                                </button>
+                                                            </div>
+
+                                                            <div class="row d-flex justify-content-center">
+                                                                <button class="default-btn prev-step mx-2"
+                                                                        type="button">Back
+                                                                </button>
+                                                                <button class="default-btn next-step mx-2"
+                                                                        type="button">Continue
+                                                                </button>
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="tab-pane" id="step3" role="tabpanel">
+
+                                                            <div class="row ">
+                                                                <div id="accordion" style="width: 100%">
+
+                                                                    <div class="card ">
+                                                                        <div aria-controls="collapseOne"
+                                                                             aria-expanded="true" class="bg-white card-header "
+                                                                             data-target="#collapseOne"
+                                                                             data-toggle="collapse"
+                                                                             id="headingOne">
+                                                                            <div class="d-flex align-items-center justify-content-between"
+                                                                                 style="width: 100%; !important;">
+                                                                                <span class="text-dark ">Cash</span>
+                                                                                <img src="https://cdn-icons-png.flaticon.com/128/4305/4305547.png"
+                                                                                     width="30">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div aria-labelledby="headingOne" class="collapse "
+                                                                             data-parent="#accordion"
+                                                                             id="collapseOne">
+                                                                            <div class="card-body">
+                                                                                <strong class="text-dark cardOrCash"
+                                                                                        style="display: none">Cash</strong>
+
+                                                                                <div class="row">
+                                                                                    <div class="col-sm-12 col-md-6 mb-4">
+                                                                                        <p class="mb-3">Cash : </p>
+                                                                                        <div class="form-outline">
+                                                                                            <input class="form-control"
+                                                                                                   id="pCash"
+                                                                                                   placeholder=""
+                                                                                                   type="number"/>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="col-sm-12 col-md-6 mb-4">
+                                                                                        <p class="mb-3">Balance : </p>
+                                                                                        <div class="form-outline">
+                                                                                            <input class="form-control"
+                                                                                                   disabled
+                                                                                                   id="pBalance"
+                                                                                                   placeholder=""
+                                                                                                   style="background-color: #2c2e33"
+                                                                                                   type="number"/>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row d-flex justify-content-end">
+                                                                                    <button class="btn btn-primary mr-2 placeOrderBtn "
+                                                                                            type="button">
+                                                                                        Pay Here
+                                                                                    </button>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="card">
+                                                                        <div aria-controls="collapseTwo"
+                                                                             aria-expanded="false" class="card-header bg-white"
+                                                                             data-target="#collapseTwo"
+                                                                             data-toggle="collapse"
+                                                                             id="headingTwo">
+                                                                            <div class="d-flex align-items-center justify-content-between"
+                                                                                 style="width: 100%; !important;">
+                                                                                <span class="text-dark ">Credit card</span>
+                                                                                <div class="icons">
+                                                                                    <img src="https://i.imgur.com/2ISgYja.png"
+                                                                                         width="30">
+                                                                                    <img src="https://i.imgur.com/W1vtnOV.png"
+                                                                                         width="30">
+                                                                                    <img src="https://i.imgur.com/2ISgYja.png"
+                                                                                         width="30">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div aria-labelledby="headingTwo" class="collapse"
+                                                                             data-parent="#accordion"
+                                                                             id="collapseTwo">
+
+                                                                            <div class="card-body">
+                                                                                <strong class="text-dark cardOrCash"
+                                                                                        style="display: none">Card</strong>
+
+                                                                                <!--                                                                         <span style="font-size: 13px" class="font-weight-normal card-text">Card Number</span>-->
+
+                                                                                <div class="input">
+                                                                                    <!--                                                                             <i class="fa fa-credit-card"></i>-->
+                                                                                    <img class="img-fluid"
+                                                                                         src="https://img.icons8.com/color/48/000000/visa.png"/>
+                                                                                    <span class="font-weight-normal card-text"
+                                                                                          style="font-size: 13px">Card Number</span>
+                                                                                    <input class="form-control"
+                                                                                           placeholder="0000 0000 0000 0000"
+                                                                                           type="text">
+                                                                                </div>
+
+                                                                                <div class="row mt-4 mb-3">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <span class="font-weight-normal card-text"
+                                                                                              style="font-size: 13px">Expiry Date</span>
+                                                                                        <div class="input input-container">
+                                                                                            <i class="fa fa-calendar mb-4"
+                                                                                               style="font-size: 13px;"></i>
+                                                                                            <input class="form-control"
+                                                                                                   placeholder="MM/YY"
+                                                                                                   type="text">
+
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="col-md-6">
+                                                                                        <span class="font-weight-normal card-text"
+                                                                                              style="font-size: 13px">CVC/CVV</span>
+                                                                                        <div class="input input-container">
+                                                                                            <i class="fa fa-lock"></i>
+                                                                                            <input class="form-control"
+                                                                                                   placeholder="000"
+                                                                                                   type="text">
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                                <div class="row d-flex justify-content-end">
+                                                                                    <button class="btn btn-primary mr-2 placeOrderBtn"
+                                                                                            type="button">
+                                                                                        Pay Here
+                                                                                    </button>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+
+
+                                                            <div class="row d-flex justify-content-center">
+                                                                <button class="default-btn prev-step mx-2"
+                                                                        type="button">Back
+                                                                </button>
+                                                                <button class="default-btn next-step mx-2 " id="pContinueBtn"
+                                                                        style="display: none"
+                                                                        type="button">Continue
+                                                                </button>
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="tab-pane" id="step4" role="tabpanel">
+
+                                                            <div class="row paymentBillSlip">
+                                                                <div class="container paymentSlip">
+                                                                    <div class="printer-top"></div>
+
+                                                                    <div class="paper-container">
+                                                                        <div class="printer-bottom"></div>
+
+                                                                        <div class="paper">
+                                                                            <div class="main-contents">
+                                                                                <div class="success-icon">&#10004;</div>
+                                                                                <div class="success-title">
+                                                                                    Payment Complete
+                                                                                </div>
+                                                                                <div class="success-description">
+                                                                                    <!--                                                                      Your payment for $N in USDT has been recieved and send to SHOPNAME.-->
+                                                                                </div>
+
+                                                                                <div class="order-details">
+
+                                                                                    <div class="order-number-label d-flex justify-content-between">
+                                                                                        <p class="mb-0"
+                                                                                           style="color: #cccccc;font-weight: 500">
+                                                                                            Order Id : </p>
+                                                                                        <p class="mb-0 billOrderId"
+                                                                                           style="color: #cccccc;font-weight: 500"></p>
+                                                                                    </div>
+                                                                                    <hr class="mt-0"
+                                                                                        style="color: #cccccc">
+
+                                                                                    <div class="order-number-label d-flex justify-content-between">
+                                                                                        <p class="mb-0"
+                                                                                           style="color: #cccccc;font-weight: 500">
+                                                                                            Order Date : </p>
+                                                                                        <p class="mb-0 billOrderDate"
+                                                                                           style="color: #cccccc;font-weight: 500"></p>
+                                                                                    </div>
+                                                                                    <!--                                                                      <hr class="mt-0" style="color: #cccccc">-->
+
+                                                                                    <div class="billItemList">
+                                                                                        <!--                                                                          <div class="order-number-label d-flex justify-content-between">-->
+                                                                                        <!--                                                                          <p class="mb-0 billItemName" style="color: #cccccc;font-weight: 500">${shoe.name} : </p>-->
+                                                                                        <!--                                                                          <p class="mb-0 billItemQuantity" style="color: #cccccc;font-weight: 500">${shoe.itemQty}</p>-->
+                                                                                        <!--                                                                      </div>-->
+                                                                                        <div>
+
+
+                                                                                            <p class="mb-0"
+                                                                                               style="color: #cccccc">
+                                                                                                --------------------------------------</p>
+
+                                                                                            <div class="order-number-label d-flex justify-content-between">
+                                                                                                <p class="mb-0"
+                                                                                                   style="color: #6c757d;font-weight: 500">
+                                                                                                    Total : </p>
+                                                                                                <p class="mb-0 billTotal"
+                                                                                                   style="color: #6c757d;font-weight: 500"></p>
+                                                                                            </div>
+
+                                                                                            <div class="order-number-label d-flex justify-content-between">
+                                                                                                <p class="mb-0"
+                                                                                                   style="color: #6c757d;font-weight: 500">
+                                                                                                    Cash : </p>
+                                                                                                <p class="mb-0 billCash"
+                                                                                                   style="color: #6c757d;font-weight: 500"></p>
+                                                                                            </div>
+
+                                                                                            <div class="order-number-label d-flex justify-content-between">
+                                                                                                <p class="mb-0"
+                                                                                                   style="color: #6c757d;font-weight: 500">
+                                                                                                    Balance : </p>
+                                                                                                <p class="mb-0 billBalance"
+                                                                                                   style="color: #6c757d;font-weight: 500"></p>
+                                                                                            </div>
+
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                    <div class="jagged-edge"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+
+                                                                    <div class="row d-flex justify-content-center">
+                                                                        <!--                                                    <button type="button" class="default-btn prev-step mx-2">Back</button>-->
+                                                                        <button class="btn btn-primary firstStep mx-2"
+                                                                                type="button">
+                                                                            Finish
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="clearfix"></div>
+
+                                                            </div>
+
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </section>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--summary page-->
+
+                    <div class="card col-xl-4 col-lg-4 d-flex justify-content-lg-end">
+                        <div class="card-body">
+                            <div class=" ms-lg-4 mt-4 mt-lg-0">
+
+                                <!--                          <h6 class="mb-3">Summary</h6>-->
+
+
+                                <div class="row ">
+                                    <div class="col-6 d-flex align-items-center mb-2 "><p class="mb-2">Order Id :</p>
+                                    </div>
+                                    <div class="col-6 mb-2"><input class="form-control" disabled
+                                                                   id="orderId" placeholder="" style="background-color: #2c2e33"
+                                                                   type="text"/></div>
+                                </div>
+
+                                <div class="row ">
+                                    <div class="col-6 d-flex align-items-center mb-2 "><p class="mb-2">Total price :</p>
+                                    </div>
+                                    <div class="col-6 mb-2"><input class="form-control" disabled
+                                                                   id="netTotal" placeholder="" style="background-color: #2c2e33"
+                                                                   type="text"/></div>
+                                </div>
+
+                                <div class="row ">
+                                    <div class="col-6 d-flex align-items-center mb-2 "><p class="mb-0">Discount :</p>
+                                    </div>
+                                    <div class="col-6 mb-2"><input class="form-control" id="discountPoints"
+                                                                   placeholder="" type="number"/></div>
+                                </div>
+
+                                <div class="row ">
+                                    <div class="col-6 d-flex align-items-center mb-2 "><p class="mb-0">Net Total :</p>
+                                    </div>
+                                    <div class="col-6 mb-2"><input class="form-control" disabled
+                                                                   id="newNetTotal" placeholder="" style="background-color: #2c2e33"
+                                                                   type="text"/></div>
+                                </div>
+
+                                <!--                            <div class="row ">-->
+                                <!--                                <div class="col-6 d-flex align-items-center mb-2 "> <p class="mb-0"></p></div>-->
+                                <!--                                <div class="col-6 mb-2"> <button id="placeOrderBtn"  type="button" class="btn btn-primary mr-2 " >Pay Here</button>-->
+                                <!--                                </div>-->
+                                <!--                            </div>-->
+
+
+                                <hr style="background-color:dimgrey !important;"/>
+
+                                <h6 class="my-4">Items in cart</h6>
+
+                                <div class="row appendToCart " style="height: 460px;overflow-y:scroll">
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--end of forms-->
+
+                    <!-- partial -->
+                </div>
+                <!-- main-panel ends -->
+            </div>
+            <!-- page-body-wrapper ends -->
+        </div>
+        <!-- container-scroller -->
+
+        <!--bootstrap js-->
+
+        <!--jquery lib for checkout step by step-->
+
+        <!--end-->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script crossorigin="anonymous"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
+        <script crossorigin="anonymous"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+
+
+        <!-- Custom js for this page -->
+        <script src="../../assets/js/custom/main.js"></script>
+        <script src="../../assets/js/custom/main.js"></script>
+        <script src="../../assets/js/custom/checkout.js"></script>
+        <script src="../../assets/js/file-upload.js"></script>
+
+</body>
+</html>
