@@ -110,7 +110,6 @@
 })(jQuery);
 
 
-
 /*dot 3 in pro pic*/
 (function($) {
     'use strict';
