@@ -7,6 +7,9 @@ function getAllProducts() {
         url: "http://localhost:8080/api/v1/inventory/getALl",
         method: "GET",
         dataType: "json",
+        "headers": {
+            "Authorization": "Bearer "+token
+        },
         success: function (response) {
             console.log(response);
             $(".productCount").text(response.length)
@@ -68,6 +71,9 @@ function countMensIds() {
         url: "http://localhost:8080/api/v1/inventory/countByCategories/M",
         method: "GET",
         // dataType: "json",
+        "headers": {
+            "Authorization": "Bearer "+token
+        },
         success: function (response) {
             console.log(response);
             console.log(response.length);
@@ -91,6 +97,9 @@ function countWomensIds() {
         url: "http://localhost:8080/api/v1/inventory/countByCategories/W",
         method: "GET",
         // dataType: "json",
+        "headers": {
+            "Authorization": "Bearer "+token
+        },
         success: function (response) {
             console.log(response);
             console.log(response.length);
@@ -143,6 +152,9 @@ $("#applyBtn").click(function () {
         $.ajax({
             url: "http://localhost:8080/api/v1/inventory/searchByAllConditions/" + categoryBoxesArray[0] + "/" + typeBoxesArray[0] + "/" + minPrice + "/" + maxPrice,
             method: "GET",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success: function (response) {
                 console.log(response);
                 console.log(response.length);
@@ -162,6 +174,9 @@ $("#applyBtn").click(function () {
         $.ajax({
             url: "http://localhost:8080/api/v1/inventory/searchByCategory/" + categoryBoxesArray[0],
             method: "GET",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success: function (response) {
                 console.log(response);
                 console.log(response.length);
@@ -179,6 +194,9 @@ $("#applyBtn").click(function () {
         $.ajax({
             url: "http://localhost:8080/api/v1/inventory/searchByType/" + typeBoxesArray[0],
             method: "GET",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success: function (response) {
                 console.log(response);
                 console.log(response.length);
@@ -196,6 +214,9 @@ $("#applyBtn").click(function () {
         $.ajax({
             url: "http://localhost:8080/api/v1/inventory/searchByPrice/" + minPrice + "/" + maxPrice,
             method: "GET",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success: function (response) {
                 console.log(response);
                 console.log(response.length);
@@ -213,6 +234,9 @@ $("#applyBtn").click(function () {
         $.ajax({
             url: "http://localhost:8080/api/v1/inventory/searchByCategoryAndType/" + categoryBoxesArray[0] + "/" + typeBoxesArray[0],
             method: "GET",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success: function (response) {
                 console.log(response);
                 console.log(response.length);
@@ -230,6 +254,9 @@ $("#applyBtn").click(function () {
         $.ajax({
             url: "http://localhost:8080/api/v1/inventory/searchByCategoryAndPrice/" + categoryBoxesArray[0] + "/" + minPrice + "/" + maxPrice,
             method: "GET",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success: function (response) {
                 console.log(response);
                 console.log(response.length);
@@ -247,6 +274,9 @@ $("#applyBtn").click(function () {
         $.ajax({
             url: "http://localhost:8080/api/v1/inventory/searchByTypeAndPrice/" + typeBoxesArray[0] + "/" + minPrice + "/" + maxPrice,
             method: "GET",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success: function (response) {
                 console.log(response);
                 console.log(response.length);

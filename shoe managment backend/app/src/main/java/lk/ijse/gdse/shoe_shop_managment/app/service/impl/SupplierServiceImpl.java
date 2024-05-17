@@ -1,9 +1,10 @@
-package lk.ijse.gdse.shoe_shop_managment.app.service;
+package lk.ijse.gdse.shoe_shop_managment.app.service.impl;
 
 import lk.ijse.gdse.shoe_shop_managment.app.dto.SupplierDTO;
 import lk.ijse.gdse.shoe_shop_managment.app.entity.Employee;
 import lk.ijse.gdse.shoe_shop_managment.app.entity.Supplier;
 import lk.ijse.gdse.shoe_shop_managment.app.repository.SupplierRepo;
+import lk.ijse.gdse.shoe_shop_managment.app.service.SupplierService;
 import lk.ijse.gdse.shoe_shop_managment.app.service.exception.DuplicateRecordException;
 import lk.ijse.gdse.shoe_shop_managment.app.service.exception.NotFoundException;
 import org.modelmapper.ModelMapper;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class SupplierServiceImpl implements SupplierService{
+public class SupplierServiceImpl implements SupplierService {
     @Autowired
     private SupplierRepo supplierRepo;
 

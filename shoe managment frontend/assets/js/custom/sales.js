@@ -6,6 +6,9 @@ function getAllSales(){
         url: "http://localhost:8080/api/v1/sales/getAll",
         method: "GET",
         dataType: "json",
+        "headers": {
+            "Authorization": "Bearer "+token
+        },
         success: function (response) {
             console.log(response);
             getAllResponse=response;
@@ -150,6 +153,9 @@ $("#saleSearch").on("input", function () {
         url: 'http://localhost:8080/api/v1/sales/searchById?id='+id,
         method:"GET",
         dataType: "json",
+        "headers": {
+            "Authorization": "Bearer "+token
+        },
         success:function (response) {
 
             console.log(response)

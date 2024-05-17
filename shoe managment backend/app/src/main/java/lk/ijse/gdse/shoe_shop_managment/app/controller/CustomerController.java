@@ -1,6 +1,8 @@
 package lk.ijse.gdse.shoe_shop_managment.app.controller;
 
 import lk.ijse.gdse.shoe_shop_managment.app.dto.CustomerDTO;
+import lk.ijse.gdse.shoe_shop_managment.app.response.JwtAuthResponse;
+import lk.ijse.gdse.shoe_shop_managment.app.service.AuthenticationService;
 import lk.ijse.gdse.shoe_shop_managment.app.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,9 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+
+    @Autowired
+    private AuthenticationService authenticationService;
 
     public CustomerController() {
         System.out.println("customer working !");
@@ -56,4 +61,6 @@ public class CustomerController {
     public CustomerDTO findById(@PathVariable String code){
         return customerService.findById(code);
     }
+
+
 }

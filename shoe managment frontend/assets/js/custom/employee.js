@@ -10,6 +10,9 @@ window.onload = function() {
         $.ajax({
             url:"http://localhost:8080/api/v1/employee/nextId",
             method:"GET",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success:function (response) {
                 console.log(response)
                 $("#eId").val(response);
@@ -28,6 +31,9 @@ window.onload = function() {
             url: "http://localhost:8080/api/v1/employee/getAllEmployees",
             method: "GET",
             dataType: "json",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success: function (response) {
                 console.log(response);
                 console.log(response.length);
@@ -128,6 +134,9 @@ window.onload = function() {
             processData: false,
             contentType: false,
             data:formData,
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
 
             success:function (response) {
                 console.log(response)
@@ -209,6 +218,9 @@ window.onload = function() {
             processData: false,
             contentType: false,
             data:formData,
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
 
             success:function (response) {
                 console.log(response)
@@ -254,6 +266,9 @@ window.onload = function() {
         $.ajax({
             url: 'http://localhost:8080/api/v1/employee/delete/'+id,
             method:"delete",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success:function (response) {
                 console.log(response)
                 getAllEmployees();
@@ -380,6 +395,9 @@ window.onload = function() {
             url: 'http://localhost:8080/api/v1/employee/search?name='+name,
             method:"GET",
             dataType: "json",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
 
             success:function (response) {
                 console.log(response)

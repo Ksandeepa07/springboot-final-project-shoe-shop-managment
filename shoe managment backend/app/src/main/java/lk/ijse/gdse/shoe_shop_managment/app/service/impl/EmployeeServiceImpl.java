@@ -1,8 +1,9 @@
-package lk.ijse.gdse.shoe_shop_managment.app.service;
+package lk.ijse.gdse.shoe_shop_managment.app.service.impl;
 
 import lk.ijse.gdse.shoe_shop_managment.app.dto.EmployeeDTO;
 import lk.ijse.gdse.shoe_shop_managment.app.entity.Employee;
 import lk.ijse.gdse.shoe_shop_managment.app.repository.EmployeeRepo;
+import lk.ijse.gdse.shoe_shop_managment.app.service.EmployeeService;
 import lk.ijse.gdse.shoe_shop_managment.app.service.exception.DuplicateRecordException;
 import lk.ijse.gdse.shoe_shop_managment.app.service.exception.NotFoundException;
 import org.modelmapper.ModelMapper;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService{
+public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeRepo employeeRepo;

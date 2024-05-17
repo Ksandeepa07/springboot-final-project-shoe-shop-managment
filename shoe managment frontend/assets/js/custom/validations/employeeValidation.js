@@ -34,6 +34,9 @@ function clearEmployeeInputFields() {
     $("#eGuardian").val("")
     $("#eGuardian").css({"border": "none "});
 
+    $("#eImage").val("")
+
+
     $('#eGender').prop('selectedIndex', 0);
     $('#eStatus').prop('selectedIndex', 0);
     $('#eDesignation').prop('selectedIndex', 0);

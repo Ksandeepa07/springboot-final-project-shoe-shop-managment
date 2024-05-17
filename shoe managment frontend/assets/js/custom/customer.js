@@ -1,13 +1,16 @@
 
 window.onload = function() {
-
     getAllCustomers();
     loadNextCustomerId();
 
     /*get all*/
     function getAllCustomers() {
+        console.log(+localStorage.getItem("token"));
         $.ajax({
             url: "http://localhost:8080/api/v1/customer/getAllCustomers",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             method: "GET",
             dataType: "json",
             success: function (response) {
@@ -17,6 +20,11 @@ window.onload = function() {
             },
             error: function (xhr, status, err) {
                 console.log(err)
+                console.log(xhr.status);
+                // if(xhr.status === 401){
+                //    alert("token expired!!")
+                //
+                // }
             }
         })
     }
@@ -56,6 +64,9 @@ window.onload = function() {
     function loadNextCustomerId(){
         $.ajax({
             url:"http://localhost:8080/api/v1/customer/nextId",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             method:"GET",
             success:function (response) {
                 console.log(response)
@@ -104,6 +115,9 @@ window.onload = function() {
             method:"Post",
             dataType: "json",
             contentType:"application/json",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             data:JSON.stringify({
                 "code":id,
                 "name":name,
@@ -182,6 +196,9 @@ window.onload = function() {
             method:"Patch",
             dataType:"json",
             contentType:"application/json",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             data:JSON.stringify({
                 "code":code,
                 "name":name,
@@ -239,6 +256,9 @@ window.onload = function() {
         $.ajax({
             url: 'http://localhost:8080/api/v1/customer/delete/'+id,
             method:"delete",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success:function (response) {
                 console.log(response)
                 getAllCustomers();
@@ -310,7 +330,9 @@ window.onload = function() {
             url: 'http://localhost:8080/api/v1/customer/search?name='+name,
             method:"GET",
             dataType: "json",
-
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success:function (response) {
 
                 console.log(response)

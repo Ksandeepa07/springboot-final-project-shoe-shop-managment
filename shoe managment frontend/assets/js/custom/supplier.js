@@ -10,6 +10,9 @@ window.onload = function() {
             url: "http://localhost:8080/api/v1/supplier/getAll",
             method: "GET",
             dataType: "json",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success: function (response) {
                 console.log(response);
                 console.log(response.length);
@@ -51,6 +54,9 @@ window.onload = function() {
         $.ajax({
             url:"http://localhost:8080/api/v1/supplier/nextId",
             method:"GET",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success:function (response) {
                 console.log(response)
                 $("#sId").val(response);
@@ -97,6 +103,9 @@ window.onload = function() {
             method:"Post",
             dataType: "json",
             contentType:"application/json",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             data:JSON.stringify({
                 "code":code,
                 "name":name,
@@ -170,6 +179,9 @@ window.onload = function() {
             method:"Patch",
             dataType: "json",
             contentType:"application/json",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             data:JSON.stringify({
                 "code":code,
                 "name":name,
@@ -225,6 +237,9 @@ window.onload = function() {
         $.ajax({
             url: 'http://localhost:8080/api/v1/supplier/delete/'+id,
             method:"delete",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success:function (response) {
                 console.log(response)
                 getAllSuppliers();
@@ -256,6 +271,9 @@ window.onload = function() {
             url: 'http://localhost:8080/api/v1/supplier/search?name='+name,
             method:"GET",
             dataType: "json",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
 
             success:function (response) {
 

@@ -1,8 +1,9 @@
-package lk.ijse.gdse.shoe_shop_managment.app.service;
+package lk.ijse.gdse.shoe_shop_managment.app.service.impl;
 
 import lk.ijse.gdse.shoe_shop_managment.app.dto.CustomerDTO;
 import lk.ijse.gdse.shoe_shop_managment.app.entity.Customer;
 import lk.ijse.gdse.shoe_shop_managment.app.repository.CustomerRepo;
+import lk.ijse.gdse.shoe_shop_managment.app.service.CustomerService;
 import lk.ijse.gdse.shoe_shop_managment.app.service.exception.DuplicateRecordException;
 import lk.ijse.gdse.shoe_shop_managment.app.service.exception.NotFoundException;
 import org.modelmapper.ModelMapper;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CustomerServiceImpl implements CustomerService{
+public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     private CustomerRepo customerRepo;

@@ -1,4 +1,4 @@
-package lk.ijse.gdse.shoe_shop_managment.app.service;
+package lk.ijse.gdse.shoe_shop_managment.app.service.impl;
 
 import lk.ijse.gdse.shoe_shop_managment.app.Embeddable.SalesServicePK;
 import lk.ijse.gdse.shoe_shop_managment.app.dto.*;

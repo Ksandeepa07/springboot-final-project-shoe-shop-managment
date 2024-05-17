@@ -1,4 +1,4 @@
-package lk.ijse.gdse.shoe_shop_managment.app.service;
+package lk.ijse.gdse.shoe_shop_managment.app.service.impl;
 
 import lk.ijse.gdse.shoe_shop_managment.app.dto.*;
 import lk.ijse.gdse.shoe_shop_managment.app.entity.Employee;
@@ -8,6 +8,7 @@ import lk.ijse.gdse.shoe_shop_managment.app.entity.Supplier;
 import lk.ijse.gdse.shoe_shop_managment.app.repository.InventoryRepo;
 import lk.ijse.gdse.shoe_shop_managment.app.repository.ShoeSizeRepo;
 import lk.ijse.gdse.shoe_shop_managment.app.repository.SupplierRepo;
+import lk.ijse.gdse.shoe_shop_managment.app.service.InventoryService;
 import lk.ijse.gdse.shoe_shop_managment.app.service.exception.DuplicateRecordException;
 import lk.ijse.gdse.shoe_shop_managment.app.service.exception.NotFoundException;
 import org.modelmapper.ModelMapper;

@@ -61,6 +61,9 @@ loadNextOrderId();
 function loadNextOrderId(){
     $.ajax({
         url:"http://localhost:8080/api/v1/sales/nextId",
+        "headers": {
+            "Authorization": "Bearer "+token
+        },
         method:"GET",
         success:function (response) {
             console.log(response)
@@ -76,6 +79,9 @@ function loadNextOrderId(){
 function loadAllCustomerInCheckOut(){
     $.ajax({
         url: "http://localhost:8080/api/v1/customer/getAllCustomers",
+        "headers": {
+            "Authorization": "Bearer "+token
+        },
         method: "GET",
         dataType: "json",
         success: function (response) {
@@ -105,6 +111,9 @@ $("#pCustomerCode").click(function (){
     let code=$("#pCustomerCode").val();
     $.ajax({
         url: "http://localhost:8080/api/v1/customer/findByCode/"+code,
+        "headers": {
+            "Authorization": "Bearer "+token
+        },
         method: "GET",
         dataType: "json",
         success: function (response) {
@@ -128,8 +137,12 @@ $("#pCustomerCode").click(function (){
 function loadAllItemInCheckOut(){
     $.ajax({
         url: "http://localhost:8080/api/v1/inventory/getALl",
+        "headers": {
+            "Authorization": "Bearer "+token
+        },
         method: "GET",
         dataType: "json",
+
         success: function (response) {
             console.log(response);
             console.log(response.length);
@@ -159,8 +172,12 @@ $("#pItemCode").click(function (){
     let code=$("#pItemCode").val();
     $.ajax({
         url: "http://localhost:8080/api/v1/inventory/findByCode/"+code,
+        "headers": {
+            "Authorization": "Bearer "+token
+        },
         method: "GET",
         dataType: "json",
+
         success: function (response) {
             console.log(response);
             console.log(response.length);
@@ -411,8 +428,12 @@ $("#placeOrderBtn").click(function (){
 
     $.ajax({
         url: 'http://localhost:8080/api/v1/sales/save',
+        "headers": {
+            "Authorization": "Bearer "+token
+        },
         method:"Post",
         contentType:"application/json",
+
         data:JSON.stringify(sales),
 
         success:function (response) {
@@ -492,6 +513,9 @@ $(".placeOrderBtn").click(function (){
 
     $.ajax({
         url: 'http://localhost:8080/api/v1/sales/save',
+        "headers": {
+            "Authorization": "Bearer "+token
+        },
         method:"Post",
         contentType:"application/json",
         data:JSON.stringify(sales),

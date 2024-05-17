@@ -10,6 +10,9 @@ window.onload = function() {
             url: "http://localhost:8080/api/v1/inventory/getALl",
             method: "GET",
             dataType: "json",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success: function (response) {
                 console.log(response);
                 console.log(response.length);
@@ -71,6 +74,9 @@ window.onload = function() {
         $.ajax({
             url: "http://localhost:8080/api/v1/inventory/nextId/" + variety,
             method: "GET",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success: function (response) {
                 console.log(response)
                 $("#iCode").val(response);
@@ -90,6 +96,9 @@ window.onload = function() {
         $.ajax({
             url: "http://localhost:8080/api/v1/inventory/loadSupplierCode",
             method: "GET",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success: function (response) {
                 console.log(response)
                 supplierResponse = response;
@@ -196,6 +205,9 @@ window.onload = function() {
                 method: "Post",
                 dataType: "json",
                 contentType: "application/json",
+                "headers": {
+                    "Authorization": "Bearer "+token
+                },
                 data: JSON.stringify(itemData),
 
                 success: function (response) {
@@ -302,6 +314,9 @@ window.onload = function() {
                 method: "Patch",
                 dataType: "json",
                 contentType: "application/json",
+                "headers": {
+                    "Authorization": "Bearer "+token
+                },
                 data: JSON.stringify(itemData),
 
                 success: function (response) {
@@ -533,6 +548,9 @@ window.onload = function() {
         $.ajax({
             url: 'http://localhost:8080/api/v1/inventory/delete/'+id,
             method:"delete",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
             success:function (response) {
                 console.log(response)
                 // getAllEmployees();
@@ -572,6 +590,9 @@ window.onload = function() {
             url: 'http://localhost:8080/api/v1/inventory/search?name='+name,
             method:"GET",
             dataType: "json",
+            "headers": {
+                "Authorization": "Bearer "+token
+            },
 
             success:function (response) {
 

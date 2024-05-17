@@ -52,5 +52,6 @@ public class GlobalExceptionHandler {
         errAttribute.put("status",status);
         return errAttribute;
 
+
     }
 }
