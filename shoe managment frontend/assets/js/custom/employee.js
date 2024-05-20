@@ -1,8 +1,11 @@
 
 window.onload = function() {
-
     getAllEmployees();
     loadNextEmployeeId();
+    let proPic = ` <img alt="" class="img-xs rounded-circle " src="data:image/png;base64,${localStorage.getItem("userProPic")}">
+                        <span class="count bg-success"></span>`;
+    $(".userPic").append(proPic);
+    $(".userName").text(localStorage.getItem("userName"));
     let x=1;
 
     /*next id*/

@@ -46,8 +46,6 @@ public class CustomerServiceImpl implements CustomerService {
             }
         }
 
-
-
         customerDTO.setLoyaltyLevel(customer.getLoyaltyLevel());
         customerDTO.setLoyaltyPoints(customer.getLoyaltyPoints());
         customerDTO.setRecentPurchaseDate(customer.getRecentPurchaseDate());

@@ -56,6 +56,11 @@ loadAllItemInCheckOut();
 loadDate();
 loadNextOrderId();
 
+let proPic = ` <img alt="" class="img-xs rounded-circle " src="data:image/png;base64,${localStorage.getItem("userProPic")}">
+                        <span class="count bg-success"></span>`;
+$(".userPic").append(proPic);
+$(".userName").text(localStorage.getItem("userName"));
+localStorage.getItem("userName");
 
 /*load order id*/
 function loadNextOrderId(){
@@ -496,6 +501,7 @@ $(".placeOrderBtn").click(function (){
     if (customerId==="Choose..."){
         customerId=null;
     }
+
     var sales={
         "orderId":orderCode,
         "orderDate":date,
@@ -510,7 +516,50 @@ $(".placeOrderBtn").click(function (){
 
     console.log(sales)
 
+    /*check if user role is non admin*/
+    if (localStorage.getItem("userRole")==="USER"){
+      $("#adminCredentialModal").modal('show');
+      $("#credentialsContinueBtn").click(function (){
+           sendAjaxToVerifyPassword($("#verifyUserEmail").val(),$("#verifyUserPassword").val(),function (isVerified){
 
+               if (isVerified){
+                   console.log(isVerified)
+                   /*send requests for non admin user*/
+
+                   $.ajax({
+                       url: 'http://localhost:8080/api/v1/sales/save',
+                       "headers": {
+                           "Authorization": "Bearer "+token
+                       },
+                       method:"Post",
+                       contentType:"application/json",
+                       data:JSON.stringify(sales),
+
+                       success:function (response) {
+                           console.log(response)
+                           $('#pContinueBtn').trigger('click');
+                           $('.paymentBillSlip').css('display', 'block');
+                           setDataToBill(sales.salesServices);
+                           clearAllFields();
+
+                       },
+                       error:function (xhr,status,err) {
+                           console.log(err)
+                           console.log(xhr.status)
+                       }
+                   })
+
+               }else{
+                   console.log(isVerified)
+                   return false;
+               }
+           })
+      })
+        return false;
+    }
+
+
+/*send requests for admin user*/
     $.ajax({
         url: 'http://localhost:8080/api/v1/sales/save',
         "headers": {
@@ -537,6 +586,54 @@ $(".placeOrderBtn").click(function (){
 
 })
 
+
+/*verify password of non admin user*/
+ function  sendAjaxToVerifyPassword(email,password,callBack){
+    console.log(email)
+    console.log(password)
+
+    $.ajax({
+        url: 'http://localhost:8080/api/v1/auth/signing',
+        method: "Post",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify({
+            "email": email,
+            "password": password,
+        }),
+
+        success: function (response) {
+            console.log(response)
+
+            $.each(response, function (index, login) {
+                console.log(login.userRole)
+                if (login.userRole === "ADMIN") {
+                    callBack(true);
+                    $('#credentialModalCloseBtn').trigger('click');
+
+                }
+            })
+
+        },
+        error: function (xhr, status, err) {
+            console.log(err)
+            console.log(xhr.status)
+            console.log(xhr.responseText)
+            if (xhr.status === 404) {
+                let message = JSON.parse(xhr.responseText).message;
+                if (message === "username") {
+                    alert("Username is incorrect !!")
+                } else if (message === "password") {
+                    alert("Password is incorrect !!")
+                }
+                callBack(false)
+
+            }
+        }
+
+    })
+
+}
 
 
 /*set data to payment slip*/

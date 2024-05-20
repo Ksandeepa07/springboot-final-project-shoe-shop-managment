@@ -23,12 +23,12 @@ public class User implements UserDetails {
     private String email;
     private String password;
     @Enumerated(value = EnumType.STRING)
-    private Role role;
+    private Role userRole;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         HashSet<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority("Role"+role.name()));
+        grantedAuthorities.add(new SimpleGrantedAuthority("Role"+userRole.name()));
         return grantedAuthorities;
 
     }

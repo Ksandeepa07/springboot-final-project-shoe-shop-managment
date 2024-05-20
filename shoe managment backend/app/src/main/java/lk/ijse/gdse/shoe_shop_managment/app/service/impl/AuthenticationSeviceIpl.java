@@ -3,12 +3,16 @@ package lk.ijse.gdse.shoe_shop_managment.app.service.impl;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lk.ijse.gdse.shoe_shop_managment.app.dto.EmployeeDTO;
 import lk.ijse.gdse.shoe_shop_managment.app.dto.UserDTO;
+import lk.ijse.gdse.shoe_shop_managment.app.entity.Employee;
 import lk.ijse.gdse.shoe_shop_managment.app.entity.User;
+import lk.ijse.gdse.shoe_shop_managment.app.repository.EmployeeRepo;
 import lk.ijse.gdse.shoe_shop_managment.app.repository.UserRepo;
 import lk.ijse.gdse.shoe_shop_managment.app.request.SignUpRequest;
 import lk.ijse.gdse.shoe_shop_managment.app.response.JwtAuthResponse;
 import lk.ijse.gdse.shoe_shop_managment.app.service.AuthenticationService;
+import lk.ijse.gdse.shoe_shop_managment.app.service.EmployeeService;
 import lk.ijse.gdse.shoe_shop_managment.app.service.JwtService;
 import lk.ijse.gdse.shoe_shop_managment.app.service.UserService;
 import lk.ijse.gdse.shoe_shop_managment.app.service.exception.NotFoundException;
@@ -27,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.Instant;
 import java.util.Date;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -35,13 +40,19 @@ public class AuthenticationSeviceIpl implements AuthenticationService {
 
     @Autowired
     private final PasswordEncoder passwordEncoder;
+
     private final ModelMapper mapper;
+
     @Autowired
     private JwtService jwtService;
+
     private final UserRepo userRepo;
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private EmployeeRepo employeeRepo;
 
     private final AuthenticationManager authenticationManager;
 
@@ -54,23 +65,24 @@ public class AuthenticationSeviceIpl implements AuthenticationService {
         }
 
         try {
-
             authenticationManager.authenticate((new UsernamePasswordAuthenticationToken(sIgnInRequest.getEmail(), sIgnInRequest.getPassword())));
             User user = userRepo.findByEmail(sIgnInRequest.getEmail()).get();
+            Employee employee = employeeRepo.findByEmail(sIgnInRequest.getEmail()).get();
+
 
             String generatedToken = jwtService.generateToken(user);
-            UserDTO userDTtO=new UserDTO(user.getEmail(),user.getPassword(),user.getRole());
+//            UserDTO userDTtO=new UserDTO(user.getEmail(),user.getPassword(),user.getRole());
             Date currentDate=new Date();
             return JwtAuthResponse.builder()
                     .token(generatedToken)
-                    .userDTO(userDTtO)
+                    .userDTO(mapper.map(user,UserDTO.class))
 //                    .role(user.getRole().toString())
                     .date(new Date( currentDate.getTime() +1000*600))
+                    .employeeDTO(mapper.map(employee,EmployeeDTO.class))
                     .build();
 
         }catch (Exception e){
             throw new NotFoundException("password");
-
         }
 
 
@@ -83,7 +95,7 @@ public class AuthenticationSeviceIpl implements AuthenticationService {
         UserDTO userDTO = UserDTO.builder()
                 .email(signUpRequest.getEmail())
                 .password(passwordEncoder.encode(signUpRequest.getPassword()))
-                .role(Role.fromString(signUpRequest.getRole()))
+                .userRole(Role.fromString(signUpRequest.getRole()))
                 .build();
 
         User user = userRepo.save(mapper.map(userDTO, User.class));
@@ -104,7 +116,7 @@ public class AuthenticationSeviceIpl implements AuthenticationService {
             User user = userRepo.findByEmail(userDetails.getUsername()).get();
 
             String generatedToken = jwtService.generateToken(user);
-            UserDTO userDTtO=new UserDTO(user.getEmail(),user.getPassword(),user.getRole());
+            UserDTO userDTtO=new UserDTO(user.getEmail(),user.getPassword(),user.getUserRole());
             Date currentDate=new Date();
             return JwtAuthResponse.builder()
                     .token(generatedToken)

@@ -1,5 +1,6 @@
 package lk.ijse.gdse.shoe_shop_managment.app.response;
 
+import lk.ijse.gdse.shoe_shop_managment.app.dto.EmployeeDTO;
 import lk.ijse.gdse.shoe_shop_managment.app.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,4 +18,5 @@ public class JwtAuthResponse {
 //    private String role;
     private UserDTO userDTO;
     private Date date;
+    private EmployeeDTO employeeDTO;
 }

@@ -38,12 +38,12 @@
             <li class="nav-item profile">
                 <div class="profile-desc">
                     <div class="profile-pic">
-                        <div class="count-indicator">
-                            <img alt="" class="img-xs rounded-circle " src="../../assets/images/faces/face15.jpg">
+                        <div class="count-indicator userPic">
+
                             <span class="count bg-success"></span>
                         </div>
                         <div class="profile-name">
-                            <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
+                            <h5 class="mb-0 font-weight-normal userName"></h5>
                             <!--                            <span>Gold Member</span>-->
                         </div>
                     </div>
@@ -160,10 +160,8 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#" id="profileDropdown">
-                            <div class="navbar-profile">
-                                <img alt="" class="img-xs rounded-circle" src="../../assets/images/faces/face15.jpg">
-                                <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
-                                <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                            <div class="navbar-profile userPic">
+
                             </div>
                         </a>
                         <div aria-labelledby="profileDropdown"
@@ -779,6 +777,48 @@
 
                     <!--end of forms-->
 
+                    <!--modal to enter admin credentials-->
+
+                    <div style="position: absolute; top: 0;bottom: 0;margin: auto;height: max-content" class="modal fade " id="adminCredentialModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"+>
+                        <div class="modal-dialog" role="document">
+                            <div  class="modal-content " style="width: max-content; background-color: #191c20">
+                                <div class="modal-body  ">
+
+
+
+
+                                            <div style="background-color: transparent" class="content-wrapper full-page-wrapper d-flex align-items-center auth ">
+                                                <div class="card" style="width: 350px">
+                                                    <div class="card-body">
+                                                        <h3 class="card-title text-left mb-3">Enter Admin Credentials</h3>
+                                                        <form>
+                                                            <div class="form-group">
+                                                                <label>Username or email *</label>
+                                                                <input class="form-control p_input" id="verifyUserEmail" type="text">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Password *</label>
+                                                                <input class="form-control p_input" id="verifyUserPassword" type="password">
+                                                            </div>
+
+                                                        </form>
+                                                    </div>
+                                                </div>
+
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="credentialModalCloseBtn">Close</button>
+                                    <button type="button" class="btn btn-primary" id="credentialsContinueBtn">Continue</button>
+                                    <!--                              <button type="button" class="btn btn-primary">Save changes</button>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--end of modal-->
+
                     <!-- partial -->
                 </div>
                 <!-- main-panel ends -->
@@ -804,6 +844,7 @@
 
 
         <!-- Custom js for this page -->
+        <script src="../../assets/js/custom/token.js"></script>
         <script src="../../assets/js/custom/main.js"></script>
         <script src="../../assets/js/custom/main.js"></script>
         <script src="../../assets/js/custom/checkout.js"></script>
