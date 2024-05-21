@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SalesService {
 
-
     @EmbeddedId
     private SalesServicePK salesServicePK;
 
@@ -24,6 +23,7 @@ public class SalesService {
     @ManyToOne
     @JoinColumn(name = "item_id",insertable = false,updatable = false)
     private Inventory item_id;
+
 
     private String name;
 //    private String size;

@@ -30,7 +30,7 @@ public class Sales {
 
     private String customerName;
 
-    @OneToMany(mappedBy = "order_id")
+    @OneToMany(mappedBy = "order_id",fetch = FetchType.EAGER)
     private List<SalesService> salesServices;
 
     public Sales(String orderId, Timestamp orderDate, String paymentMethod, Double totalPrice, Double addedPoints, String cashierName) {

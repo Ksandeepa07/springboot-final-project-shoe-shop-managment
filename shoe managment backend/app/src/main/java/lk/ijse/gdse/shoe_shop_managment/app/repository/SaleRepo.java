@@ -5,9 +5,12 @@ import lk.ijse.gdse.shoe_shop_managment.app.entity.Sales;
 import lk.ijse.gdse.shoe_shop_managment.app.entity.Supplier;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface SaleRepo extends JpaRepository<Sales,String > {
     Sales findTopByOrderByOrderIdDesc();
     List<Sales> findByOrderIdStartingWith(String id);
+
+
 }

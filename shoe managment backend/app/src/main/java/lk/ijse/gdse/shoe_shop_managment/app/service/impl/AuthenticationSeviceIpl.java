@@ -77,7 +77,7 @@ public class AuthenticationSeviceIpl implements AuthenticationService {
                     .token(generatedToken)
                     .userDTO(mapper.map(user,UserDTO.class))
 //                    .role(user.getRole().toString())
-                    .date(new Date( currentDate.getTime() +1000*600))
+                    .date(new Date( currentDate.getTime() +1000*1800))
                     .employeeDTO(mapper.map(employee,EmployeeDTO.class))
                     .build();
 
