@@ -256,13 +256,13 @@ $("#rSearch").on("input", function () {
             "Authorization": "Bearer "+token
         },
         success:function (response) {
-
+            $("#rTable").empty();
             console.log(response)
 
             $.each(response, function (index, sales) {
 
                 setTimeout(function (){
-                    $("#rTable").empty();
+
                     const orderDate = new Date(sales.orderDate);
                     const threeDaysAgo = new Date();
                     threeDaysAgo.setDate(new Date().getDate() - 3);

@@ -1,3 +1,8 @@
+let proPic = ` <img alt="" class="img-xs rounded-circle " src="data:image/png;base64,${localStorage.getItem("userProPic")}">
+                        <span class="count bg-success"></span>`;
+$(".userPic").append(proPic);
+$(".userName").text(localStorage.getItem("userName"));
+
 const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])(?=.*.{8,})/;
 const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -35,35 +40,16 @@ $("#signUpBtn").click(function (){
 
         success:function (response) {
             console.log(response)
-            // localStorage.setItem("token",response.token)
-            // localStorage.setItem("date",response.date)
-            window.location.href="/shoe managment frontend/pages/auth/login.html";
-            // $.each(response, function (index, login) {
-            //     console.log(login.role)
-            //     if (login.role==="ADMIN"){
-            //         console.log(login.token)
-            //         window.location.href="/shoe managment frontend/pages/admin/adminDashboard.html";
-            //     }
-            //     else if (login.role==="USER"){
-            //         console.log(login.token)
-            //         window.location.href="/shoe managment frontend/pages/user/userDashboard.html";
-            //     }
-            // })
-
+            // window.location.href="/shoe managment frontend/pages/auth/login.html";
+            $("#sUserEmail").val("");
+            $("#sUserPassword").val("");
+            $("#sUserRole").prop('selectedIndex', 0);
         },
         error:function (xhr,status,err) {
             console.log(err)
             console.log(xhr.status)
             console.log(xhr.responseText)
-            // if(xhr.status === 404){
-            //     let message=JSON.parse(xhr.responseText).message;
-            //     if(message==="username"){
-            //         alert("Username is incorrect !!")
-            //     } else if(message==="password"){
-            //         alert("Password is incorrect !!")
-            //     }
-            //
-            // }
+
         }
 
     })

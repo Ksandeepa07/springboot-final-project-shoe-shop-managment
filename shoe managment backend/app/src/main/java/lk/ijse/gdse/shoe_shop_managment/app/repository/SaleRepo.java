@@ -16,6 +16,4 @@ public interface SaleRepo extends JpaRepository<Sales,String > {
 
     @Query(value = "SELECT SUM(total_price) FROM sales where order_date like :date%",nativeQuery = true)
     Integer totalSalesForADay(@Param("date") String date);
-
-
 }

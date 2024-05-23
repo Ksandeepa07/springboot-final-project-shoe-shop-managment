@@ -161,13 +161,13 @@ $("#saleSearch").on("input", function () {
             "Authorization": "Bearer "+token
         },
         success:function (response) {
-
+            $("#saleTable").empty();
             console.log(response)
 
             $.each(response, function (index, sales) {
 
                 setTimeout(function (){
-                    $("#saleTable").empty();
+
 
                     if (sales.customerName===""){
                         sales.customerName="Not a loyalty customer"
