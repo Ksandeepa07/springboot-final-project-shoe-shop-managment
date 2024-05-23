@@ -7,11 +7,13 @@ import lk.ijse.gdse.shoe_shop_managment.app.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -33,11 +35,19 @@ public class EmailServiceImpl implements EmailService {
         javaMailSender.send(message);
         return true;
     }
+
+
     public boolean sendBirthdayEmails() {
         LocalDate today = LocalDate.now();
         Instant instant = today.atStartOfDay(ZoneId.systemDefault()).toInstant();
         Date date = Date.from(instant);
-        List<Customer> customers = customerRepo.findByDob(date);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        List<Customer> customers = customerRepo.findByMonthAndDay(month,day);
 
         for (Customer customer : customers) {
             System.out.println(customer.getEmail());
@@ -48,4 +58,9 @@ public class EmailServiceImpl implements EmailService {
 
         return true;
     }
+
+
+
+
+
 }

@@ -26,6 +26,7 @@ countCustomers();
 countEmployees();
 countSuppliers();
 countOrders();
+checkAndSendBirthdayWishes();
 
 
 
@@ -759,6 +760,42 @@ function countOrders(){
             }else{
                 $("#ordersCount").text(response)
             }
+
+        },
+        error: function (xhr, status, err) {
+            console.log(err)
+            console.log(xhr.status);
+        }
+    })
+}
+
+
+
+
+
+//send customer birthday wishes
+
+function checkAndSendBirthdayWishes() {
+    const today = new Date().toISOString().split('T')[0];
+    const lastSentDate = localStorage.getItem('lastBirthdayWishesSentDate');
+
+    if (lastSentDate !== today) {
+        sendEmail();
+    }
+}
+
+
+function sendEmail(){
+    $.ajax({
+        url: "http://localhost:8080/api/v1/customer/sendEmail",
+        "headers": {
+            "Authorization": "Bearer "+token
+        },
+        method: "GET",
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            localStorage.setItem('lastBirthdayWishesSentDate', new Date().toISOString().split('T')[0]);
 
         },
         error: function (xhr, status, err) {
