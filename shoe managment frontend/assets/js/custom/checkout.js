@@ -291,6 +291,7 @@ $("#pAddTOCartBtn").click(function (){
             if (addToCartArray[i].item_id===code && addToCartArray[i].size===size){
                 let newCardDetails = searchOrder(addToCartArray[i].item_id,addToCartArray[i].size);
                 newCardDetails.itemQty=parseInt(buyingQty)+parseInt(newCardDetails.itemQty);
+                newCardDetails.unitPrice= newCardDetails.unitPrice+parseInt(unitPrice)*parseInt(buyingQty);
                 // newCardDetails.total=parseInt(addToCartArray[i].total)+total;
 
                 calculateNetTotal();
@@ -371,12 +372,14 @@ function setDataToCart(){
  function calculateNetTotal(){
 
      let netTotal=0;
+     $("#netTotal").val("")
      for (let i = 0; i < addToCartArray.length; i++) {
          // console.log(parseInt(addToCartArray[i].unitPrice));
          console.log(parseInt($("#pItemPrice").val()));
          console.log(parseInt(addToCartArray[i].itemQty));
          // netTotal=netTotal+(parseInt(addToCartArray[i].unitPrice)*parseInt(addToCartArray[i].itemQty));
-         netTotal=netTotal+(parseInt($("#pItemPrice").val())*parseInt(addToCartArray[i].itemQty));
+         // netTotal=netTotal+(parseInt($("#pItemPrice").val())*parseInt(addToCartArray[i].itemQty));
+         netTotal=netTotal+(parseInt(addToCartArray[i].unitPrice));
          $("#netTotal").val(netTotal)
      }
 }

@@ -615,3 +615,19 @@ span.round-tab i{
 .table td, .jsgrid .jsgrid-table td {
     color: lightsteelblue;
 }
+
+
+
+/*dashboard pie chart column css*/
+@media (min-width: 1200px) and (max-width: 1600px) {
+    .custom-cols {
+        flex-basis: 50%;
+        max-width: 50%;
+    }
+
+    .custom-cols-last{
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+}

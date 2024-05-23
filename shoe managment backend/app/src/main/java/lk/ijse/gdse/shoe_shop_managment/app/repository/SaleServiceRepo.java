@@ -20,6 +20,10 @@ public interface SaleServiceRepo extends JpaRepository<SalesService,SalesService
     TopSellingItem findTopSellingItemForTheDay(@Param("date") String date);
 
 
+    @Query(value = "SELECT ss.item_id,ss.item_qty from sales_service ss inner join sales s on ss.order_id=s.order_id where s.order_date like :date%", nativeQuery = true)
+    List<SellingItemsForADay> findAllTHeItemsSellingForADay(@Param("date") String date);
+
+
 
 
 }
