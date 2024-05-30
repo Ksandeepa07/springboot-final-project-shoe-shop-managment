@@ -6,6 +6,7 @@ import lk.ijse.gdse.shoe_shop_managment.app.repository.CustomerRepo;
 import lk.ijse.gdse.shoe_shop_managment.app.service.CustomerService;
 import lk.ijse.gdse.shoe_shop_managment.app.service.exception.DuplicateRecordException;
 import lk.ijse.gdse.shoe_shop_managment.app.service.exception.NotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
@@ -24,6 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerDTO saveCustomer(CustomerDTO customerDTO) {
         if (customerRepo.existsById(customerDTO.getCode())){
+            log.error("customer id exits already!!");
             throw new DuplicateRecordException("id");
         }if (customerRepo.existsByEmail(customerDTO.getEmail())){
             throw new DuplicateRecordException("email");
@@ -34,6 +37,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public CustomerDTO updateCustomer(CustomerDTO customerDTO) {
         if (!customerRepo.existsById(customerDTO.getCode())){
+            log.error("customer id exits already!!");
             throw new NotFoundException("Can't find customer id !!");
         }
 
@@ -56,6 +60,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public boolean deleteCustomer(String id) {
         if (!customerRepo.existsById(id)){
+            log.error("customer id does not exits !!");
             throw new NotFoundException("Can't find customer id !!");
         }
 

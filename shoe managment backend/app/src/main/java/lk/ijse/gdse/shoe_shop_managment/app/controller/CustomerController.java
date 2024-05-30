@@ -1,11 +1,13 @@
 package lk.ijse.gdse.shoe_shop_managment.app.controller;
 
+import jakarta.validation.Valid;
 import lk.ijse.gdse.shoe_shop_managment.app.dto.CustomerDTO;
 import lk.ijse.gdse.shoe_shop_managment.app.response.JwtAuthResponse;
 import lk.ijse.gdse.shoe_shop_managment.app.service.AuthenticationService;
 import lk.ijse.gdse.shoe_shop_managment.app.service.CustomerService;
 import lk.ijse.gdse.shoe_shop_managment.app.service.EmailService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/customer")
 @CrossOrigin(origins = "*")
+
 public class CustomerController {
 
     @Autowired
@@ -35,7 +38,7 @@ public class CustomerController {
     }
 
     @PostMapping("/save")
-    public CustomerDTO save(@RequestBody CustomerDTO customerDTO){
+    public CustomerDTO save(@Valid  @RequestBody CustomerDTO customerDTO){
         System.out.println(customerDTO);
         return customerService.saveCustomer(customerDTO);
     }

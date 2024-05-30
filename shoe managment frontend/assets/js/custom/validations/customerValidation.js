@@ -5,7 +5,6 @@ const CUS_EMAIL_REGEX =  /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const CUS_PHONE_REGEX = /^\d{10}$/;
 
 
-
 let cValidation=[];
 cValidation.push({field:$("#cName"),regEx: CUS_NAME_REGEX});
 cValidation.push({field:$("#cAddressLine"),regEx: CUS_ADDRESS_REGEX});

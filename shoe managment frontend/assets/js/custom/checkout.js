@@ -469,7 +469,7 @@ $(".placeOrderBtn").click(function (){
     });
 
     let orderCode=$("#orderId").val()
-    let cashierName="kaveen";
+    let cashierName=$(".userName").text();
     let date=new Date();
     let points=$("#discountPoints").val();
     let customerId=$("#pCustomerCode").val();
