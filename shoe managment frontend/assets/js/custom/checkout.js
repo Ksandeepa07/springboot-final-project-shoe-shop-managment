@@ -545,6 +545,7 @@ $(".placeOrderBtn").click(function (){
                            setDataToBill(sales.salesServices);
                            clearAllFields();
 
+
                        },
                        error:function (xhr,status,err) {
                            console.log(err)

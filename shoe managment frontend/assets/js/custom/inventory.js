@@ -221,6 +221,11 @@ window.onload = function() {
                     $("#iSaveBtn").prop("disabled", true);
                     $("#iUpdateBtn").prop("disabled", true);
                     $("#iDeleteBtn").prop("disabled", true);
+                    Swal.fire(
+                        'Product Saved Successfully',
+                        'Product has been Saved successfully..!',
+                        'success'
+                    )
                 },
                 error: function (xhr, status, err) {
                     console.log(err)
@@ -330,6 +335,11 @@ window.onload = function() {
                     $("#iSaveBtn").prop("disabled", true);
                     $("#iUpdateBtn").prop("disabled", true);
                     $("#iDeleteBtn").prop("disabled", true);
+                    Swal.fire(
+                        'Product Updated Successfully',
+                        'Product has been Updated successfully..!',
+                        'success'
+                    )
                 },
                 error: function (xhr, status, err) {
                     console.log(err)
@@ -557,11 +567,16 @@ window.onload = function() {
             },
             success:function (response) {
                 console.log(response)
-                // getAllEmployees();
-                // clearEmployeeInputFields();
-                // $("#eSaveBtn").prop("disabled", true);
-                // $("#eUpdateBtn").prop("disabled", true);
-                // $("#eDeleteBtn").prop("disabled", true);
+                getAllInventory();
+                clearInventoryInputFields()
+                $("#iSaveBtn").prop("disabled", true);
+                $("#iUpdateBtn").prop("disabled", true);
+                $("#iDeleteBtn").prop("disabled", true);
+                Swal.fire(
+                    'Product Deleted Successfully',
+                    'Product has been Deleted successfully..!',
+                    'success'
+                )
             },
             error:function (xhr,status,err) {
                 console.log(err)

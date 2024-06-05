@@ -1,6 +1,6 @@
 const SUPPLIER_NAME_REGEX=/^[A-Za-z ]{5,}$/;
 const SUPPLIER_EMAIL_REGEX= /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const SUPPLIER_ADDRESS_REGEX= /^[A-Za-z0-9 ]{5,}$/;
+const SUPPLIER_ADDRESS_REGEX=  /^[A-Za-z0-9 ,.-_]{5,}$/;
 const SUPPLIER_CONTACT_REGEX= /^\d{10}$/;
 
 let sValidations=[];

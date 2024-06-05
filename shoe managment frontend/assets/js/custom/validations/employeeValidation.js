@@ -1,6 +1,6 @@
 const EMPLOYEE_NAME_REGEX=/^[A-Za-z ]{5,}$/;
 const EMPLOYEE_EMAIL_REGEX= /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const EMPLOYEE_ADDRESS_REGEX= /^[A-Za-z0-9 ]{5,}$/;
+const EMPLOYEE_ADDRESS_REGEX=  /^[A-Za-z0-9 ,.-_]{5,}$/;
 const EMPLOYEE_CONTACT_REGEX= /^\d{10}$/;
 
 let eValidations=[];

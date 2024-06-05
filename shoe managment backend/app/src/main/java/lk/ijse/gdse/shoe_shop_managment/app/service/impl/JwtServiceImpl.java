@@ -36,7 +36,7 @@ public class JwtServiceImpl implements JwtService {
         System.out.println("user details username "+ userDetails.getUsername());
 
         Date currentDate=new Date();
-        Date expireDate = new Date( currentDate.getTime() +1000*1800);
+        Date expireDate = new Date( currentDate.getTime() +1000*3600);
 
         String accessToken = Jwts.builder()
                 .setClaims(claims)

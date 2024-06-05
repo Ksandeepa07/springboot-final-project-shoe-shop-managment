@@ -19,26 +19,25 @@ import java.sql.Timestamp;
 public class CustomerDTO {
     private String code;
 
-    @NotBlank(message = "name cannot be null")
-    @Pattern(regexp = "^[A-Za-z ]{5,}$", message = "name must contain at least 5 letters or spaces")
+    @NotBlank(message = "cannot be null")
+    @Pattern(regexp = "^[A-Za-z ]{5,}$", message = "name must contain at least 5 letters")
     private String name;
 
-    @NotBlank(message = "email cannot be null")
+    @NotBlank(message = "cannot be null")
     @Pattern(regexp = "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",message = "email not in correct format")
     private String email;
 
     private Gender gender;
 
-    @NotBlank(message = "contact cannot be null")
+    @NotBlank(message = "cannot be null")
     @Pattern(regexp = "^[0-9]{10}$", message = "contact must be a valid 10-digit number")
     private String contact;
 
     private Date dob;
 
-    @NotBlank(message = "address cannot be null")
-    @Pattern(regexp = "^[A-Za-z ]{5,}$", message = "address must contain at least 5 letters or spaces")
+    @NotBlank(message = "cannot be null")
     private String addressLine1;
-
+    @NotBlank(message = "cannot be null")
     private String addressLine2;
     private Date loyaltyDate;
     private CustomerLoyaltyLevel loyaltyLevel;

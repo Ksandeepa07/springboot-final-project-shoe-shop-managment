@@ -44,7 +44,7 @@ public class CustomerController {
     }
 
     @PatchMapping ("/update")
-    public CustomerDTO update(@RequestBody CustomerDTO customerDTO){
+    public CustomerDTO update(@Valid @RequestBody CustomerDTO customerDTO){
         System.out.println(customerDTO);
         return customerService.updateCustomer(customerDTO);
     }

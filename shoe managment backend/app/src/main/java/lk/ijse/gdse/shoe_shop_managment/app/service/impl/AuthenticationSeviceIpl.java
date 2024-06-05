@@ -59,6 +59,9 @@ public class AuthenticationSeviceIpl implements AuthenticationService {
 
     @Override
     public JwtAuthResponse signIn(SignUpRequest sIgnInRequest) {
+        System.out.println(sIgnInRequest.getEmail());
+        System.out.println(sIgnInRequest.getPassword());
+
 
         if (!userRepo.existsByEmail(sIgnInRequest.getEmail())){
             throw new NotFoundException("username");
@@ -77,7 +80,7 @@ public class AuthenticationSeviceIpl implements AuthenticationService {
                     .token(generatedToken)
                     .userDTO(mapper.map(user,UserDTO.class))
 //                    .role(user.getRole().toString())
-                    .date(new Date( currentDate.getTime() +1000*1800))
+                    .date(new Date( currentDate.getTime() +1000*3600))
                     .employeeDTO(mapper.map(employee,EmployeeDTO.class))
                     .build();
 

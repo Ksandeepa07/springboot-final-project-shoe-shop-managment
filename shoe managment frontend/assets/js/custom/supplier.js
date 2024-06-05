@@ -129,6 +129,11 @@ window.onload = function() {
                 $("#sSaveBtn").prop("disabled", true);
                 $("#sUpdateBtn").prop("disabled", true);
                 $("#sDeleteBtn").prop("disabled", true);
+                Swal.fire(
+                    'Supplier Saved Successfully',
+                    'Supplier has been Saved successfully..!',
+                    'success'
+                )
             },
             error:function (xhr,status,err) {
                 console.log(err)
@@ -205,6 +210,11 @@ window.onload = function() {
                 $("#sSaveBtn").prop("disabled", true);
                 $("#sUpdateBtn").prop("disabled", true);
                 $("#sDeleteBtn").prop("disabled", true);
+                Swal.fire(
+                    'Supplier Updated Successfully',
+                    'Supplier has been Updated successfully..!',
+                    'success'
+                )
             },
             error:function (xhr,status,err) {
                 console.log(err)
@@ -251,6 +261,11 @@ window.onload = function() {
                 $("#sSaveBtn").prop("disabled", true);
                 $("#sUpdateBtn").prop("disabled", true);
                 $("#sDeleteBtn").prop("disabled", true);
+                Swal.fire(
+                    'Supplier Deleted Successfully',
+                    'Supplier has been Deleted successfully..!',
+                    'success'
+                )
             },
             error:function (xhr,status,err) {
                 console.log(err)

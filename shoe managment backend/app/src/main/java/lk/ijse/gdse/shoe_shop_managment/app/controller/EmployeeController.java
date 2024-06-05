@@ -1,5 +1,6 @@
 package lk.ijse.gdse.shoe_shop_managment.app.controller;
 
+import jakarta.validation.Valid;
 import lk.ijse.gdse.shoe_shop_managment.app.dto.CustomerDTO;
 import lk.ijse.gdse.shoe_shop_managment.app.dto.EmployeeDTO;
 import lk.ijse.gdse.shoe_shop_managment.app.entity.Employee;
@@ -51,7 +52,7 @@ public class EmployeeController {
 
     /*save employee*/
     @PostMapping(value = "/save",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public EmployeeDTO save(@RequestParam("code") String code,
+    public EmployeeDTO save(@Valid @RequestParam("code") String code,
                             @RequestParam("name") String name,
                             @RequestParam("email") String email,
                             @RequestParam("proPic") MultipartFile proPic,
@@ -82,7 +83,7 @@ public class EmployeeController {
 
     /*update employee*/
     @PatchMapping (value = "/update",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public EmployeeDTO update( @RequestParam("code") String code,
+    public EmployeeDTO update(@Valid @RequestParam("code") String code,
                             @RequestParam("name") String name,
                             @RequestParam("email") String email,
                             @RequestParam("proPic") MultipartFile proPic,

@@ -1,6 +1,6 @@
 const CUS_NAME_REGEX = /^[A-Za-z ]{5,}$/;
-const CUS_ADDRESS_REGEX = /^[A-Za-z0-9 ]{5,}$/;
-const CUS_STATE_REGEX = /^[A-Za-z0-9 ]{5,}$/;
+const CUS_ADDRESS_REGEX = /^[A-Za-z0-9 ,.-_]{5,}$/;
+const CUS_STATE_REGEX =  /^[A-Za-z0-9 ,.-_]{5,}$/;
 const CUS_EMAIL_REGEX =  /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const CUS_PHONE_REGEX = /^\d{10}$/;
 

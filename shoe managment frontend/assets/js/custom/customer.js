@@ -146,6 +146,12 @@ window.onload = function() {
                 $("#cSaveBtn").prop("disabled", true);
                 $("#cUpdateBtn").prop("disabled", true);
                 $("#cDeleteBtn").prop("disabled", true);
+
+                Swal.fire(
+                    'Customer Saved Successfully',
+                    'Customer has been Saved successfully..!',
+                    'success'
+                )
             },
             error:function (xhr,status,err) {
                 console.log(err)
@@ -197,56 +203,73 @@ window.onload = function() {
         }
 
 
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You are about to Update this record!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, update it!',
+            cancelButtonText: 'Close'
+        }).then((result) => {
+            if (result.isConfirmed) {
 
-        $.ajax({
-            url: 'http://localhost:8080/api/v1/customer/update',
-            method:"Patch",
-            dataType:"json",
-            contentType:"application/json",
-            "headers": {
-                "Authorization": "Bearer "+token
-            },
-            data:JSON.stringify({
-                "code":code,
-                "name":name,
-                "email":email,
-                "gender":gender.toUpperCase(),
-                "contact":contact,
-                "dob":dob,
-                "addressLine1":addressLine1,
-                "addressLine2":addressLine2,
-                "loyaltyDate":loyaltyDate,
-                // "loyaltyLevel":loyaltyLevel.toUpperCase(),
-                // "loyaltyPoints":loyaltyPoints,
-                // "recentPurchaseDate":recentDate
-            }),
+                $.ajax({
+                    url: 'http://localhost:8080/api/v1/customer/update',
+                    method:"Patch",
+                    dataType:"json",
+                    contentType:"application/json",
+                    "headers": {
+                        "Authorization": "Bearer "+token
+                    },
+                    data:JSON.stringify({
+                        "code":code,
+                        "name":name,
+                        "email":email,
+                        "gender":gender.toUpperCase(),
+                        "contact":contact,
+                        "dob":dob,
+                        "addressLine1":addressLine1,
+                        "addressLine2":addressLine2,
+                        "loyaltyDate":loyaltyDate,
+                        // "loyaltyLevel":loyaltyLevel.toUpperCase(),
+                        // "loyaltyPoints":loyaltyPoints,
+                        // "recentPurchaseDate":recentDate
+                    }),
 
-            success:function (response){
-                console.log(response)
-                getAllCustomers();
-                clearCustomerInputFields();
-                $("#cSaveBtn").prop("disabled", true);
-                $("#cUpdateBtn").prop("disabled", true);
-                $("#cDeleteBtn").prop("disabled", true);
-            },
-            error:function (xhr,status,err,response) {
-                console.log(err)
-                console.log(xhr.status)
-                if(xhr.status===404){
-                    alert("This customer is not in system.Try with another!!")
-                }
+                    success:function (response){
+                        console.log(response)
+                        getAllCustomers();
+                        clearCustomerInputFields();
+                        $("#cSaveBtn").prop("disabled", true);
+                        $("#cUpdateBtn").prop("disabled", true);
+                        $("#cDeleteBtn").prop("disabled", true);
+                    },
+                    error:function (xhr,status,err,response) {
+                        console.log(err)
+                        console.log(xhr.status)
+                        if(xhr.status===404){
+                            alert("This customer is not in system.Try with another!!")
+                        }
 
-                if(xhr.status === 409){
-                    let message=JSON.parse(xhr.responseText).message;
-                    if(message==="id"){
-                        alert("This customer is already in the system !!")
-                    } else if(message==="email"){
-                        alert("This customer email is already registered !!")
+                        if(xhr.status === 409){
+                            let message=JSON.parse(xhr.responseText).message;
+                            if(message==="id"){
+                                alert("This customer is already in the system !!")
+                            } else if(message==="email"){
+                                alert("This customer email is already registered !!")
+                            }
+
+                        }
                     }
+                })
 
-                }
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire('Cancelled', 'cancelled:)', 'info');
             }
-        })
+        });
+
+
+
     }
 
 
@@ -260,29 +283,47 @@ window.onload = function() {
 
     function deleteCustomer(){
         let id=$("#cId").val();
-        $.ajax({
-            url: 'http://localhost:8080/api/v1/customer/delete/'+id,
-            method:"delete",
-            "headers": {
-                "Authorization": "Bearer "+token
-            },
-            success:function (response) {
-                console.log(response)
-                getAllCustomers();
-                clearCustomerInputFields();
-                $("#cSaveBtn").prop("disabled", true);
-                $("#cUpdateBtn").prop("disabled", true);
-                $("#cDeleteBtn").prop("disabled", true);
-            },
-            error:function (xhr,status,err) {
-                console.log(err)
-                console.log(xhr.status)
-                if(xhr.status===404){
-                    alert("This customer is not in system.Try with another!!")
-                }
-            }
 
-        })
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You are about to delete this record!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Close'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: 'http://localhost:8080/api/v1/customer/delete/'+id,
+                    method:"delete",
+                    "headers": {
+                        "Authorization": "Bearer "+token
+                    },
+                    success:function (response) {
+                        console.log(response)
+                        getAllCustomers();
+                        clearCustomerInputFields();
+                        $("#cSaveBtn").prop("disabled", true);
+                        $("#cUpdateBtn").prop("disabled", true);
+                        $("#cDeleteBtn").prop("disabled", true);
+                    },
+                    error:function (xhr,status,err) {
+                        console.log(err)
+                        console.log(xhr.status)
+                        if(xhr.status===404){
+                            alert("This customer is not in system.Try with another!!")
+                        }
+                    }
+
+                })
+
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire('Cancelled', 'Your record is safe :)', 'info');
+            }
+        });
+
+
     }
 
 
@@ -323,8 +364,6 @@ window.onload = function() {
         $("#cRecentDate").val(recentDate);
 
     })
-
-
 
 
 

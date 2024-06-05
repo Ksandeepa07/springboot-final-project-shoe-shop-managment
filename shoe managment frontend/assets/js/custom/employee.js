@@ -148,6 +148,11 @@ window.onload = function() {
                 $("#eUpdateBtn").prop("disabled", true);
                 $("#eDeleteBtn").prop("disabled", true);
                 clearEmployeeInputFields();
+                Swal.fire(
+                    'Employee Saved Successfully',
+                    'Employee has been Saved successfully..!',
+                    'success'
+                )
             },
             error:function (xhr,status,err) {
                 console.log(err)
@@ -215,43 +220,60 @@ window.onload = function() {
             return;
         }
 
-        $.ajax({
-            url: 'http://localhost:8080/api/v1/employee/update',
-            method:"Patch",
-            processData: false,
-            contentType: false,
-            data:formData,
-            "headers": {
-                "Authorization": "Bearer "+token
-            },
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You are about to update this record!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, update it!',
+            cancelButtonText: 'Close'
+        }).then((result) => {
+            if (result.isConfirmed) {
 
-            success:function (response) {
-                console.log(response)
-                getAllEmployees();
-                $("#eSaveBtn").prop("disabled", true);
-                $("#eUpdateBtn").prop("disabled", true);
-                $("#eDeleteBtn").prop("disabled", true);
-                clearEmployeeInputFields();
-            },
-            error:function (xhr,status,err) {
-                console.log(err)
-                console.log(xhr.status)
-                if(xhr.status===404){
-                    alert("This employee is not in system.Try with another!!")
-                }
+                $.ajax({
+                    url: 'http://localhost:8080/api/v1/employee/update',
+                    method:"Patch",
+                    processData: false,
+                    contentType: false,
+                    data:formData,
+                    "headers": {
+                        "Authorization": "Bearer "+token
+                    },
 
-                if(xhr.status === 409){
-                    let message=JSON.parse(xhr.responseText).message;
-                    if(message==="id"){
-                        alert("This id is already in the system !!")
-                    } else if(message==="email"){
-                        alert("This email is already registered !!")
+                    success:function (response) {
+                        console.log(response)
+                        getAllEmployees();
+                        $("#eSaveBtn").prop("disabled", true);
+                        $("#eUpdateBtn").prop("disabled", true);
+                        $("#eDeleteBtn").prop("disabled", true);
+                        clearEmployeeInputFields();
+                    },
+                    error:function (xhr,status,err) {
+                        console.log(err)
+                        console.log(xhr.status)
+                        if(xhr.status===404){
+                            alert("This employee is not in system.Try with another!!")
+                        }
+
+                        if(xhr.status === 409){
+                            let message=JSON.parse(xhr.responseText).message;
+                            if(message==="id"){
+                                alert("This id is already in the system !!")
+                            } else if(message==="email"){
+                                alert("This email is already registered !!")
+                            }
+
+                        }
+
                     }
+                })
 
-                }
 
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire('Cancelled', 'Your record is not updated :)', 'info');
             }
-        })
+        });
+
 
     }
 
@@ -266,29 +288,46 @@ window.onload = function() {
     function deleteEmployee(){
 
         let id=$("#eId").val();
-        $.ajax({
-            url: 'http://localhost:8080/api/v1/employee/delete/'+id,
-            method:"delete",
-            "headers": {
-                "Authorization": "Bearer "+token
-            },
-            success:function (response) {
-                console.log(response)
-                getAllEmployees();
-                clearEmployeeInputFields();
-                $("#eSaveBtn").prop("disabled", true);
-                $("#eUpdateBtn").prop("disabled", true);
-                $("#eDeleteBtn").prop("disabled", true);
-            },
-            error:function (xhr,status,err) {
-                console.log(err)
-                console.log(xhr.status)
-                if(xhr.status===404){
-                    alert("This employee is not in system.Try with another!!")
-                }
-            }
 
-        })
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You are about to delete this record!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'Close'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: 'http://localhost:8080/api/v1/employee/delete/'+id,
+                    method:"delete",
+                    "headers": {
+                        "Authorization": "Bearer "+token
+                    },
+                    success:function (response) {
+                        console.log(response)
+                        getAllEmployees();
+                        clearEmployeeInputFields();
+                        $("#eSaveBtn").prop("disabled", true);
+                        $("#eUpdateBtn").prop("disabled", true);
+                        $("#eDeleteBtn").prop("disabled", true);
+                    },
+                    error:function (xhr,status,err) {
+                        console.log(err)
+                        console.log(xhr.status)
+                        if(xhr.status===404){
+                            alert("This employee is not in system.Try with another!!")
+                        }
+                    }
+
+                })
+
+
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire('Cancelled', 'Your record is safe :)', 'info');
+            }
+        });
+
     }
 
 
